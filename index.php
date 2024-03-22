@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <!-- we started -->
     <!-- Header -->
     <!-- Navbar para pantallas grandes -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-5 d-none d-lg-block">
@@ -239,7 +240,7 @@
                                 </p>
                                 <div class="form-group">
                                     <input class="form-control" type="text" id="nombre" name="nombre" required>
-                                    <label for="nombre">Nombre</label>
+                                    <label for="nombre">Nombre Completo</label>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" type="email" id="email" name="email" required>
