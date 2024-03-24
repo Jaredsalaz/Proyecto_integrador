@@ -79,6 +79,41 @@
             </div>
         </div>
     </div>
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Ingresa tu cuenta
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted">Bienvenido a wayloa</p>
+                    <form action="ventas.html" class="py-4">
+                        <div class="form-group">
+                            <label for="email">Correo</label>
+                            <input type="email" class="form-control" id="email"> <!--required-->
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Contrase&ntilde;a</label>
+                            <input type="password" class="form-control" id="pass"> <!--required-->
+                        </div>
+                        <input type="submit" value="Entrar"
+                            class="btn btn-secondary d-block mx-auto py-2 px-4 rounded-0">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="d-block mx-auto">¿A&uacute;n no est&aacute; registrado?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Seccion Buscador -->
     <section class="buscador py-custom">
         <div class="container px-2 px-sm-4 px-md-5 contenedor-busqueda">
@@ -152,20 +187,76 @@
         </div>
     </section>
 
+
+    
+
+    <section class="main" id="main">
+        <div class="container-fluid bg-blue text-center text-md-left">
+            <div class="row">
+                <div class="col-md-6 p-0 d-none d-md-block">
+                    <img src="SRC/Usuario/Vista/imagenes/frame 3.png" alt="Busquedas Rapidas" class="img-fluid w-100 my-image">
+                </div>
+                <div class="col-md-6 px-5 py-4">
+                    <h1 class="text-center text-md-left subtitle-1 work-sans-h1">Generando Soluciones <br> hace mas de 10 años</h1>
+                    <p class="text-justify pt-4">A lo largo de esta década, hemos construido una sólida reputación basada en la transparencia, la integridad y el compromiso con la calidad. Nuestro equipo de profesionales altamente cualificados y apasionados por el sector inmobiliario trabaja incansablemente para ofrecer soluciones innovadoras y efectivas que se ajusten a las necesidades específicas de cada uno de nuestros clientes.</p>
+                    <button class="btn btn-light d-block mx-auto mx-md-0">Ver más</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Categorias -->
+
+    <section class="main" id="main">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md-6 text-left">
+                    <h2 class="background-image"><strong>Categorias</strong></h2>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="ruta-a-tu-pagina.html">
+                        <img src="SRC/Usuario/Vista/imagenes/flecha-derecha.gif" alt="Flecha" class="img-fluid small-arrow">
+                    </a>
+                </div>
+            </div>
+            <div class="row align-items-stretch">
+                <div class="col-md-6 d-flex flex-column">
+                    <img src="SRC/Usuario/Vista/imagenes/categoria-departamento.png" alt="Imagen 1" class="img-fluid img-large flex-grow-1">
+                    <p><strong>Departamentos</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <video src="SRC/Usuario/Vista/imagenes/categoria-casas.mp4" alt="Video 2" class="img-fluid" autoplay loop muted></video>
+                            <p><strong>Casas</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="SRC/Usuario/Vista/imagenes/catagorias-comercio.png" alt="Imagen 3" class="img-fluid">
+                            <p><strong>Comercio</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="SRC/Usuario/Vista/imagenes/categorias-countries.png" alt="Imagen 4" class="img-fluid">
+                            <p><strong>Countries</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Cuerpo Principal -->
     <section class="main" id="main">
         <!-- Contenedor de Informacion -->
         <div class="container">
             <div class="row py-5">
                 <div class="col-12 col-md-6 order-2 order-md-1 img-cont">
-                    <img src="SRC/Usuario/Vista/imagenes/img-busqueda-casa.svg" alt="Busquedas Rapidas" class="hov-img img-fluid d-block mx-auto w-75">
+                    <img src="SRC/Usuario/Vista/imagenes/img-busqueda-casa.svg" alt="Busquedas Rapidas" class="hov-img img-fluid d-block mx-auto w-75" >
                 </div>
                 <div class="col-12 col-md-6 order-1 order-md-2 d-flex">
-                    <div class="align-self-center">
+                    <div class="align-self-center bg-blue">
                         <h2 class="text-center subtitle-1">Generando Soluciones hace mas de 10 años</h2>
-                        <p class="text-justify pt-4">A lo largo de esta década, hemos construido una sólida reputación basada en la transparencia, la integridad    
-                            y el compromiso con la calidad. Nuestro equipo de profesionales altamente cualificados y apasionados por el sector inmobiliario trabaja     
-                            incansablemente para ofrecer soluciones innovadoras y efectivas que se ajusten a las necesidades específicas de cada uno de nuestros clientes.</p>
+                        <p class="text-justify pt-4">A lo largo de esta década, hemos construido una sólida reputación basada en la transparencia, la integridad y el compromiso con la calidad. Nuestro equipo de profesionales altamente cualificados y apasionados por el sector inmobiliario trabaja incansablemente para ofrecer soluciones innovadoras y efectivas que se ajusten a las necesidades específicas de cada uno de nuestros clientes.</p>
                     </div>
                 </div>
             </div>

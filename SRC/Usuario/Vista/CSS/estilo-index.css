@@ -147,6 +147,69 @@
     margin-top: 8rem;
     margin-bottom: 8rem;
   }
+  .subtitle-1 {
+    margin-left: 200px;
+    position: relative;
+    z-index: 2;
+    background-color: #0066FF;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px;
+    color: #ffffff;  /* Cambia el color del texto a blanco */
+  }
+
+  .subtitle-1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0; 
+    left: -1150px;  
+    width: calc(100vw - 80px); 
+    height: 100%;
+    background-color: #0066FF;
+    z-index: -1;
+  }
+
+  .img-fluid {
+    position: relative;
+    z-index: 4;  
+  }
+  .my-image {
+    width: 100%;  
+    height: auto;
+    margin-left: 30px;
+    margin-top: -80px;
+  }
+  .work-sans-h1 {
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  .btn {
+    background-color: #0066FF;
+    color: #ffffff;  /* Cambia el color del texto a blanco para que sea visible contra el fondo azul */
+  }
+
+  .btn:hover {
+    background-color: #3399FF;
+  }
+  .img-large {
+    width: 100%;
+    height: auto;
+  }
+  .small-arrow {
+    width: 100px; 
+    height: auto;
+    margin-right: 100px;
+  }
+  .background-image {
+    background-image: url('../imagenes/fondo-categorias.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: left center;
+    color: #0066FF;
+  }
   .main .contenedor-tarjetas {
     background: linear-gradient(rgba(178, 190, 195, 0.65), rgba(178, 190, 195, 0.65)), url('../img/bg-services.jpg');
     background-position: center;
