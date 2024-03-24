@@ -5,10 +5,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS Custom -->
@@ -37,7 +38,7 @@
 
     <!-- Navbar para pantallas pequeñas -->
     <nav class="navbar navbar-light bg-light px-5 d-lg-none">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -68,27 +69,25 @@
             <a href="">Contacto</a>                
         </nav>
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Inicio de sesión
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal">Iniciar sesión</a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal">Registrarte</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal">Iniciar sesión</a>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal">Registrarte</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Tarjetas de regalo</a>
             </div>
         </div>
     </div>
 
-    
     <!-- Modal -->
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Ingresa tu cuenta
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Ingresa tu cuenta</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -103,8 +102,7 @@
                             <label for="pass">Contrase&ntilde;a</label>
                             <input type="password" class="form-control" id="pass"> <!--required-->
                         </div>
-                        <input type="submit" value="Entrar"
-                            class="btn btn-secondary d-block mx-auto py-2 px-4 rounded-0">
+                        <input type="submit" value="Entrar" class="btn btn-secondary d-block mx-auto py-2 px-4 rounded-0">
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -117,16 +115,16 @@
     <!-- Seccion Buscador -->
     <section class="buscador py-custom">
         <div class="container px-2 px-sm-4 px-md-5 contenedor-busqueda">
-            <h2 class="text-center font-weight-bold pt-5">Encuentra tu hogar ideal</h2>
+            <h2 class="text-center font-weight-bold pt-5"><strong>Encuentra tu hogar ideal</strong></h2>
             <ul class="nav nav-pills nav-fill my-5" role="tablist">
                 <li class="nav-item">
-                    <a href="#comprar" class="nav-link active" data-toggle="pill">Comprar</a>
+                    <a href="#comprar" class="nav-link active" data-bs-toggle="pill">Comprar</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#alquilar" class="nav-link" data-toggle="pill">Alquilar</a>
+                    <a href="#alquilar" class="nav-link" data-bs-toggle="pill">Alquilar</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#vender" class="nav-link" data-toggle="pill">Vender</a>
+                    <a href="#vender" class="nav-link" data-bs-toggle="pill">Vender</a>
                 </li>
             </ul>
             <div class="tab-content pb-5">
@@ -136,10 +134,11 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <select class="form-control">
-                                        <option value="casa">Casa</option>
-                                        <option value="depa">Departamento</option>
-                                        <option value="oficina">Oficina</option>
-                                        <option value="lote">Lote</option>
+                                        <option value="casa">Casas</option>
+                                        <option value="depa">Departamentos</option>
+                                        <option value="oficina">Comercios</option>
+                                        <option value="lote">Lotes</option>
+                                        <option value="lote">Almacenes</option>
                                     </select>
                                 </div>
                                 <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-right"
@@ -154,9 +153,12 @@
                         <div class="col-12 my-1">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <select class="form-control rounded-0">
-                                        <option value="casa">Casa</option>
-                                        <option value="depa">Departamento</option>
+                                    <select class="form-control">
+                                        <option value="casa">Casas</option>
+                                        <option value="depa">Departamentos</option>
+                                        <option value="oficina">Comercios</option>
+                                        <option value="lote">Lotes</option>
+                                        <option value="lote">Almacenes</option>
                                     </select>
                                 </div>
                                 <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-0"
@@ -172,8 +174,11 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <select class="form-control">
-                                        <option value="casa">Casa</option>
-                                        <option value="depa">Departamento</option>
+                                        <option value="casa">Casas</option>
+                                        <option value="depa">Departamentos</option>
+                                        <option value="oficina">Comercios</option>
+                                        <option value="lote">Lotes</option>
+                                        <option value="lote">Almacenes</option>
                                     </select>
                                 </div>
                                 <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-right"
@@ -245,6 +250,141 @@
         </div>
     </section>
     
+        <!-- Swiper -->
+    <!-- Swiper -->
+    <section class="cards-carrusel">
+        <div class="col-md-6 text-left">
+            <h2 class="background-image"><strong>Destacadas</strong></h2>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="carrusel">
+            <div class="swiper-container mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="SRC/Usuario/Vista/imagenes/card1.png" alt="">
+                            <div class="card-description">
+                                <div class="price">Precio: $500,000</div>
+                                <div class="status">En venta</div>
+                                <div class="title">Casa de ensueño</div>
+                                <hr/>
+                                <div class="details">
+                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
+                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
+                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
+                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="img/02.jpg" alt="">
+                            <div class="card-description">
+                                <div class="price">Precio: $500,000</div>
+                                <div class="status">En venta</div>
+                                <div class="title">Casa de ensueño</div>
+                                <hr/>
+                                <div class="details">
+                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
+                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
+                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
+                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="img/03.jpg" alt="">
+                            <div class="card-description">
+                                <div class="price">Precio: $500,000</div>
+                                <div class="status">En venta</div>
+                                <div class="title">Casa de ensueño</div>
+                                <hr/>
+                                <div class="details">
+                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
+                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
+                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
+                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="img/04.jpg" alt="">
+                            <div class="card-description">
+                                <div class="price">Precio: $500,000</div>
+                                <div class="status">En venta</div>
+                                <div class="title">Casa de ensueño</div>
+                                <hr/>
+                                <div class="details">
+                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
+                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
+                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
+                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="img/05.jpg" alt="">
+                            <div class="card-description">
+                                <div class="price">Precio: $500,000</div>
+                                <div class="status">En venta</div>
+                                <div class="title">Casa de ensueño</div>
+                                <hr/>
+                                <div class="details">
+                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
+                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
+                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
+                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="img/06.jpg" alt="">
+                            <div class="card-description">
+                                <div class="price">Precio: $500,000</div>
+                                <div class="status">En venta</div>
+                                <div class="title">Casa de ensueño</div>
+                                <hr/>
+                                <div class="details">
+                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
+                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
+                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
+                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
+                                </div>
+                                <div class="card-link">
+                                    <a href="#">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Cuerpo Principal -->
     <section class="main" id="main">
         <!-- Contenedor de Informacion -->
@@ -300,7 +440,7 @@
                             <div class="card-body border-top">
                                 <h5 class="text-center font-weight-bold card-title">Servicio en varios Paises</h5>
                                 <p class="text-justify my-4">Con nuestra presencia global, puedes confiar en un servicio consistente y de alta calidad en cualquier parte del mundo. Desde apartamentos de lujo     
-                                    en ciudades cosmopolitas hasta retiros rurales exclusivos, tenemos la experiencia y los recursos para hacer realidad tus sueños inmobiliarios, sin importar la ubicación.</p>
+                                    en ciudades cosmopolitas hasta retiros rurales exclusivos.</p>
                             </div>
                         </div>
                     </div>
@@ -310,8 +450,7 @@
                                 alt="Servicio multiplataforma con diseño responsivo">
                             <div class="card-body border-top">
                                 <h5 class="text-center font-weight-bold card-title">Servicio Multiplataforma</h5>
-                                <p class="text-justify my-4">Nuestra plataforma multiplataforma te ofrece una experiencia inmersiva y sin complicaciones, con acceso a herramientas de búsqueda avanzadas, imágenes de  
-                                    alta calidad y descripciones detalladas de propiedades, todo al alcance de tus dedos.</p>
+                                <p class="text-justify my-4">Nuestra plataforma multiplataforma te ofrece una experiencia inmersiva y sin complicaciones, con acceso a herramientas de búsqueda avanzadas.</p>
                             </div>
                         </div>
                     </div>
@@ -367,17 +506,16 @@
         </div>
     </footer>
 
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="SRC/Usuario/Vista/JS/JS-index.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    
+
 </body>
 </html>
