@@ -163,11 +163,12 @@
     position: absolute;
     top: 0;
     right: 0; 
-    left: -1150px;  
-    width: calc(100vw - 80px); 
+    left: 0;  
     height: 100%;
     background-color: #0066FF;
     z-index: -1;
+    margin-right: -145px;
+    margin-left: -1235px;
   }
 
   .img-fluid {
@@ -201,7 +202,7 @@
   .small-arrow {
     width: 100px; 
     height: auto;
-    margin-right: 100px;
+    margin-left: 70%;
   }
   .background-image {
     background-image: url('../imagenes/fondo-categorias.png');
@@ -211,7 +212,7 @@
     color: #0066FF;
   }
   .main .contenedor-tarjetas {
-    background: linear-gradient(rgba(178, 190, 195, 0.65), rgba(178, 190, 195, 0.65)), url('../img/bg-services.jpg');
+    background: linear-gradient(rgba(178, 190, 195, 0.65), rgba(178, 190, 195, 0.65)), url('../imagenes/bg-services.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -224,6 +225,7 @@
     width: 72%;
   }
   .card {
+    min-height: 500px;
     width: 100%;
     border: none;
     background: #fff;
@@ -365,6 +367,15 @@
     .card:last-child {
       margin-bottom: 4rem;
     }
+    .card-body {
+      font-size: 0.1em; /* Ajusta el tamaño del texto */
+      padding: 1em; /* Ajusta el relleno */
+      overflow: auto; /* Permite el desbordamiento de texto */
+    }
+
+    .card-body p {
+      margin: 0.5em 0; /* Ajusta el margen */
+    }
     .card:hover {
       transform: scale(1.04, 1.04);
     }
@@ -445,4 +456,98 @@
 
 .navbar.bg-light {
   background-color: #313131 !important;
+}
+.material-symbols-outlined {
+  vertical-align: middle;
+}
+.swiper-slide{
+  overflow: hidden;
+}
+.card {
+  height: 500px; /* valor para cambiar la altura de las tarjetas */
+  position: relative;
+  overflow: hidden;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.card:hover img {
+  transform: scale(1.1);
+}
+.card-description {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transition: bottom 0.5s ease;
+}
+
+.card:hover .card-description {
+  bottom: 0;
+}
+
+.carrusel {
+  width: 90%;
+  overflow-x: hidden;
+  padding: 10px 40px;
+}
+.carrusel .swiper-container{
+  width: 100%;
+  height: 100%;
+}
+.carrusel .swiper-slide {
+  position: relative;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  border-radius: 15px;
+  text-align: start;
+  box-shadow: 0px 4px 4px rgba(196, 196, 196, 0.25);
+ 
+}
+.card .swiper-slide img{
+   display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+}
+.carrusel .swiper-slide .card-description{
+    padding:1rem 1rem;
+}
+.carrusel .swiper-slide .card-title,.container .swiper-slide .card-text{
+   margin-bottom: .5rem;
+}
+.carrusel .swiper-slide .card-link{
+   text-align: center;
+  
+}
+.carrusel .swiper-slide .card-link a{
+    text-decoration: none;
+    color: #1d6ce2;
+}
+.cards-carrusel {
+  position: relative;
+}
+
+.swiper-button-next, .swiper-button-prev {
+  position: absolute;
+  top: -40px;
+  width: 50px;
+  height: 50px;
+}
+
+.swiper-button-next {
+  right: 5%; 
+}
+
+.swiper-button-prev {
+  left: 80%; 
 }
