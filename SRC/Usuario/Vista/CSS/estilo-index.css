@@ -242,10 +242,26 @@
   }
   .formulario {
     margin-top: -10.75rem;
+    background-image: url('../imagenes/fondo-categorias.png');
+    background-size: flex;
+
   }
+  h1, h3, .btn-large {
+    font-weight: bold; /* Hace que el texto sea negrita */
+  }
+  .btn-large {
+    padding: 20px 40px; /* Aumenta el espaciado interno para hacer el botón más grande */
+    font-size: 20px; /* Aumenta el tamaño del texto */
+    border-radius: 30px; /* Añade bordes redondeados */
+    background-color: #0066FF; 
+    color: black; 
+}
   .formulario .container {
     padding: 4rem 8rem 0 8rem;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo blanco semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    border-radius: 30px;
+    height: 35vh;
   }
   .formulario .container form .form-group label {
     color: #6c757d;
@@ -368,7 +384,7 @@
       margin-bottom: 4rem;
     }
     .card-body {
-      font-size: 0.1em; /* Ajusta el tamaño del texto */
+      font-size: 0.9em; /* Ajusta el tamaño del texto */
       padding: 1em; /* Ajusta el relleno */
       overflow: auto; /* Permite el desbordamiento de texto */
     }
