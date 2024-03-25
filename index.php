@@ -385,42 +385,12 @@
             </div>
         </div>
     </section>
-    <!-- Cuerpo Principal -->
     <section class="main" id="main">
-        <!-- Contenedor de Informacion -->
-        <div class="container">
-            <div class="row py-5">
-                <div class="col-12 col-md-6 order-2 order-md-1 img-cont">
-                    <img src="SRC/Usuario/Vista/imagenes/img-busqueda-casa.svg" alt="Busquedas Rapidas" class="hov-img img-fluid d-block mx-auto w-75" >
-                </div>
-                <div class="col-12 col-md-6 order-1 order-md-2 d-flex">
-                    <div class="align-self-center bg-blue">
-                        <h2 class="text-center subtitle-1">Generando Soluciones hace mas de 10 años</h2>
-                        <p class="text-justify pt-4">A lo largo de esta década, hemos construido una sólida reputación basada en la transparencia, la integridad y el compromiso con la calidad. Nuestro equipo de profesionales altamente cualificados y apasionados por el sector inmobiliario trabaja incansablemente para ofrecer soluciones innovadoras y efectivas que se ajusten a las necesidades específicas de cada uno de nuestros clientes.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row py-5">
-                <div class="col-12 col-md-6 d-flex">
-                    <div class="align-self-center">
-                        <h2 class="text-center subtitle-1">Conocenos</h2>
-                        <p class="text-justify pt-4">La satisfacción de nuestros clientes es el pilar de nuestro éxito, lo que se refleja en la cantidad de recomendaciones y clientes  
-                            que regresan en busca de nuestros servicios. Este reconocimiento es el resultado de nuestro compromiso continuo con la excelencia, que nos motiva a seguir innovando    
-                             y mejorando en todo lo que hacemos.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 img-cont">
-                    <img src="SRC/Usuario/Vista/imagenes/img-select-casa.svg" alt="Seleccion de Domicilios"
-                        class="hov-img img-fluid d-block mx-auto w-75">
-                </div>
-            </div>
-        </div>
-
         <!-- Contenedor de Tarjetas -->
         <div class="contenedor-tarjetas my-5">
             <div class="container py-custom-2">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4 text-center">
+                    <div class="col-12 col-sm-6 col-lg-4 text-center">
                         <div class="card py-4 mx-auto">
                             <img class="pb-5 w-50 d-block mx-auto card-img-top"
                                 src="SRC/Usuario/Vista/imagenes/casas-exclusivas_card.svg"
@@ -432,7 +402,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4 text-center">
+                    <div class="col-12 col-sm-6 col-lg-4 text-center">
                         <div class="card py-4 mx-auto">
                             <img class="pb-5 w-50 d-block mx-auto card-img-top"
                                 src="SRC/Usuario/Vista/imagenes/conectividad-mundial_card.svg"
@@ -444,7 +414,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
+                    <div class="col-12 col-sm-6 col-lg-4 text-center">
                         <div class="card py-4 mx-auto mt-2 mt-md-5 mt-lg-0">
                             <img class="pb-5 imx d-block mx-auto card-img-top" src="SRC/Usuario/Vista/imagenes/multiplataforma_card.svg"
                                 alt="Servicio multiplataforma con diseño responsivo">
@@ -463,31 +433,15 @@
             <div class="px-custom py-0 py-md-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 edit-form">
-                            <form action="" class="w-100">
-                                <h2 class="display-5 display-md-4">Cont&aacute;ctanos</h2>
-                                <p class="mb-5 text-muted">Sabemos lo que necesitas, estamos para ayudarte.
-                                </p>
-                                <div class="form-group">
-                                    <input class="form-control" type="text" id="nombre" name="nombre" required>
-                                    <label for="nombre">Nombre Completo</label>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" type="email" id="email" name="email" required>
-                                    <label for="email">Correo Electronico</label>
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" name="mensaje" id="mensaje" required></textarea>
-                                    <label for="mensaje">Mensaje</label>
-                                </div>
-                                <input type="submit" value="Enviar" class="btn btn-secondary mt-4">
-                            </form>
+                        <div class="col-12 edit-form text-center">
+                            <h1 class="display-5 display-md-4">Contáctanos</h1>
+                            <h3>Sabemos lo que necesitas</h3>
+                            <button class="btn btn-large rounded">Enviar mensaje</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 
     <!-- Footer -->
