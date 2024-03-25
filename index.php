@@ -434,7 +434,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 edit-form text-center">
-                            <h1 class="display-5 display-md-4">Contáctanos</h1>
+                            <h1 class="display-5 display-md-4">Contáctanos aqui</h1>
                             <h3>Sabemos lo que necesitas</h3>
                             <button class="btn btn-large rounded">Enviar mensaje</button>
                         </div>
