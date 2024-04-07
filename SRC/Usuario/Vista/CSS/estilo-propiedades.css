@@ -1,0 +1,177 @@
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: local('Poppins Light'), local('Poppins-Light'), url(https://fonts.gstatic.com/s/poppins/v12/pxiByp8kv8JHgFVrLDz8V1s.ttf) format('truetype');
+}
+.filtros-button-pc{
+  background-color: #0066FF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  min-width: 250px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+.filtros-button{
+  background-color: #0066FF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  min-width: 283px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+.custom input {
+  background-color: #D9D9D9 !important;
+}
+.input-group {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.input-group input {
+  border-radius: 20px;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  top: 10px; 
+  left: 20px;
+  padding: 0;
+  font-size: 16px;
+  color: #555;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.input-group input:valid ~ label,
+.input-group input:focus ~ label {
+  top: 1px; 
+  left: 20px; 
+  color: #03a9f4;
+  font-size: 12px; 
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+.navbar {
+    min-height: 5rem;
+}
+.navbar-toggler {
+    outline: none !important;
+    outline-width: 0 !important;
+    border: none;
+}
+.navbar-toggler .navbar-toggler-icon {
+    outline: none !important;
+    outline-width: 0 !important;
+    border: none;
+}
+.list-inline-item a {
+    text-decoration: none;
+}
+.details .container .row .col-12 .mt-3.text-center a {
+    text-decoration: none;
+}
+.modal-content {
+    width: 100%;
+    background-color: transparent !important;
+    border: 0 !important;
+}
+.modal-header {
+    border: none;
+}
+.modal-header button span {
+    font-size: 2rem;
+}
+.text-monospace {
+    font-weight: 300 !important;
+}
+footer {
+    margin-top: 6.5rem !important;
+    background-color: #000;
+}
+footer .container .row .col-12 {
+    color: #fff;
+}
+footer .container .row .col-12 .redes a {
+    color: #fff;
+    text-decoration: none;
+}
+.otras-ofertas .container h2 {
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+/*MEDIA QUERIES*/
+@media all and (max-width: 1200px) {
+  .card {
+    width: 18rem !important;
+  }
+}
+@media all and (max-width: 995px) {
+  .card {
+    width: 20rem !important;
+  }
+  .details .container .display-3 {
+    font-size: 4rem !important;
+    font-weight: 200 !important;
+    line-height: 1 !important;
+  }
+  .overflow-hidden .display-3 {
+    font-size: 3rem !important;
+    font-weight: 200 !important;
+    line-height: 1 !important;
+  }
+  .overflow-hidden .text-muted.lead {
+    font-size: 1rem !important;
+  }
+  .overflow-hidden .text-muted.lead.last {
+    margin-bottom: 0px;
+  }
+  .text-monospace {
+    font-size: 1.5rem !important;
+    font-weight: 200 !important;
+  }
+}
+@media all and (max-width: 601px) {
+  .details .container .display-3 {
+    font-size: 2.7rem !important;
+  }
+  .align-self-center .display-4 {
+    font-size: 2.5rem !important;
+  }
+}
+@media all and (max-width: 428px) {
+  .list-inline {
+    margin-right: 0 !important;
+  }
+  .list-inline .list-inline-item {
+    margin-right: 0 !important;
+  }
+}

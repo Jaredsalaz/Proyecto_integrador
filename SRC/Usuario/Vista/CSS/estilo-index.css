@@ -13,11 +13,16 @@
   body {
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
   }
   .navbar {
     min-height: 5rem;
 
   }
+  .navbar a {
+    margin-left: 10vh;
+  }
+
   .navbar-toggler {
     position: absolute;
     left: 0;
@@ -143,7 +148,20 @@
     border-right: 1px solid #000;
     border: none;
   }
+  section.cards-carrusel {
+    max-width: 97%;
+    margin: auto;
+  }#main .container-fluid .row .col-md-6 p.text-justify {
+    border: 2px solid #313131; 
+    padding: 5px; 
+}
+  #main .container-fluid .row .col-md-6 p {
+    font-size: 1.1rem;
+    text-align: left;
+  }
   .main {
+    max-width: 95%;
+    margin: auto;
     margin-top: 8rem;
     margin-bottom: 8rem;
   }
@@ -167,7 +185,7 @@
     height: 100%;
     background-color: #0066FF;
     z-index: -1;
-    margin-right: -145px;
+    margin-right: -160px;
     margin-left: -1235px;
   }
 
@@ -187,13 +205,66 @@
     font-weight: 600;
     font-style: normal;
   }
-  .btn {
+  .btn.mi-clase-especial {
     background-color: #0066FF;
-    color: #ffffff;  /* Cambia el color del texto a blanco para que sea visible contra el fondo azul */
+    color: #ffffff;
   }
 
-  .btn:hover {
+  .btn.mi-clase-especial:hover {
     background-color: #3399FF;
+  }
+  button.dropdown-toggle::after {
+    display: none;
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 70%;
+    right: 7%;
+  }
+  .mi-boton-personalizado {
+    appearance: none;
+    background: transparent;
+    border: 1px solid;
+    background-color: #fff !important;
+    border-radius: 100px !important;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 8px 14px;
+    position: relative;
+    text-align: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+    user-select: auto;
+    vertical-align: middle;
+    z-index: 1;
+  }
+
+  .mi-boton-personalizado:hover {
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  }
+
+  .mi-boton-personalizado img {
+    height: 32px;
+    width: 32px;
+  }
+
+  .mi-boton-personalizado i {
+    margin-right: 12px;
+    color: #000 !important;
+  }
+  .mi-clase-categoria-texto {
+    margin-left: 1%;
+  }
+  .mi-clase-destacadas {
+    margin-left: 2%;
   }
   .img-large {
     width: 100%;
@@ -202,7 +273,6 @@
   .small-arrow {
     width: 100px; 
     height: auto;
-    margin-left: 70%;
   }
   .background-image {
     background-image: url('../imagenes/fondo-categorias.png');
@@ -305,6 +375,9 @@
   }
   .hov-img:hover {
     transform: scale(1.07, 1.07);
+  }
+  footer a {
+    text-decoration: none !important;
   }
   footer {
     background-color: #000;
