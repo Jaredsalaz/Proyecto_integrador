@@ -15,7 +15,8 @@
     <!-- CSS Custom -->
     <link rel="stylesheet" href="SRC/Usuario/Vista/CSS/estilo-index.css">
 
-    <title>Inmobiliaria</title>
+    <title>Wayloa</title>
+    <link rel="icon" href="SRC/Usuario/Vista/imagenes/navegador-icon.png">
 </head>
 
 <body>
@@ -44,13 +45,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Propiedades</a>
+                    <a class="nav-link" href="SRC/Usuario/Vista/propiedades.php">Propiedades</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Cotizaciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Nuestros Asesores</a>
+                    <a class="nav-link" href="SRC/Usuario/Vista/asesores.php">Nuestros Asesores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Contacto</a>
@@ -63,14 +64,15 @@
     <div class="navbar" id="mainNavbar">
         <img class="logo" src="SRC/Usuario/Vista/imagenes/logo.png" alt="logo bienes raices">
         <nav class="nav_links">
-            <a href="">Propiedades</a>
+            <a href="SRC/Usuario/Vista/propiedades.php">Propiedades</a>
             <a href="">Cotizaciones</a>
-            <a href="">Nuestros Asesores</a>
+            <a href="SRC/Usuario/Vista/asesores.php">Nuestros Asesores</a>
             <a href="">Contacto</a>                
         </nav>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Inicio de sesión
+        <div class="d-flex align-items-center">
+            <button type="button" class="btn btn-secondary dropdown-toggle d-flex align-items-center mi-boton-personalizado" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+                <img src="SRC/Usuario/Vista/imagenes/usuario-foto.png" class="rounded-circle ml-2" alt="Imagen de perfil">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal">Iniciar sesión</a>
@@ -203,8 +205,19 @@
                 </div>
                 <div class="col-md-6 px-5 py-4">
                     <h1 class="text-center text-md-left subtitle-1 work-sans-h1">Generando Soluciones <br> hace mas de 10 años</h1>
-                    <p class="text-justify pt-4">A lo largo de esta década, hemos construido una sólida reputación basada en la transparencia, la integridad y el compromiso con la calidad. Nuestro equipo de profesionales altamente cualificados y apasionados por el sector inmobiliario trabaja incansablemente para ofrecer soluciones innovadoras y efectivas que se ajusten a las necesidades específicas de cada uno de nuestros clientes.</p>
-                    <button class="btn btn-light d-block mx-auto mx-md-0">Ver más</button>
+                    <p class="text-justify pt-4">
+                    Los orígenes de Wayloa se remontan a principios de la década de 2010, cuando un grupo de emprendedores visionarios, frustrados por las limitaciones y la falta de oportunidades en el sector de servicios, decidieron crear una alternativa que les permitiera desarrollar plenamente su potencial.
+
+                    Liderados por Juan Gómez, un experimentado profesional del sector, estos emprendedores se propusieron diseñar un modelo de negocio que rompiera con los esquemas tradicionales y ofreciera a los mejores talentos la posibilidad de alcanzar el máximo éxito a través de su propio esfuerzo y dedicación.
+
+                    Así nació Wayloa, una compañía que desde sus inicios ha apostado por una filosofía de trabajo basada en la autonomía, la meritocracia y la búsqueda constante de la excelencia. El sistema creado por Juan Gómez y su equipo está diseñado para atraer y retener a los profesionales más destacados, ofreciéndoles un entorno estimulante y enriquecedor en el que pueden desarrollar todo su potencial.
+
+                    La clave de este sistema radica en que los ingresos de cada profesional están directamente vinculados a los resultados que obtienen con su trabajo. Esta filosofía, que se refleja en el propio nombre de la compañía (Wayloa, una contracción de "Way to the top"), ha sido el motor del crecimiento y el éxito de Wayloa a lo largo de más de una década.
+
+                    Desde sus humildes inicios, cuando abrieron las primeras oficinas en unas pocas ciudades, Wayloa ha experimentado un crecimiento exponencial, convirtiéndose en una de las empresas líderes en su sector a nivel nacional e internacional. Hoy en día, Wayloa cuenta con más de 5,000 profesionales altamente cualificados que trabajan en más de 500 oficinas distribuidas en 20 países.
+
+                    La historia de Wayloa es la historia de un sueño hecho realidad, de un modelo de negocio innovador que ha transformado la forma de trabajar en el sector de servicios. Y es una historia que continúa escribiéndose, con la mirada puesta en el futuro y la determinación de seguir ofreciendo a los mejores talentos la oportunidad de alcanzar el máximo éxito.</p>
+                    <button class="btn btn-light d-block mx-auto mx-md-0 mi-clase-especial">Ver más</button>
                 </div>
             </div>
         </div>
@@ -216,15 +229,16 @@
     <section class="main" id="main">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-between">
-                <div class="col-md-6 text-left">
-                    <h2 class="background-image"><strong>Categorias</strong></h2>
+                <div class="d-flex justify-content-between">
+                    <div class="col-md-6 text-left mi-clase-categoria-texto">
+                        <h2 class="background-image"><strong>Categorias</strong></h2>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="SRC/Usuario/Vista/categorias.php">
+                            <img src="SRC/Usuario/Vista/imagenes/flecha-derecha.gif" alt="Flecha" class="img-fluid small-arrow">
+                        </a>
+                    </div>
                 </div>
-                <div class="col-md-6 text-right">
-                    <a href="ruta-a-tu-pagina.html">
-                        <img src="SRC/Usuario/Vista/imagenes/flecha-derecha.gif" alt="Flecha" class="img-fluid small-arrow">
-                    </a>
-                </div>
-            </div>
             <div class="row align-items-stretch">
                 <div class="col-md-6 d-flex flex-column">
                     <img src="SRC/Usuario/Vista/imagenes/categoria-departamento.png" alt="Imagen 1" class="img-fluid img-large flex-grow-1">
@@ -253,7 +267,7 @@
         <!-- Swiper -->
     <!-- Swiper -->
     <section class="cards-carrusel">
-        <div class="col-md-6 text-left">
+        <div class="col-md-6 text-left mi-clase-destacadas">
             <h2 class="background-image"><strong>Destacadas</strong></h2>
         </div>
         <div class="swiper-button-next"></div>
@@ -436,7 +450,7 @@
                         <div class="col-12 edit-form text-center">
                             <h1 class="display-5 display-md-4">Contáctanos aqui</h1>
                             <h3>Sabemos lo que necesitas</h3>
-                            <button class="btn btn-large rounded">Enviar mensaje</button>
+                            <button class="btn btn-large rounded mi-clase-especial">Enviar mensaje</button>
                         </div>
                     </div>
                 </div>
@@ -444,17 +458,47 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <footer style="background-color: #000; color: #fff;">
         <div class="container py-5">
             <div class="row">
-                <div class="col-12 text-center">
-                    <a href="#"><h2>Inmobiliaria</h2></a>
-                    <p>&copy;&nbsp;Todos los Derechos Reservados</p>
-                    <div class="mt-2 d-block redes">
-                        <a href="#" class="mr-2"><i class="fas fa-globe-africa"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <div class="col-md-3">
+                    <img src="SRC/Usuario/Vista/imagenes/logo-footer.png" alt="Logo" style="width: 100%; height: 70%;">
+                    <p>Persigue tu sueño</p>
+                    <div class="d-flex">
+                        <a href="https://www.facebook.com" target="_blank" style="margin-right: 15px; font-size: 24px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.twitter.com" target="_blank" style="margin-right: 15px; font-size: 24px;"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" style="font-size: 24px;"><i class="fab fa-instagram"></i></a>
                     </div>
+                </div>
+                <div class="col-md-3">
+                    <h5>Nuestros Servicios</h5>
+                    <ul>
+                        <li><a href="preguntas-frecuentes.html" style="color: #fff;">Compras</a></li>
+                        <li><a href="sobre-nosotros.html" style="color: #fff;">Alquileres</a></li>
+                        <li><a href="politicas-privacidad.html" style="color: #fff;">Vender</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Recursos</h5>
+                    <ul>
+                        <li><a href="preguntas-frecuentes.html" style="color: #fff;">Preguntas Frecuentes</a></li>
+                        <li><a href="sobre-nosotros.html" style="color: #fff;">Sobre Nosotros</a></li>
+                        <li><a href="politicas-privacidad.html" style="color: #fff;">Políticas de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Soporte</h5>
+                    <ul>
+                        <li><a href="email.html" style="color: #fff;">Email</a></li>
+                        <li><a href="contactanos.html" style="color: #fff;">Contactanos</a></li>
+                        <li><a href="centro-soporte.html" style="color: #fff;">Centro de soporte</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="background-color: #fff;">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024, Wayloa. Todos los Derechos Reservados.</p>
                 </div>
             </div>
         </div>
