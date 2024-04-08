@@ -19,10 +19,9 @@
     min-height: 5rem;
 
   }
-  .navbar a {
+  .navbar .navbar-brand {
     margin-left: 10vh;
   }
-
   .navbar-toggler {
     position: absolute;
     left: 0;
@@ -221,10 +220,19 @@
     top: 70%;
     right: 7%;
   }
+    /* Agrega un efecto de transición a los elementos del menú desplegable */
+  .dropdown-item {
+    transition: color 0.5s ease;
+  }
+
+  /* Cambia el color de los elementos del menú desplegable al pasar el mouse sobre ellos */
+  .dropdown-item:hover {
+    color: #007BFF;
+  }
   .mi-boton-personalizado {
     appearance: none;
     background: transparent;
-    border: 1px solid;
+    border: 2px solid;
     background-color: #fff !important;
     border-radius: 100px !important;
     color: inherit;
@@ -532,15 +540,6 @@
 
 .nav_links a:hover {
   color: thistle;
-}
-/* Agrega un efecto de transición a los elementos del menú desplegable */
-.dropdown-item {
-  transition: color 0.5s ease;
-}
-
-/* Cambia el color de los elementos del menú desplegable al pasar el mouse sobre ellos */
-.dropdown-item:hover {
-  color: #007BFF;
 }
 
 .navbar.bg-light {

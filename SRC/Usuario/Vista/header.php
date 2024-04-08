@@ -47,7 +47,7 @@
                     <a class="nav-link" href="propiedades.php">Propiedades</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Cotizaciones</a>
+                    <a class="nav-link" href="cotizaciones.php">Cotizaciones</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="asesores.php">Nuestros Asesores</a>
@@ -66,7 +66,7 @@
         </a>
         <nav class="nav_links">
             <a href="propiedades.php">Propiedades</a>
-            <a href="">Cotizaciones</a>
+            <a href="cotizaciones.php">Cotizaciones</a>
             <a href="asesores.php">Nuestros Asesores</a>
             <a href="">Contacto</a>                
         </nav>
@@ -75,6 +75,4 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     
-</body>
-</html>
 
