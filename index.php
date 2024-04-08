@@ -48,7 +48,7 @@
                     <a class="nav-link" href="SRC/Usuario/Vista/propiedades.php">Propiedades</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Cotizaciones</a>
+                    <a class="nav-link" href="SRC/Usuario/Vista/cotizaciones.php">Cotizaciones</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="SRC/Usuario/Vista/asesores.php">Nuestros Asesores</a>
@@ -65,17 +65,17 @@
         <img class="logo" src="SRC/Usuario/Vista/imagenes/logo.png" alt="logo bienes raices">
         <nav class="nav_links">
             <a href="SRC/Usuario/Vista/propiedades.php">Propiedades</a>
-            <a href="">Cotizaciones</a>
+            <a href="SRC/Usuario/Vista/cotizaciones.php">Cotizaciones</a>
             <a href="SRC/Usuario/Vista/asesores.php">Nuestros Asesores</a>
             <a href="">Contacto</a>                
         </nav>
-        <div class="d-flex align-items-center">
+        <div class="d-flex ">
             <button type="button" class="btn btn-secondary dropdown-toggle d-flex align-items-center mi-boton-personalizado" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
                 <img src="SRC/Usuario/Vista/imagenes/usuario-foto.png" class="rounded-circle ml-2" alt="Imagen de perfil">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal">Iniciar sesión</a>
+                <a class="dropdown-item " href="#" data-bs-toggle="modal" data-bs-target="#modal">Iniciar sesión</a>
                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal">Registrarte</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Tarjetas de regalo</a>

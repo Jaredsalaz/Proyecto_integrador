@@ -10,7 +10,6 @@
 </head>
 <body>
     <?php include 'header.php'; ?>
-
     <div class="row">
         <div class="col">
             <div class="card full-border">
