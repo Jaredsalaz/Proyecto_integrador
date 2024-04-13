@@ -11,6 +11,20 @@ document.querySelector('.navbar-toggler').addEventListener('click', function() {
     document.getElementById('mainNavbar').classList.toggle('hidden');
 });
 
+	// Abrir modal de inicio de sesión y abrir el modal de registro
+    document.getElementById('enlaceRegistro').addEventListener('click', function() {
+        // Cerrar el modal de inicio de sesión
+        var myModalEl = document.getElementById('modal');
+        var modal = bootstrap.Modal.getInstance(myModalEl);
+        modal.hide();
+
+        // Abrir el modal de registro
+        var myModalEl = document.getElementById('modalRegistro');
+        var modal = new bootstrap.Modal(myModalEl);
+        modal.show();
+    });
+	
+
 //Carousel de cards
 var swiper = new Swiper('.swiper-container', {
 	navigation: {
