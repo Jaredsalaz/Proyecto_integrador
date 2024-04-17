@@ -1,10 +1,19 @@
+<?php
+require_once '..//..//..//config/app.php';
+require_once './/..//.//..//../autoload.php';
+// Instanciar el controlador
+$controlador = new \app\controllers\dashboardController();
+
+// Llamar al método mostrarPrincipal y capturar el resultado
+$data = $controlador->mostrarPrincipal();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../vista/CSS/estilo-principal.css">
-    <title>Document</title>
+    <title>Admin-Wayloa</title>
 </head>
 <body>
     <?php include 'inc/dashboard.php';   ?>
@@ -18,17 +27,19 @@
                         <h3>Total de ciudades</h3>
                         <div class="middle">
                             <div class="left">
+                                <?php echo $data['totalCiudades']; ?>
                             </div>
                             <div class="progress">
                             </div>
                         </div>
                         <small class="text-muted">Ultimas 24 Horas</small>
                     </div>
-                    <!------------ End of Expenses ----------->
+                    
                     <div class="income">
-                        <h3>Total Paises</h3>
+                        <h3>Total Propiedades</h3>
                         <div class="middle">
                             <div class="left">
+                                <?php echo $data['totalPropiedades']; ?>
                             </div>
                             <div class="progress">
                             </div>

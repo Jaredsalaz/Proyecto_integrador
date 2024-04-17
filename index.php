@@ -1,4 +1,9 @@
 <?php
+        // Deshabilitar la caché
+    header('Cache-Control: no-cache, must-revalidate, max-age=0');
+    header('Pragma: no-cache');
+    header('Expires: Sat, 26 enero 2024 05:00:00 GMT'); // Fecha en el pasado, por el tema de la caché del navegador
+    
     require_once './config/app.php';
     require_once './autoload.php';
     require_once './app/users/Vista/inc/session_start.php';
@@ -21,8 +26,12 @@
        //Almacenamos el resultado en la sesión
         $_SESSION['resultado_login'] = $resultado;
     }
-?>
 
+    // Verificamos si se ha solicitado cerrar la sesión
+    if (isset($_GET['accion']) && $_GET['accion'] === 'cerrarSesion') {
+        $controlador->cerrarSesion();
+    }
+?>
 <!doctype html>
 <html lang="en">
 
@@ -105,6 +114,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <?php if (isset($_SESSION['usuario'])): ?>
                     <a class="dropdown-item" href="perfil.php">Ver perfil</a>
+                    <a class="dropdown-item" href="index.php?accion=cerrarSesion">Cerrar sesión</a>
                 <?php else: ?>
                     <a class="dropdown-item " href="#" data-bs-toggle="modal" data-bs-target="#modal">Iniciar sesión</a>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrarte</a>

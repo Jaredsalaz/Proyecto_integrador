@@ -46,5 +46,18 @@
             // Devolver un mensaje de éxito o de error
             return $resultado ? "Inicio de sesión exitoso." : "Correo electrónico o contraseña incorrectos.";
         }
+   
+        public function cerrarSesion() {
+            // Destruir la sesión
+            session_destroy();
+
+            // Deshacerse de la variable de sesión 'usuario'
+            unset($_SESSION['usuario']);
+
+            // Redirigir al usuario a la página de inicio de sesión
+            header('Location: index.php');
+            exit;
+        }
+        
         
     }
