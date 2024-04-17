@@ -1,3 +1,28 @@
+<?php
+    require_once './config/app.php';
+    require_once './autoload.php';
+    require_once './app/users/Vista/inc/session_start.php';
+    $url = array(); // Initialize $url as an array
+    if(isset($_GET['views'])){
+        $url=explode("/",$_GET['views']);
+    }else{
+        $url[] = 'login'; // Add 'login' to the $url array
+    }
+
+    // Instanciamos la clase UsuarioController
+    $controlador = new \app\controllers\indexController();
+
+    // Verificamos si se ha enviado el formulario de inicio de sesión
+    $resultado = '';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email1'], $_POST['clave1'])) {
+        // Intentamos iniciar sesión y capturamos el resultado
+        $resultado = $controlador->iniciarSesion($_POST['email1'], $_POST['clave1']);
+
+       //Almacenamos el resultado en la sesión
+        $_SESSION['resultado_login'] = $resultado;
+    }
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -10,13 +35,16 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Sweetalert2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS Custom -->
-    <link rel="stylesheet" href="SRC/Usuario/Vista/CSS/estilo-index.css">
+    <link rel="stylesheet" href="app/users/Vista/CSS/estilo-index.css">
 
-    <title>Wayloa</title>
-    <link rel="icon" href="SRC/Usuario/Vista/imagenes/navegador-icon.png">
+    <title><?php echo APP_NAME; ?></title>
+    <link rel="icon" href="app/users/Vista/imagenes/navegador-icon.png">
 </head>
 
 <body>
@@ -45,13 +73,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="SRC/Usuario/Vista/propiedades.php">Propiedades</a>
+                    <a class="nav-link" href="app/users/Vista/propiedades.php">Propiedades</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="SRC/Usuario/Vista/cotizaciones.php">Cotizaciones</a>
+                    <a class="nav-link" href="app/users/Vista/cotizaciones.php">Cotizaciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="SRC/Usuario/Vista/asesores.php">Nuestros Asesores</a>
+                    <a class="nav-link" href="app/users/Vista/asesores.php">Nuestros Asesores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Contacto</a>
@@ -62,21 +90,25 @@
 
     <!-- menu -->
     <div class="navbar" id="mainNavbar">
-        <img class="logo" src="SRC/Usuario/Vista/imagenes/logo.png" alt="logo bienes raices">
+        <img class="logo" src="app/users/Vista/imagenes/logo.png" alt="logo bienes raices">
         <nav class="nav_links">
-            <a href="SRC/Usuario/Vista/propiedades.php">Propiedades</a>
-            <a href="SRC/Usuario/Vista/cotizaciones.php">Cotizaciones</a>
-            <a href="SRC/Usuario/Vista/asesores.php">Nuestros Asesores</a>
+            <a href="app/users/Vista/propiedades.php">Propiedades</a>
+            <a href="app/users/Vista/cotizaciones.php">Cotizaciones</a>
+            <a href="app/users/Vista/asesores.php">Nuestros Asesores</a>
             <a href="">Contacto</a>                
         </nav>
         <div class="d-flex ">
             <button type="button" class="btn btn-secondary dropdown-toggle d-flex align-items-center mi-boton-personalizado" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
-                <img src="SRC/Usuario/Vista/imagenes/usuario-foto.png" class="rounded-circle ml-2" alt="Imagen de perfil">
+                <img src="app/users/Vista/imagenes/usuario-foto.png" class="rounded-circle ml-2" alt="Imagen de perfil">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item " href="#" data-bs-toggle="modal" data-bs-target="#modal">Iniciar sesión</a>
-                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal">Registrarte</a>
+                <?php if (isset($_SESSION['usuario'])): ?>
+                    <a class="dropdown-item" href="perfil.php">Ver perfil</a>
+                <?php else: ?>
+                    <a class="dropdown-item " href="#" data-bs-toggle="modal" data-bs-target="#modal">Iniciar sesión</a>
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrarte</a>
+                <?php endif; ?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Tarjetas de regalo</a>
             </div>
@@ -84,6 +116,25 @@
     </div>
 
     <!-- Modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Obtén el resultado de la función iniciarSesion
+            var resultado = "<?php echo $_SESSION['resultado_login']; ?>";
+
+            // Si hay un resultado, muestra la alerta
+            if (resultado) {
+                Swal.fire({
+                    title: resultado,
+                    icon: resultado.includes("exitoso") ? "success" : "error",
+                    confirmButtonText: "OK"
+                });
+
+                // Limpia el resultado de la sesión para que la alerta no se muestre de nuevo
+                <?php unset($_SESSION['resultado_login']); ?>
+            }
+        });
+    </script>               
+
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -95,20 +146,86 @@
                 </div>
                 <div class="modal-body">
                     <p class="text-muted">Bienvenido a wayloa</p>
-                    <form action="ventas.html" class="py-4">
+                    <form action="index.php" method="POST">
                         <div class="form-group">
                             <label for="email">Correo</label>
-                            <input type="email" class="form-control" id="email"> <!--required-->
+                            <input type="email" name="email1" class="form-control" id="email1" required>
                         </div>
                         <div class="form-group">
                             <label for="pass">Contrase&ntilde;a</label>
-                            <input type="password" class="form-control" id="pass"> <!--required-->
+                            <input type="password" name="clave1" class="form-control" id="pass1" required>
                         </div>
                         <input type="submit" value="Entrar" class="btn btn-secondary d-block mx-auto py-2 px-4 rounded-0">
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="d-block mx-auto">¿A&uacute;n no est&aacute; registrado?</a>
+                    <a href="#" id="enlaceRegistro" class="d-block mx-auto">¿A&uacute;n no est&aacute; registrado?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+        // Instanciamos la clase indexController
+        $controlador = new \app\controllers\indexController();
+
+        // Verificamos si se ha enviado el formulario de registro
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre2'], $_POST['apellido2'], $_POST['email2'], $_POST['clave2'])) {
+            // Registramos el usuario y capturamos el resultado
+            $resultado_registro = $controlador->registrarUsuario($_POST['nombre2'], $_POST['apellido2'], $_POST['email2'], $_POST['clave2']);
+            // Almacenamos el resultado en la sesión
+            $_SESSION['resultado_registro'] = $resultado_registro;
+        }
+    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Obtén el resultado de la función registrarUsuario
+            var resultado_registro = "<?php echo $_SESSION['resultado_registro']; ?>";
+
+            // Si hay un resultado, muestra la alerta
+            if (resultado_registro) {
+                console.log(resultado_registro); // Agrega esta línea
+                Swal.fire({
+                    title: resultado_registro,
+                    icon: resultado_registro.includes("éxito") ? "success" : "error",
+                    confirmButtonText: "OK"
+                });
+
+                // Limpia el resultado de la sesión para que la alerta no se muestre de nuevo
+                <?php unset($_SESSION['resultado_registro']); ?>
+            }
+        });
+    </script>    
+    
+    <div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Regístrate</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted">Bienvenido a wayloa</p>
+                    <form action="index.php" method="post" class="py-4">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre2" name="nombre2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" id="apellido2" name="apellido2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo</label>
+                            <input type="email" class="form-control" id="email2" name="email2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clave">Contraseña</label>
+                            <input type="password" class="form-control" id="clave2" name="clave2" required>
+                        </div>
+                        <input type="submit" value="Registrarse" class="btn btn-secondary d-block mx-auto py-2 px-4 rounded-0">
+                    </form>
                 </div>
             </div>
         </div>
@@ -201,7 +318,7 @@
         <div class="container-fluid bg-blue text-center text-md-left">
             <div class="row">
                 <div class="col-md-6 p-0 d-none d-md-block">
-                    <img src="SRC/Usuario/Vista/imagenes/frame 3.png" alt="Busquedas Rapidas" class="img-fluid w-100 my-image">
+                    <img src="app/users/Vista/imagenes/frame 3.png" alt="Busquedas Rapidas" class="img-fluid w-100 my-image">
                 </div>
                 <div class="col-md-6 px-5 py-4">
                     <h1 class="text-center text-md-left subtitle-1 work-sans-h1">Generando Soluciones <br> hace mas de 10 años</h1>
@@ -234,28 +351,28 @@
                         <h2 class="background-image"><strong>Categorias</strong></h2>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="SRC/Usuario/Vista/categorias.php">
-                            <img src="SRC/Usuario/Vista/imagenes/flecha-derecha.gif" alt="Flecha" class="img-fluid small-arrow">
+                        <a href="app/users/Vista/categorias.php">
+                            <img src="app/users/Vista/imagenes/flecha-derecha.gif" alt="Flecha" class="img-fluid small-arrow">
                         </a>
                     </div>
                 </div>
             <div class="row align-items-stretch">
                 <div class="col-md-6 d-flex flex-column">
-                    <img src="SRC/Usuario/Vista/imagenes/categoria-departamento.png" alt="Imagen 1" class="img-fluid img-large flex-grow-1">
+                    <img src="app/users/Vista/imagenes/categoria-departamento.png" alt="Imagen 1" class="img-fluid img-large flex-grow-1">
                     <p><strong>Departamentos</strong></p>
                 </div>
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-12">
-                            <video src="SRC/Usuario/Vista/imagenes/categoria-casas.mp4" alt="Video 2" class="img-fluid" autoplay loop muted></video>
+                            <video src="app/users/Vista/imagenes/categoria-casas.mp4" alt="Video 2" class="img-fluid" autoplay loop muted></video>
                             <p><strong>Casas</strong></p>
                         </div>
                         <div class="col-md-6">
-                            <img src="SRC/Usuario/Vista/imagenes/catagorias-comercio.png" alt="Imagen 3" class="img-fluid">
+                            <img src="app/users/Vista/imagenes/catagorias-comercio.png" alt="Imagen 3" class="img-fluid">
                             <p><strong>Comercio</strong></p>
                         </div>
                         <div class="col-md-6">
-                            <img src="SRC/Usuario/Vista/imagenes/categorias-countries.png" alt="Imagen 4" class="img-fluid">
+                            <img src="app/users/Vista/imagenes/categorias-countries.png" alt="Imagen 4" class="img-fluid">
                             <p><strong>Countries</strong></p>
                         </div>
                     </div>
@@ -275,130 +392,42 @@
         <div class="carrusel">
             <div class="swiper-container mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <img src="SRC/Usuario/Vista/imagenes/card1.png" alt="">
-                            <div class="card-description">
-                                <div class="price">Precio: $500,000</div>
-                                <div class="status">En venta</div>
-                                <div class="title">Casa de ensueño</div>
-                                <hr/>
-                                <div class="details">
-                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
-                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
-                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
-                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
+                    <?php
+                        // Instanciamos la clase indexController
+                        $controlador = new \app\controllers\indexController();
+
+                        // Obtenemos todas las propiedades
+                        $propiedades = $controlador->obtenerTodasLasPropiedades();
+
+                        // Mostramos las propiedades
+                        foreach($propiedades as $propiedad) {
+                            echo '
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img src="'.$propiedad['url_foto_principal'].'" alt="">
+                                    <div class="card-description">
+                                        <div class="price">Precio: $'.$propiedad['precio'].'</div>
+                                        <div class="status"> En '.$propiedad['estado'].'</div>
+                                        <div class="title">'.$propiedad['titulo'].'</div>
+                                        <hr/>
+                                        <div class="details">
+                                            <div><i class="fa-solid fa-ruler-combined fa-sm"></i> '.$propiedad['dimensiones'].'</div>
+                                            <div><i class="fa-solid fa-bath fa-sm"></i> '.$propiedad['banios'].' Baños</div>
+                                            <span class="material-symbols-outlined">bed</span> '.$propiedad['habitaciones'].' Dormitorios
+                                        </div>
+                                        <div class="card-link">
+                                            <a href="#">Ver más</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-link">
-                                    <a href="#">Ver más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <img src="img/02.jpg" alt="">
-                            <div class="card-description">
-                                <div class="price">Precio: $500,000</div>
-                                <div class="status">En venta</div>
-                                <div class="title">Casa de ensueño</div>
-                                <hr/>
-                                <div class="details">
-                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
-                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
-                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
-                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
-                                </div>
-                                <div class="card-link">
-                                    <a href="#">Ver más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <img src="img/03.jpg" alt="">
-                            <div class="card-description">
-                                <div class="price">Precio: $500,000</div>
-                                <div class="status">En venta</div>
-                                <div class="title">Casa de ensueño</div>
-                                <hr/>
-                                <div class="details">
-                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
-                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
-                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
-                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
-                                </div>
-                                <div class="card-link">
-                                    <a href="#">Ver más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <img src="img/04.jpg" alt="">
-                            <div class="card-description">
-                                <div class="price">Precio: $500,000</div>
-                                <div class="status">En venta</div>
-                                <div class="title">Casa de ensueño</div>
-                                <hr/>
-                                <div class="details">
-                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
-                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
-                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
-                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
-                                </div>
-                                <div class="card-link">
-                                    <a href="#">Ver más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <img src="img/05.jpg" alt="">
-                            <div class="card-description">
-                                <div class="price">Precio: $500,000</div>
-                                <div class="status">En venta</div>
-                                <div class="title">Casa de ensueño</div>
-                                <hr/>
-                                <div class="details">
-                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
-                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
-                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
-                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
-                                </div>
-                                <div class="card-link">
-                                    <a href="#">Ver más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card">
-                            <img src="img/06.jpg" alt="">
-                            <div class="card-description">
-                                <div class="price">Precio: $500,000</div>
-                                <div class="status">En venta</div>
-                                <div class="title">Casa de ensueño</div>
-                                <hr/>
-                                <div class="details">
-                                    <div><i class="fa-solid fa-door-open fa-sm"></i> 3 Ambientes</div>
-                                    <div><i class="fa-solid fa-ruler-combined fa-sm"></i> 60m<sup>2</sup></div>
-                                    <div><i class="fa-solid fa-bath fa-sm"></i> 3 Baños</div>
-                                    <span class="material-symbols-outlined">bed</span> 3 Dormitorios
-                                </div>
-                                <div class="card-link">
-                                    <a href="#">Ver más</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            </div>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>
     </section>
+
     <section class="main" id="main">
         <!-- Contenedor de Tarjetas -->
         <div class="contenedor-tarjetas my-5">
@@ -407,7 +436,7 @@
                     <div class="col-12 col-sm-6 col-lg-4 text-center">
                         <div class="card py-4 mx-auto">
                             <img class="pb-5 w-50 d-block mx-auto card-img-top"
-                                src="SRC/Usuario/Vista/imagenes/casas-exclusivas_card.svg"
+                                src="app/users/Vista/imagenes/casas-exclusivas_card.svg"
                                 alt="Disponibilidad del Servicio en varios paises">
                             <div class="card-body border-top">
                                 <h5 class="text-center font-weight-bold card-title">Exclusividad en Inmuebles</h5>
@@ -419,7 +448,7 @@
                     <div class="col-12 col-sm-6 col-lg-4 text-center">
                         <div class="card py-4 mx-auto">
                             <img class="pb-5 w-50 d-block mx-auto card-img-top"
-                                src="SRC/Usuario/Vista/imagenes/conectividad-mundial_card.svg"
+                                src="app/users/Vista/imagenes/conectividad-mundial_card.svg"
                                 alt="Disponibilidad del Servicio en varios paises">
                             <div class="card-body border-top">
                                 <h5 class="text-center font-weight-bold card-title">Servicio en varios Paises</h5>
@@ -430,7 +459,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-lg-4 text-center">
                         <div class="card py-4 mx-auto mt-2 mt-md-5 mt-lg-0">
-                            <img class="pb-5 imx d-block mx-auto card-img-top" src="SRC/Usuario/Vista/imagenes/multiplataforma_card.svg"
+                            <img class="pb-5 imx d-block mx-auto card-img-top" src="app/users/Vista/imagenes/multiplataforma_card.svg"
                                 alt="Servicio multiplataforma con diseño responsivo">
                             <div class="card-body border-top">
                                 <h5 class="text-center font-weight-bold card-title">Servicio Multiplataforma</h5>
@@ -462,7 +491,7 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-md-3">
-                    <img src="SRC/Usuario/Vista/imagenes/logo-footer.png" alt="Logo" style="width: 100%; height: 70%;">
+                    <img src="app/users/Vista/imagenes/logo-footer.png" alt="Logo" style="width: 100%; height: 70%;">
                     <p>Persigue tu sueño</p>
                     <div class="d-flex">
                         <a href="https://www.facebook.com" target="_blank" style="margin-right: 15px; font-size: 24px;"><i class="fab fa-facebook-f"></i></a>
@@ -508,7 +537,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="SRC/Usuario/Vista/JS/JS-index.js"></script>
+    <script src="app/users/Vista/JS/JS-index.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
