@@ -1,4 +1,6 @@
+Options +FollowSymLinks
 RewriteEngine On
+RewriteBase /
 Options All -Indexes
 
 RewriteRule ^([a-zA-Z0-9/ñÑ-]+)$ index.php?views=$1

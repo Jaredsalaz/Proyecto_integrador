@@ -1,5 +1,5 @@
 <?php
-    const APP_URL = "http://localhost/Proyecto_integrador/";
+    const APP_URL = "https://wayloa.000webhostapp.com/";
     const APP_NAME = "WAYLOA";
     const APP_SESSION_NAME = "EQUIPO";
 

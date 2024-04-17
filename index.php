@@ -41,7 +41,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS Custom -->
-    <link rel="stylesheet" href="<?php echo APP_URL;?>app/users/Vista/CSS/estilo-index.css">
+    <link rel="stylesheet" href="app/users/Vista/CSS/estilo-index.css">
 
     <title><?php echo APP_NAME; ?></title>
     <link rel="icon" href="app/users/Vista/imagenes/navegador-icon.png">
@@ -351,8 +351,8 @@
                         <h2 class="background-image"><strong>Categorias</strong></h2>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="SRC/Usuario/Vista/categorias.php">
-                            <img src="app/Users/Vista/imagenes/flecha-derecha.gif" alt="Flecha" class="img-fluid small-arrow">
+                        <a href="app/users/Vista/categorias.php">
+                            <img src="app/users/Vista/imagenes/flecha-derecha.gif" alt="Flecha" class="img-fluid small-arrow">
                         </a>
                     </div>
                 </div>

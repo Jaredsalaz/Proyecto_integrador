@@ -100,6 +100,13 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
+  @media screen and (max-width: 390px) {
+    .buscador {
+      background-image: url('../imagenes/Portada.png'); /* Cambiamos la imagen de fondo */
+      background-size: cover;
+     
+    }
+  }
   .buscador .contenedor-busqueda {
     background: rgba(255, 255, 255, 0.4);
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
@@ -187,11 +194,26 @@
     margin-right: -160px;
     margin-left: -1235px;
   }
-
   .img-fluid {
     position: relative;
     z-index: 4;  
   }
+  @media screen and (max-width: 390px) {
+    .subtitle-1 {
+      margin-left: 0; /* Elimina el margen izquierdo */
+      width: 100%; /* Hace que el elemento ocupe todo el ancho de la pantalla */
+      text-align: center;
+      
+    }
+    .img-fluid{
+      display: none;
+    }
+  
+    .subtitle-1::before {
+      display: none; /* Oculta el pseudo-elemento ::before */
+    }
+  }
+
   .my-image {
     width: 100%;  
     height: auto;

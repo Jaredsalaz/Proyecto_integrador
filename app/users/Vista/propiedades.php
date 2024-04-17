@@ -167,10 +167,10 @@
                                 </form>
                             </div>
                         </div>
-                        <!------------------------>
+                        <!------------------------> 
                     </div>
+                    
                 </div>
-
 
                 <div class="col-12 col-xl-9">
                     <form class="form-inline mb-5">
@@ -292,6 +292,10 @@
                             </div>
                         </div>
                     </div>
+
+                    <!--- Cards de Propiedades -->
+                    <H1>hola</H1>
+                    <a href="../../admin/vista/principal.php">Dashboard</a>
             </div>
         </div>
     </section>
