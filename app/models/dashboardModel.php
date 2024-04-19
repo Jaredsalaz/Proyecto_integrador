@@ -48,6 +48,22 @@
             return $stmt->fetchColumn();
         }
         
+        
+        public function obtenerUsuarios($limit = 4) {
+            // Asegurarse de que el límite es un número entero
+            $limit = (int) $limit;
+
+            // Preparar la declaración SQL
+            $stmt = $this->conectar()->query("SELECT * FROM usuarios LIMIT $limit");
+
+            // Ejecutar la declaración SQL
+            $stmt->execute();
+
+            // Devolver los usuarios
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
+        
 
     }
 ?>        

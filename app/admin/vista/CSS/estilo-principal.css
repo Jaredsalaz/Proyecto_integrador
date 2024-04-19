@@ -225,6 +225,8 @@ main .recent-orders a {
     z-index: 999; /* Ajusta el valor de acuerdo a tus necesidades */
     padding: 15px;
     width: 370px;
+    display: flex;
+    flex-direction: column;
 }
 .right .top {
     display: flex;
@@ -264,10 +266,14 @@ main .recent-orders a {
 }
 
 /*==================== Recent Updates ============*/
-
+.info {
+    margin-top: 20px; 
+}
 .right .recent-updates {
+    order: 1;
     margin-top: 2rem;
 }
+
 .right .recent-updates h2 {
     margin-bottom: 0.8rem;
 }

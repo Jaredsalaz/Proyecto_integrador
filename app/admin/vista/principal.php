@@ -8,9 +8,10 @@ require_once '..//..//users/Vista/inc/session_start.php';
 
 // Instanciar el controlador
 $controlador = new \app\controllers\dashboardController();
-
+// Obtener el número de usuarios a mostrar de la URL, o usar el valor predeterminado
+$limit = isset($_GET['limit']) ? (int) $_GET['limit'] : 4;
 // Llamar al método mostrarPrincipal y capturar el resultado
-$data = $controlador->mostrarPrincipal();
+$data = $controlador->mostrarPrincipal($limit);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,72 +56,36 @@ $data = $controlador->mostrarPrincipal();
                 <!------------ Fin Icones ----------->
                 <br>
                 <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
                 <!--------- END OF INSIGHTS ---------------->
                 <div class="recent-orders">
-                    <h2>Inquilinos</h2>
+                    <h2>Usuarios</h2>
                     <table>
                         <thead>
                             <tr>
+                                <th>ID</th>
+                                <th>Tipo</th>
                                 <th>Nombre</th>
-                                <th>xxxxxxxxx</th>
-                                <th>Pagos</th>
-                                <th>Estados</th>
+                                <th>Apellido</th>
+                                <th>Email</th>
+                                <th>Fecha de Creación</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>xxxxxxxxx</td>
-                                <td>856131</td>
-                                <td>xxxxx</td>
-                                <td class="warning">Pendiente</td>
-                                <td class="primary">Detalles</td>
-                            </tr>
-                            <tr>
-                                <td>xxxxxxxxx</td>
-                                <td>856131</td>
-                                <td>xxxxx</td>
-                                <td class="warning">Pendiente</td>
-                                <td class="primary">Detalles</td>
-                            </tr>
-                            <tr>
-                                <td>xxxxxxxxx</td>
-                                <td>856131</td>
-                                <td>xxxxx</td>
-                                <td class="warning">Pendiente</td>
-                                <td class="primary">Detalles</td>
-                            </tr>
-                            <tr>
-                                <td>xxxxxxxxx</td>
-                                <td>856131</td>
-                                <td>xxxxx</td>
-                                <td class="warning">Pendiente</td>
-                                <td class="primary">Detalles</td>
-                            </tr>
-                            <tr>
-                                <td>xxxxxxxxx</td>
-                                <td>856131</td>
-                                <td>xxxxx</td>
-                                <td class="warning">Peding</td>
-                                <td class="primary">Detalles</td>
-                            </tr>
+                            <?php foreach ($data['usuarios'] as $usuario): ?>
+                                <tr>
+                                    <td><?php echo $usuario['usuario_id']; ?></td>
+                                    <td><?php echo $usuario['u_tipo']; ?></td>
+                                    <td><?php echo $usuario['u_nombre']; ?></td>
+                                    <td><?php echo $usuario['u_apellido']; ?></td>
+                                    <td><?php echo $usuario['u_email']; ?></td>
+                                    <td><?php echo $usuario['u_creado']; ?></td>
+                                    <td class="primary">Detalles</td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <a href="#">Ver Mas
-                    </a>
+                    <a href="?limit=<?php echo $limit + 10; ?>">Ver Mas</a>
                 </div>
             </main>
         </div>
@@ -143,56 +108,11 @@ $data = $controlador->mostrarPrincipal();
                     </div>
                 </div>
             </div>
-            <!---------- END OF TOP --------------------------------->
-            <div class="recent-updates">
-                <center><h2>Arrendadores</h2></center>
-                <div class="updates">
-                    <div class="updates">
-                        <div class="profile-photo">
-                            <img src="img/logo-isoxo.png" alt="">
-                        </div>
-                        <div class="message">
-                            <p><b>Josue Jacob</b> Nose que poner aqui papulinces :v</p>
-                            <small class="text-muted">2 minutos</small>
-                        </div>
-                    </div>
-                    <div class="updates">
-                        <div class="profile-photo">
-                            <img src="img/logo-isoxo.png" alt="">
-                        </div>
-                        <div class="message">
-                            <p><b>Josue Jacob</b>Nose que poner aqui papus :v</p>
-                            <small class="text-muted">2 Minutos</small>
-                        </div>
-                    </div>
-                    <div class="updates">
-                        <div class="profile-photo">
-                            <img src="img/logo-isoxo.png" alt="">
-                        </div>
-                        <div class="message">
-                            <p><b>Josue Jacob</b>Nose que poner aqui papus :v</p>
-                            <small class="text-muted">2 Minutos</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <!-------------- END OF RECENT UPDATES ----------------------------->
             <div class="sales-analytics">
                 <h2>Analisis de Ventas</h2>
-                <div class="item online">
-                    <div class="icon">
-                    <span class="material-symbols-outlined">credit_card</span>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3>Depostios con Tarjetas</h3>
-                            <small class="text-muted">Ultimas 24 Horas</small>
-                        </div>
-                        <h5 class="success">+39%</h5>
-                        <h3>3849</h3>
-                    </div>
-                </div>
-                <div class="item offline">
+                <div class="item customers">
                     <div class="icon">
                     <svg xmlns= "http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><<path d="M8.49626 20.6667H10.0474L10.5852 17.2912C10.8012 15.93 11.9747 14.9253 13.3545 14.9253H13.8545C16.5322 14.9253 17.915 13.9421 18.4055 11.4224C18.6134 10.3564 18.5222 9.69183 18.2339 9.32047C17.0272 12.3744 14.4449 13.4793 11.2725 13.4793H10.3878C10.004 13.4793 9.59454 13.6889 9.53611 14.0602L8.49626 20.6667ZM3.55247 20.3733C3.21381 20.3733 2.95514 20.0713 3.00781 19.736L5.68247 2.776C5.75314 2.32933 6.13847 2 6.59047 2H13.0138C15.2265 2 16.9558 2.46733 17.9131 3.558C18.783 4.54853 19.0364 5.64237 18.7846 7.25001C19.1438 7.44133 19.4518 7.67467 19.6998 7.956C20.5185 8.88867 20.6785 10.216 20.3685 11.8053C19.6278 15.6107 17.0925 16.9253 13.8545 16.9253H13.3545C12.9591 16.9253 12.6225 17.214 12.5605 17.6047L11.8578 21.988C11.7958 22.3787 11.4591 22.6667 11.0638 22.6667H6.72114C6.42447 22.6667 6.19781 22.402 6.24381 22.1093L6.51781 20.3733H3.55247ZM10.3878 11.4793H11.2725C14.462 11.4793 16.1671 10.2667 16.7549 7.2501C16.7744 7.14856 16.7919 7.04727 16.8086 6.94101C16.9746 5.88187 16.8586 5.38808 16.4104 4.87773C15.9451 4.34763 14.8073 4 13.0138 4H7.51416L5.24742 18.3733H6.80845L7.53821 13.7452L7.54562 13.7463C7.84632 12.4296 9.0169 11.4793 10.3878 11.4793Z"/></svg>
                     </div>
@@ -201,8 +121,7 @@ $data = $controlador->mostrarPrincipal();
                             <h3>Depositos con Paypal</h3>
                             <small class="text-muted">Ultimas 24 Horas</small>
                         </div>
-                        <h5 class="danger">-15%%</h5>
-                        <h3>3849</h3>
+                        
                     </div>
                 </div>
                 <div class="item customers">
@@ -210,12 +129,10 @@ $data = $controlador->mostrarPrincipal();
                         <span class="material-icons-sharp">person</span>
                     </div>
                     <div class="right">
-                        <div class="info">
-                            <h3>xxxxxxxxx</h3>
-                            <small class="text-muted">Ultimas 24 Horas</small>
+                        <div class="info" style="margin-top: 108px;">
+                            <h3>Usuario</h3>
+                            <small class="text-muted">Administrador</small>
                         </div>
-                        <h5 class="success">+25%</h5>
-                        <h3>849</h3>
                     </div>
                 </div>
                 <!------------- añadir papus ------------------------------>
