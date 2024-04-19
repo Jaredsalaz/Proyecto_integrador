@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="nuevaPropiedad.php">
                         <span class="icon">
                             <ion-icon name="add-circle-outline"></ion-icon>
                         </span>

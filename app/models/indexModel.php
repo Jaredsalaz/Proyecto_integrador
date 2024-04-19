@@ -117,8 +117,17 @@
 
                 // Verificar si el usuario existe y la contraseña es correcta
                 if ($usuario && password_verify($clave, $usuario['u_clave'])) {
-                    // Iniciar sesión y devolver true
+                    // Iniciar sesión
                     $_SESSION['usuario'] = $usuario;
+
+                    // Verificar si el usuario es un administrador
+                    if ($usuario['u_tipo'] == 'admin') {
+                        // Redirigir al usuario a la página de administrador
+                        header('Location: app/admin/vista/principal.php');
+                        exit;
+                    }
+
+                    // Devolver true
                     return true;
                 } else {
                     // El usuario no existe o la contraseña es incorrecta, devolver false
@@ -129,6 +138,4 @@
                 return false;
             }
         }
-
-       
     }
