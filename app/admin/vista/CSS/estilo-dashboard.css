@@ -1,51 +1,52 @@
 @import url('https://fonst.googleapis/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
-/* Definición de variables de color */
-:root {
-    --color-primary: #7380ec;
-    --color-danger: #ff7782;
-    --color-success: #41f1b6;
-    --color-warning: #ffbb55;
-    --color-white: #fff;
-    --color-info-dark: #7d8da1;
-    --color-info-light: #dce1eb;
-    --color-dark: #363949;
-    --color-light: rgba(132, 139, 200, 0.18);
-    --color-primary-variant: #111e88;
-    --color-dark-variant: #677483;
-    --color-background: #f6f6f9;
-    --blue: #2a2185;
-    --white: #fff;
-    --gray: #f5f5f5;
-    --black1: #222;
-    --black2: #999;
-
-    /* Definición de variables de borde y relleno */
-    --card-border-radius: 2rem;
-    --border-radius-1: 0.4rem;
-    --border-radius-2: 0.8rem;
-    --border-radius-3: 1.2rem;
-    --card-padding: 1.8rem;
-    --padding-1: 1.2rem;
-
-    /* Definición de sombra de caja */
-    --box-shadow: 0 2rem 3rem var(--color-light);
+/* Definición de variables de color para el tema oscuro */
+:root.dark-theme-variables {
+    --color-primary: #578de0; /* Gris azulado para elementos primarios */
+    --color-danger: #FF4B5C; /* Rojo para elementos de peligro */
+    --color-success: #4CAF50; /* Verde para elementos de éxito */
+    --color-warning: #997300; /* Amarillo para advertencias */
+    --color-white: #9f9d9d; /* Gris claro para texto sobre fondo oscuro */
+    --color-info-dark: #607D8B; /* Gris azulado oscuro para información */
+    --color-info-light: #B0BEC5; /* Gris azulado claro para información */
+    --color-dark: #3c3c3c; /* Gris muy oscuro para fondos */
+    --color-dark-variant: #212121; /* Gris oscuro para variantes de fondo */
+    --color-light: rgba(35, 28, 28, 0.1); /* Blanco transparente para elementos ligeros */
+    --color-background: #212121; /* Gris casi negro para el fondo principal */
+    --blue: #3c3c3c; /* Azul para elementos destacados */
+    --white: #212121; /* Gris claro para texto sobre fondo oscuro */
+    --gray: #757575; /* Gris medio para elementos neutros */
+    --black1: #212121; /* Gris muy oscuro para fondos */
+    --black2: #424242; /* Gris oscuro para variantes de fondo */
 }
 
-/*=================== Tema Oscuro =====================*/
-.dark-theme-variables {
-    --color-background: #181a1e;
-    --color-white: #202528;
-    --color-dark: #edeffd;
-    --color-dark-variant: #a3bdcc;
-    --color-light: rgba(0, 0, 0, 0.4);
-    --box-shadow: 0 2rem 3rem var(--color-light);
+/* Aplicación de las variables de color al tema oscuro */
+.dark-theme-variables .top {
+    color: var(--color-white);
 }
-:root {
-    --blue: #2a2185;
-    --white: #fff;
-    --gray: #f5f5f5;
-    --black1: #222;
-    --black2: #999;
+/* Aplicación de las variables de color al tema oscuro */
+.dark-theme-variables .navigation {
+    background: var(--color-dark);
+    border-left: 10px solid var(--color-dark-variant);
+}
+
+.dark-theme-variables .navigation ul li:hover,
+.dark-theme-variables .navigation ul li.hovered {
+    background-color: var(--color-dark-variant);
+}
+
+.dark-theme-variables .navigation ul li a {
+    color: var(--color-white);
+}
+
+.dark-theme-variables .navigation ul li:hover a,
+.dark-theme-variables .navigation ul li.hovered a {
+    color: var(--color-primary);
+}
+
+.dark-theme-variables .main {
+    background: var(--color-background);
+    
+
 }
 * {
     font-family: "Ubuntu", sans-serif;

@@ -130,8 +130,8 @@ $data = $controlador->mostrarPrincipal();
                     <span class="material-icons-sharp">menu</span>
                 </button>
                 <div class="theme-toggler">
-                    <span class="material-icons-sharp active">light_mode</span>
-                    <span class="material-icons-sharp">dark_mode</span>
+                    <span class="material-icons-sharp light_mode">light_mode</span>
+                    <span class="material-icons-sharp dark_mode">dark_mode</span>
                 </div>
                 <div class="profile">
                     <div class="info">
@@ -231,5 +231,6 @@ $data = $controlador->mostrarPrincipal();
         </div>
     </div>
     </div>
+    <script src="JS/tema.js"></script>
 </body>
 </html>

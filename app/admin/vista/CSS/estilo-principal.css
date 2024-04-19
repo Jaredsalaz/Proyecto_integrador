@@ -1,4 +1,93 @@
+/* Definición de variables de color */
+:root {
+    
+    --color-h2: #578de0; /* Azul para los títulos h1 y h2 */
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-info-light: #dce1eb;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+    --blue: #ffffff;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
 
+    /* Definición de variables de borde y relleno */
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    /* Definición de sombra de caja */
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+/* Aplicación de las variables de color al tema oscuro */
+.dark-theme-variables .top {
+    color: var(--color-white);
+    transition: color 0.5s ease-in-out;
+}
+
+.theme-toggler {
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+    background-color: var(--color-dark); /* Color de fondo por defecto */
+}
+
+.theme-toggler:hover {
+    transform: rotate(360deg);
+}
+
+.theme-toggler .light_mode,
+.theme-toggler .dark_mode {
+    display: none;
+}
+
+.light-theme-variables .theme-toggler {
+    background-color: var(--color-dark); /* Color de fondo en el tema claro */
+}
+
+.light-theme-variables .theme-toggler .light_mode,
+.dark-theme-variables .theme-toggler .dark_mode {
+    display: inline;
+}
+
+.dark-theme-variables .theme-toggler {
+    background-color: var(--color-white); /* Color de fondo en el tema oscuro */
+}
+/*=================== Tema Oscuro =====================*/
+.dark-theme-variables {
+    --color-h2: #578de0; 
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+.dark-theme-variables h2 {
+    color: #578de0;
+}
+.dark-theme-variables .main h1,
+.dark-theme-variables .main h2 {
+    color: var(--color-h2);
+}
+:root {
+    --blue: #2a2185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
 /*============================== CONTENIDO ============================*/
 main {
     margin-top: 1.4rem;

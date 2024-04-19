@@ -20,24 +20,22 @@ toggle.onclick = function() {
     navigation.classList.toggle("active");
     main.classList.toggle("active");
 }
-//cambio de tema
-const sideMenu = document.querySelector('aside');
-const menuBtn = document.querySelector('#menu-btn');
-const closeBtn = document.querySelector('#close-btn');
-const themeToggler = document.querySelector(".theme-toggler");
 
-//show sidebar
-menuBtn.addEventListener('click', ()=> {
-    sideMenu.style.display = 'block';
-})
-//close sidebar
-closeBtn.addEventListener('click', ()=>{
-    sideMenu.style.display = 'none';
-})
-//carga de tema
-themeToggler.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme-variables');
-
-    themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
-    themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
-})
+ // Obtén el elemento :root
+ var rootElement = document.querySelector(':root');
+        
+ // Obtén los botones de cambio de tema
+ var lightModeButton = document.querySelector('.theme-toggler .light_mode');
+ var darkModeButton = document.querySelector('.theme-toggler .dark_mode');
+ 
+ // Agrega un controlador de eventos al botón de modo claro
+ lightModeButton.addEventListener('click', function() {
+     rootElement.classList.remove('dark-theme-variables');
+     rootElement.classList.add('light-theme-variables');
+ });
+ 
+ // Agrega un controlador de eventos al botón de modo oscuro
+ darkModeButton.addEventListener('click', function() {
+     rootElement.classList.remove('light-theme-variables');
+     rootElement.classList.add('dark-theme-variables');
+ });
