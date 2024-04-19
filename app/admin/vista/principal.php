@@ -1,6 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once '..//..//..//config/app.php';
-require_once './/..//.//..//../autoload.php';
+require_once './/..//.//..//..//autoload.php';
+require_once '..//..//users/Vista/inc/session_start.php';
+
 // Instanciar el controlador
 $controlador = new \app\controllers\dashboardController();
 
@@ -12,11 +17,11 @@ $data = $controlador->mostrarPrincipal();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../vista/CSS/estilo-principal.css">
+    <link rel="stylesheet" href="CSS/estilo-principal.css">
     <title>Admin-Wayloa</title>
 </head>
 <body>
-    <?php include 'inc/dashboard.php';   ?>
+    <?php require_once 'inc/dashboard.php'; ?>
             <main>
                 <h1>Dashboard</h1>
                 <div class="date">

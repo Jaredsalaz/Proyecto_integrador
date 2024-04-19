@@ -294,8 +294,8 @@
                     </div>
 
                     <!--- Cards de Propiedades -->
-                    <H1>hola</H1>
-                    <a href="../../admin/vista/principal.php">Dashboard</a>
+                    <H1>proximamente</H1>
+                    
             </div>
         </div>
     </section>

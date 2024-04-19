@@ -13,7 +13,14 @@
 
  
        
+        
         public function mostrarPrincipal() {
+            // Verificar si el usuario ha iniciado sesión
+            if (!isset($_SESSION['usuario'])) {
+                header('Location: https://wayloa.000webhostapp.com/index.php');
+                exit;
+            }
+
             // Obtener el número total de propiedades y ciudades
             $totalPropiedades = $this->model->contarPropiedades();
             $totalCiudades = $this->model->contarCiudades();
