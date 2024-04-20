@@ -157,10 +157,31 @@ $data = $controlador->mostrarPrincipal($limit);
                         </div>
                     </div>
                 </div>
+                
+                <!-- Modal -->
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <form>
+                            <label for="u_tipo">Tipo:</label>
+                            <input type="text" id="u_tipo" name="u_tipo">
+                            <label for="u_nombre">Nombre:</label>
+                            <input type="text" id="u_nombre" name="u_nombre">
+                            <label for="u_apellido">Apellido:</label>
+                            <input type="text" id="u_apellido" name="u_apellido">
+                            <label for="u_email">Email:</label>
+                            <input type="email" id="u_email" name="u_email">
+                            <label for="u_clave">Clave:</label>
+                            <input type="password" id="u_clave" name="u_clave">
+                            <input type="submit" value="Agregar">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     </div>
     <script src="JS/tema.js"></script>
+    <script src="JS/principal.js"></script>
 </body>
 </html>
