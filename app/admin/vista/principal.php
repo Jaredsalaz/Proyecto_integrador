@@ -148,6 +148,39 @@ $data = $controlador->mostrarPrincipal($limit);
                         </div>
                     </div>
                 </div>
+
+
+                <?php
+                // Instanciamos la clase dashboardController
+                $controlador = new \app\controllers\dashboardController();
+
+                // Verificamos si se ha enviado el formulario de registro
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['u_tipo'], $_POST['u_nombre'], $_POST['u_apellido'], $_POST['u_email'], $_POST['u_clave'])) {
+                    // Registramos el usuario y capturamos el resultado
+                    $resultado_registro = $controlador->registrarUsuario($_POST['u_tipo'], $_POST['u_nombre'], $_POST['u_apellido'], $_POST['u_email'], $_POST['u_clave']);
+                    // Almacenamos el resultado en la sesión
+                    $_SESSION['resultado_registro'] = $resultado_registro;
+                }
+                ?>
+                <script>
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                        // Obtén el resultado de la función registrarUsuario
+                        var resultado_registro = "<?php echo $_SESSION['resultado_registro']; ?>";
+
+                        // Si hay un resultado, muestra la alerta
+                        if (resultado_registro) {
+                            console.log(resultado_registro); // Agrega esta línea
+                            Swal.fire({
+                                title: resultado_registro,
+                                icon: resultado_registro.includes("éxito") ? "success" : "error",
+                                confirmButtonText: "OK"
+                            });
+
+                            // Limpia el resultado de la sesión para que la alerta no se muestre de nuevo
+                            <?php unset($_SESSION['resultado_registro']); ?>
+                        }
+                    });
+                </script>
                 <!------------- añadir papus ------------------------------>
                 <div class="item">
                     <div class="item add-product">
@@ -157,12 +190,11 @@ $data = $controlador->mostrarPrincipal($limit);
                         </div>
                     </div>
                 </div>
-                
                 <!-- Modal -->
                 <div id="myModal" class="modal">
                     <div class="modal-content">
                         <span class="close">&times;</span>
-                        <form>
+                        <form action="principal.php" method="post">
                             <label for="u_tipo">Tipo:</label>
                             <input type="text" id="u_tipo" name="u_tipo">
                             <label for="u_nombre">Nombre:</label>
