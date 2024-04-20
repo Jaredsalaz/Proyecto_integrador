@@ -94,10 +94,23 @@ $data = $controlador->mostrarPrincipal($limit);
                 <button id="menu-btn">
                     <span class="material-icons-sharp">menu</span>
                 </button>
-                <div class="theme-toggler">
-                    <span class="material-icons-sharp light_mode">light_mode</span>
-                    <span class="material-icons-sharp dark_mode">dark_mode</span>
-                </div>
+                <label for="theme" class="theme">
+                    <span class="theme__toggle-wrap">
+                        <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark">
+                        <span class="theme__fill"></span>
+                        <span class="theme__icon">
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                        </span>
+                    </span>
+                </label>
                 <div class="profile">
                     <div class="info">
                         <p>Hey, <b>Jacob</b></p>

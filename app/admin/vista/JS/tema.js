@@ -1,24 +1,22 @@
 // Obtén el elemento :root
 var rootElement = document.querySelector(':root');
 
-// Obtén los botones de cambio de tema
-var lightModeButton = document.querySelector('.theme-toggler .light_mode');
-var darkModeButton = document.querySelector('.theme-toggler .dark_mode');
+// Obtén el interruptor de cambio de tema
+var themeToggle = document.querySelector('.theme__toggle');
 
-// Agrega un controlador de eventos al botón de modo claro
-lightModeButton.addEventListener('click', function() {
-    rootElement.classList.remove('dark-theme-variables');
-    rootElement.classList.add('light-theme-variables');
-    // Guarda el tema en el almacenamiento local
-    localStorage.setItem('theme', 'light');
-});
-
-// Agrega un controlador de eventos al botón de modo oscuro
-darkModeButton.addEventListener('click', function() {
-    rootElement.classList.remove('light-theme-variables');
-    rootElement.classList.add('dark-theme-variables');
-    // Guarda el tema en el almacenamiento local
-    localStorage.setItem('theme', 'dark');
+// Agrega un controlador de eventos al interruptor de cambio de tema
+themeToggle.addEventListener('click', function() {
+    // Cambia el estado del checkbox y el tema
+    if (this.checked) {
+        rootElement.classList.remove('light-theme-variables');
+        rootElement.classList.add('dark-theme-variables');
+        // Guarda el tema en el almacenamiento local
+        localStorage.setItem('theme', 'dark');
+    } else {
+        rootElement.classList.remove('dark-theme-variables');
+        rootElement.classList.add('light-theme-variables');
+        localStorage.setItem('theme', 'light');
+    }
 });
 
 // Al cargar la página, recupera el tema del almacenamiento local
@@ -27,8 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (theme === 'light') {
         rootElement.classList.remove('dark-theme-variables');
         rootElement.classList.add('light-theme-variables');
+        themeToggle.checked = false;
     } else if (theme === 'dark') {
         rootElement.classList.remove('light-theme-variables');
         rootElement.classList.add('dark-theme-variables');
+        themeToggle.checked = true;
     }
 });
