@@ -19,6 +19,7 @@ $data = $controlador->mostrarPrincipal($limit);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/estilo-principal.css">
+    <link rel="stylesheet" href="CSS/estilo-dashboard.css">
     <title>Admin-Wayloa</title>
 </head>
 <body>
@@ -113,11 +114,11 @@ $data = $controlador->mostrarPrincipal($limit);
                 </label>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Jacob</b></p>
+                        <p>Hey, <b><?php echo $_SESSION['usuario']['u_nombre']; ?></b></p>
                         <small class="text-muted">Admin</small>
                     </div>
-                    <div class  ="profile-photo">
-                        <img src="img/logo-isoxo.png" alt="">
+                    <div class="profile-photo">
+                        <img src="fotos/image.png" alt="">
                     </div>
                 </div>
             </div>
@@ -148,6 +149,39 @@ $data = $controlador->mostrarPrincipal($limit);
                         </div>
                     </div>
                 </div>
+
+
+                <?php
+                // Instanciamos la clase dashboardController
+                $controlador = new \app\controllers\dashboardController();
+
+                // Verificamos si se ha enviado el formulario de registro
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['u_tipo'], $_POST['u_nombre'], $_POST['u_apellido'], $_POST['u_email'], $_POST['u_clave'])) {
+                    // Registramos el usuario y capturamos el resultado
+                    $resultado_registro = $controlador->registrarUsuario($_POST['u_tipo'], $_POST['u_nombre'], $_POST['u_apellido'], $_POST['u_email'], $_POST['u_clave']);
+                    // Almacenamos el resultado en la sesión
+                    $_SESSION['resultado_registro'] = $resultado_registro;
+                }
+                ?>
+                <script>
+                    document.addEventListener('DOMContentLoaded', (event) => {
+                        // Obtén el resultado de la función registrarUsuario
+                        var resultado_registro = "<?php echo $_SESSION['resultado_registro']; ?>";
+
+                        // Si hay un resultado, muestra la alerta
+                        if (resultado_registro) {
+                            console.log(resultado_registro); // Agrega esta línea
+                            Swal.fire({
+                                title: resultado_registro,
+                                icon: resultado_registro.includes("éxito") ? "success" : "error",
+                                confirmButtonText: "OK"
+                            });
+
+                            // Limpia el resultado de la sesión para que la alerta no se muestre de nuevo
+                            <?php unset($_SESSION['resultado_registro']); ?>
+                        }
+                    });
+                </script>
                 <!------------- añadir papus ------------------------------>
                 <div class="item">
                     <div class="item add-product">
@@ -157,10 +191,30 @@ $data = $controlador->mostrarPrincipal($limit);
                         </div>
                     </div>
                 </div>
+                <!-- Modal -->
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <form action="principal.php" method="post">
+                            <label for="u_tipo">Tipo:</label>
+                            <input type="text" id="u_tipo" name="u_tipo">
+                            <label for="u_nombre">Nombre:</label>
+                            <input type="text" id="u_nombre" name="u_nombre">
+                            <label for="u_apellido">Apellido:</label>
+                            <input type="text" id="u_apellido" name="u_apellido">
+                            <label for="u_email">Email:</label>
+                            <input type="email" id="u_email" name="u_email">
+                            <label for="u_clave">Clave:</label>
+                            <input type="password" id="u_clave" name="u_clave">
+                            <input type="submit" value="Agregar">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     </div>
     <script src="JS/tema.js"></script>
+    <script src="JS/principal.js"></script>
 </body>
 </html>

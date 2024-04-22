@@ -63,6 +63,59 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         
+        public function registrarUsuario($tipo, $nombre, $apellido, $email, $clave) {
+            try {
+                // Conectar a la base de datos
+                $conexion = $this->conectar();
+
+                // Preparar la declaración SQL
+                $stmt = $conexion->prepare("INSERT INTO usuarios (u_tipo, u_nombre, u_apellido, u_email, u_clave, u_foto, u_creado) VALUES (:tipo, :nombre, :apellido, :email, :clave, :foto, NOW())");
+
+                // Vincular los parámetros
+                $stmt->bindValue(':tipo', $tipo);
+                $stmt->bindValue(':nombre', $nombre);
+                $stmt->bindValue(':apellido', $apellido);
+                $stmt->bindValue(':email', $email);
+                $stmt->bindValue(':clave', password_hash($clave, PASSWORD_DEFAULT)); // Encriptamos la contraseña
+                $stmt->bindValue(':foto', '../users/Vista/fotos/image.png'); // La ruta a la foto predeterminada
+
+                // Ejecutar la declaración SQL
+                $stmt->execute();
+
+                // Devolver true si la inserción fue exitosa
+                return true;
+            } catch(PDOException $e) {
+                echo "Error al registrar el usuario: " . $e->getMessage();
+                return false;
+            }
+        }
+        
+
+        public function existeUsuario($email) {
+            try {
+                // Conectar a la base de datos
+                $conexion = $this->conectar();
+
+                // Preparar la declaración SQL
+                $stmt = $conexion->prepare("SELECT COUNT(*) FROM usuarios WHERE u_email = :email");
+
+                // Vincular los parámetros
+                $stmt->bindValue(':email', $email);
+
+                // Ejecutar la declaración SQL
+                $stmt->execute();
+
+                // Obtener el número de usuarios con el correo electrónico proporcionado
+                $numUsuarios = $stmt->fetchColumn();
+
+                // Devolver true si el correo electrónico ya existe, false en caso contrario
+                return $numUsuarios > 0;
+            } catch(PDOException $e) {
+                echo "Error al verificar la existencia del usuario: " . $e->getMessage();
+                return false;
+            }
+        }
+        
         
 
     }
