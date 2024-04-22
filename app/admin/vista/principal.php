@@ -114,11 +114,11 @@ $data = $controlador->mostrarPrincipal($limit);
                 </label>
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Jacob</b></p>
+                        <p>Hey, <b><?php echo $_SESSION['usuario']['u_nombre']; ?></b></p>
                         <small class="text-muted">Admin</small>
                     </div>
-                    <div class  ="profile-photo">
-                        <img src="img/logo-isoxo.png" alt="">
+                    <div class="profile-photo">
+                        <img src="fotos/image.png" alt="">
                     </div>
                 </div>
             </div>
