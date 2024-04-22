@@ -19,6 +19,7 @@ $data = $controlador->mostrarPrincipal($limit);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/estilo-principal.css">
+    <link rel="stylesheet" href="CSS/estilo-dashboard.css">
     <title>Admin-Wayloa</title>
 </head>
 <body>
