@@ -39,11 +39,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="listaPropiedades.php">
                         <span class="icon">
                             <ion-icon name="list-outline"></ion-icon>
                         </span>
-                        <span class="title">Listado de Prpiedades</span>
+                        <span class="title">Listado de Propiedades</span>
                     </a>
                 </li>
                 <li>
@@ -59,7 +59,7 @@
                         <span class="icon">
                             <ion-icon name="list-outline"></ion-icon>
                         </span>
-                        <span class="title">Listado de Propiedad</span>
+                        <span class="title">Listado de Tipo Propiedad</span>
                     </a>
                 </li>
                 <li>
