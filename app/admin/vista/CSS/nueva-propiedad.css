@@ -1,4 +1,28 @@
 
+#preview1 img {
+  max-width: 200px; /* Limita el ancho máximo de las imágenes */
+  height: auto; /* Mantiene la proporción de aspecto de las imágenes */
+  margin: 10px; /* Añade un margen alrededor de las imágenes */
+  border: 1px solid #ddd; /* Añade un borde a las imágenes */
+  border-radius: 5px; /* Redondea las esquinas de las imágenes */
+  padding: 5px; /* Añade un relleno alrededor de las imágenes */
+}
+
+#preview {
+  display: flex; /* Hace que los hijos de #preview se muestren en línea */
+  flex-wrap: wrap; /* Permite que los elementos se pasen a la siguiente línea cuando no haya más espacio */
+  justify-content: space-around; /* Distribuye el espacio alrededor de los elementos de manera uniforme */
+}
+
+#preview img {
+  max-width: 200px; /* Limita el ancho máximo de las imágenes */
+  height: auto; /* Mantiene la proporción de aspecto de las imágenes */
+  margin: 10px; /* Añade un margen alrededor de las imágenes */
+  border: 1px solid #ddd; /* Añade un borde a las imágenes */
+  border-radius: 5px; /* Redondea las esquinas de las imágenes */
+  padding: 5px; /* Añade un relleno alrededor de las imágenes */
+}
+
 .theme {
     margin-left: 77%;
     margin-top: -3%;
