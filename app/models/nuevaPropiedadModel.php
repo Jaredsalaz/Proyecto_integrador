@@ -59,7 +59,13 @@
             }
         }    
 
+        
         public function insertarFoto($datos) {
+            if (!isset($datos['id_propiedad'])) {
+                // Handle the case where 'id_propiedad' is not set
+                return false;
+            }
+
             $conexion = $this->conectar();
             $stmt = $conexion->prepare('INSERT INTO fotos (id_propiedad, nombre_foto) VALUES (:id_propiedad, :nombre_foto)');
                 
@@ -74,6 +80,7 @@
                 return false;
             }
         }
+    
         
         public function obtenerAsesores() {
             $conexion = $this->conectar();

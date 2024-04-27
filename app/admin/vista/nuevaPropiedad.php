@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -14,12 +15,7 @@ $datosFormulario = $controlador->mostrarFormularioPropiedad();
 
 // Comprobar si el formulario se ha enviado
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Manejamos la subida de la foto principal
-    $foto1 = $_FILES['foto1'];
-    $rutaFoto1 = 'fotos-Propiedad/' . $foto1['name'];
-    if (!move_uploaded_file($foto1['tmp_name'], $rutaFoto1)) {
-        die('Error al subir la foto principal');
-    }
+    
     // Recoger los datos del formulario
     $datos = [
         'fecha_alta' => date('Y-m-d H:i:s'), // Fecha y hora actual
@@ -33,7 +29,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         'pisos' => substr($_POST['pisos'], 0, 10), // Trunca a 10 caracteres
         'garage' => $_POST['garage'],
         'dimensiones' => $_POST['dimensiones'],
-        'url_foto_principal' => $rutaFoto1,
         'precio' => $_POST['precio'],
         'moneda' => $_POST['moneda'],
         'pais' => $_POST['pais'],
@@ -42,32 +37,54 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         'telefono_propietario' => $_POST['telefono_propietario'],
         'asesor_id' => $_POST['asesor_id'], // El ID del asesor
     ];
+    // Crear una carpeta para la propiedad basada en su título
+    $carpetaPropiedad = 'fotos-Propiedad/' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($datos['titulo'])));
+    if (!file_exists($carpetaPropiedad)) {
+        mkdir($carpetaPropiedad, 0755, true);
+    }
+
+    
+    // Manejamos la subida de la foto principal
+    $foto1 = $_FILES['foto1'];
+    $rutaFoto1 = $carpetaPropiedad . '/' . $foto1['name'];
+    if (!move_uploaded_file($foto1['tmp_name'], $rutaFoto1)) {
+        die('Error al subir la foto principal');
+    }
+
+    // Asignar la ruta de la foto principal a 'url_foto_principal'
+    $datos['url_foto_principal'] = $rutaFoto1;
 
     // Llamar al método insertarPropiedad y capturar el resultado
     $resultado = $controlador->insertarPropiedad($datos);
+    
+        // Subir las fotos de la galería
+    if(isset($_FILES['fotos'])) {
+        $fotos = $_FILES['fotos'];
 
-    // Comprobar el resultado
-    if($resultado) {
-        // Si la propiedad se insertó correctamente, manejar la subida de archivos
-        if(isset($_FILES['fotos'])) {
-            // Subir las fotos de la galería
-            $fotos = $_FILES['fotos'];
-            for($i = 0; $i < count($fotos['name']); $i++) {
-                $rutaFoto = 'fotos-Propiedad/' . $fotos['name'][$i];
-                if (move_uploaded_file($fotos['tmp_name'][$i], $rutaFoto)) {
-                    // Insertar la ruta de cada foto de la galería en la base de datos
-                    $controlador->insertarFoto(['id_propiedad' => $resultado, 'nombre_foto' => $rutaFoto]);
-                } else {
-                    die('Error al subir la foto de la galería');
-                }
+        // Limitar el número de fotos de la galería a 10
+        if(count($fotos['name']) > 10) {
+            die('No puedes subir más de 10 fotos para la galería');
+        }
+
+        for($i = 0; $i < count($fotos['name']); $i++) {
+            $rutaFoto = $carpetaPropiedad . '/' . $fotos['name'][$i];
+            if (move_uploaded_file($fotos['tmp_name'][$i], $rutaFoto)) {
+                // Insertar la ruta de cada foto de la galería en la base de datos
+                $controlador->insertarFoto(['id_propiedad' => $resultado, 'nombre_foto' => $rutaFoto]);
+            } else {
+                die('Error al subir la foto de la galería');
             }
         }
+    }
+    // Comprobar el resultado
+    if($resultado) {
         // Guardar el resultado en la sesión
         $_SESSION['resultado_insercion'] = 'La propiedad fue insertada correctamente';
     } else {
         // Guardar el resultado en la sesión
         $_SESSION['resultado_insercion'] = 'Hubo un error al insertar la propiedad';
     }
+    
 }
 ?>
 <!-- Resto del código HTML... -->
