@@ -333,17 +333,12 @@
                 <div class="col-md-6 px-5 py-4">
                     <h1 class="text-center text-md-left subtitle-1 work-sans-h1">Generando Soluciones <br> hace mas de 10 años</h1>
                     <p class="text-justify pt-4">
-                    Los orígenes de Wayloa se remontan a principios de la década de 2010, cuando un grupo de emprendedores visionarios, frustrados por las limitaciones y la falta de oportunidades en el sector de servicios, decidieron crear una alternativa que les permitiera desarrollar plenamente su potencial.
-
-                    Liderados por Juan Gómez, un experimentado profesional del sector, estos emprendedores se propusieron diseñar un modelo de negocio que rompiera con los esquemas tradicionales y ofreciera a los mejores talentos la posibilidad de alcanzar el máximo éxito a través de su propio esfuerzo y dedicación.
-
-                    Así nació Wayloa, una compañía que desde sus inicios ha apostado por una filosofía de trabajo basada en la autonomía, la meritocracia y la búsqueda constante de la excelencia. El sistema creado por Juan Gómez y su equipo está diseñado para atraer y retener a los profesionales más destacados, ofreciéndoles un entorno estimulante y enriquecedor en el que pueden desarrollar todo su potencial.
-
-                    La clave de este sistema radica en que los ingresos de cada profesional están directamente vinculados a los resultados que obtienen con su trabajo. Esta filosofía, que se refleja en el propio nombre de la compañía (Wayloa, una contracción de "Way to the top"), ha sido el motor del crecimiento y el éxito de Wayloa a lo largo de más de una década.
-
-                    Desde sus humildes inicios, cuando abrieron las primeras oficinas en unas pocas ciudades, Wayloa ha experimentado un crecimiento exponencial, convirtiéndose en una de las empresas líderes en su sector a nivel nacional e internacional. Hoy en día, Wayloa cuenta con más de 5,000 profesionales altamente cualificados que trabajan en más de 500 oficinas distribuidas en 20 países.
-
-                    La historia de Wayloa es la historia de un sueño hecho realidad, de un modelo de negocio innovador que ha transformado la forma de trabajar en el sector de servicios. Y es una historia que continúa escribiéndose, con la mirada puesta en el futuro y la determinación de seguir ofreciendo a los mejores talentos la oportunidad de alcanzar el máximo éxito.</p>
+                    Wayloa surge en la década de 2010 con el propósito de proporcionar una alternativa en el sector de servicios para permitir a los profesionales  
+                    alcanzar su máximo potencial. Liderados por Juan Gómez, un experimentado en el sector, el equipo fundador crea un modelo de negocio innovador basado en la autonomía,   
+                    la meritocracia y la búsqueda de la excelencia. Este modelo vincula los ingresos de los profesionales a sus resultados, promoviendo así un ambiente estimulante para el desarrollo  
+                    personal y profesional. A lo largo de más de una década, Wayloa ha experimentado un crecimiento significativo, expandiéndose a nivel nacional e internacional, con más de 5,000 profesionales   
+                    en más de 500 oficinas en 20 países. La historia de Wayloa refleja un sueño hecho realidad, con un modelo de negocio revolucionario que sigue transformando el sector de servicios, con la promesa  
+                    de seguir ofreciendo oportunidades para el éxito a los mejores talentos en el futuro.</p>
                     <button class="btn btn-light d-block mx-auto mx-md-0 mi-clase-especial">Ver más</button>
                 </div>
             </div>
@@ -405,16 +400,24 @@
                     <?php
                         // Instanciamos la clase indexController
                         $controlador = new \app\controllers\indexController();
-
+                    
                         // Obtenemos todas las propiedades
                         $propiedades = $controlador->obtenerTodasLasPropiedades();
-
+                    
+                        // Contador para limitar el número de propiedades mostradas
+                        $contador = 0;
+                    
                         // Mostramos las propiedades
                         foreach($propiedades as $propiedad) {
+                            // Si ya hemos mostrado 6 propiedades, salimos del bucle
+                            if ($contador >= 6) {
+                                break;
+                            }
+                    
                             echo '
                             <div class="swiper-slide">
                                 <div class="card">
-                                    <img src="'.$propiedad['url_foto_principal'].'" alt="">
+                                    <img src="data:image/jpeg;base64,'.base64_encode( $propiedad['url_foto_principal'] ).'" alt="">
                                     <div class="card-description">
                                         <div class="price">Precio: $'.$propiedad['precio'].'</div>
                                         <div class="status"> En '.$propiedad['estado'].'</div>
@@ -431,6 +434,9 @@
                                     </div>
                                 </div>
                             </div>';
+                    
+                            // Incrementamos el contador
+                            $contador++;
                         }
                     ?>
                 </div>

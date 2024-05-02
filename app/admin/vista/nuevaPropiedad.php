@@ -37,27 +37,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         'telefono_propietario' => $_POST['telefono_propietario'],
         'asesor_id' => $_POST['asesor_id'], // El ID del asesor
     ];
-    // Crear una carpeta para la propiedad basada en su título
-    $carpetaPropiedad = 'fotos-Propiedad/' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($datos['titulo'])));
-    if (!file_exists($carpetaPropiedad)) {
-        mkdir($carpetaPropiedad, 0755, true);
-    }
-
-    
     // Manejamos la subida de la foto principal
     $foto1 = $_FILES['foto1'];
-    $rutaFoto1 = $carpetaPropiedad . '/' . $foto1['name'];
-    if (!move_uploaded_file($foto1['tmp_name'], $rutaFoto1)) {
-        die('Error al subir la foto principal');
+    $datosFoto1 = file_get_contents($foto1['tmp_name']);
+    if ($datosFoto1 === false) {
+        die('Error al leer la foto principal');
     }
 
-    // Asignar la ruta de la foto principal a 'url_foto_principal'
-    $datos['url_foto_principal'] = $rutaFoto1;
+    // Asignamos los datos de la foto principal a 'url_foto_principal'
+    $datos['url_foto_principal'] = $datosFoto1;
 
     // Llamar al método insertarPropiedad y capturar el resultado
     $resultado = $controlador->insertarPropiedad($datos);
-    
-        // Subir las fotos de la galería
+
+    // Subir las fotos de la galería
     if(isset($_FILES['fotos'])) {
         $fotos = $_FILES['fotos'];
 
@@ -67,17 +60,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         for($i = 0; $i < count($fotos['name']); $i++) {
-            $rutaFoto = $carpetaPropiedad . '/' . $fotos['name'][$i];
-            if (move_uploaded_file($fotos['tmp_name'][$i], $rutaFoto)) {
-                // Insertar la ruta de cada foto de la galería en la base de datos
-                $controlador->insertarFoto(['id_propiedad' => $resultado, 'nombre_foto' => $rutaFoto]);
-            } else {
-                die('Error al subir la foto de la galería');
+            $datosFoto = file_get_contents($fotos['tmp_name'][$i]);
+            if ($datosFoto === false) {
+                die('Error al leer la foto de la galería');
             }
+
+            // Insertar los datos de cada foto de la galería en la base de datos
+            $controlador->insertarFoto(['id_propiedad' => $resultado, 'nombre_foto' => $datosFoto]);
         }
     }
+
     // Comprobar el resultado
-    if($resultado) {
+    if($resultado !== false) {
         // Guardar el resultado en la sesión
         $_SESSION['resultado_insercion'] = 'La propiedad fue insertada correctamente';
     } else {
