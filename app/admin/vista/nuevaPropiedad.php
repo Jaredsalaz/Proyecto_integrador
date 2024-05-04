@@ -13,6 +13,7 @@ $controlador = new \app\controllers\nuevaPropiedadController();
 // Llamar al método para obtener los datos necesarios para el formulario
 $datosFormulario = $controlador->mostrarFormularioPropiedad();
 
+
 // Comprobar si el formulario se ha enviado
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     
@@ -47,9 +48,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Asignamos los datos de la foto principal a 'url_foto_principal'
     $datos['url_foto_principal'] = $datosFoto1;
 
-    // Llamar al método insertarPropiedad y capturar el resultado
-    $resultado = $controlador->insertarPropiedad($datos);
-
     // Subir las fotos de la galería
     if(isset($_FILES['fotos'])) {
         $fotos = $_FILES['fotos'];
@@ -65,10 +63,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 die('Error al leer la foto de la galería');
             }
 
-            // Insertar los datos de cada foto de la galería en la base de datos
-            $controlador->insertarFoto(['id_propiedad' => $resultado, 'nombre_foto' => $datosFoto]);
+            // Asignamos los datos de cada foto de la galería a 'foto_galeria_X'
+            $datos['foto_galeria_' . ($i + 1)] = $datosFoto;
         }
     }
+
+    // Llamar al método insertarPropiedad y capturar el resultado
+    $resultado = $controlador->insertarPropiedad($datos);
 
     // Comprobar el resultado
     if($resultado !== false) {

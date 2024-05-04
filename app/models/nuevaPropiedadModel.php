@@ -25,7 +25,7 @@
 
         public function insertarPropiedad($datos) {
             $conexion = $this->conectar();
-            $sql = 'INSERT INTO propiedades (fecha_alta, titulo, descripcion, tipo, estado, ubicacion, habitaciones, banios, pisos, garage, dimensiones, precio, moneda, url_foto_principal, pais, ciudad, propietario, telefono_propietario, asesor_id) VALUES (:fecha_alta, :titulo, :descripcion, :tipo, :estado, :ubicacion, :habitaciones, :banios, :pisos, :garage, :dimensiones, :precio, :moneda, :url_foto_principal, :pais, :ciudad, :propietario, :telefono_propietario, :asesor_id)';
+            $sql = 'INSERT INTO propiedades (fecha_alta, titulo, descripcion, tipo, estado, ubicacion, habitaciones, banios, pisos, garage, dimensiones, precio, moneda, url_foto_principal, pais, ciudad, propietario, telefono_propietario, asesor_id, foto_galeria_1, foto_galeria_2, foto_galeria_3, foto_galeria_4, foto_galeria_5, foto_galeria_6, foto_galeria_7, foto_galeria_8, foto_galeria_9, foto_galeria_10) VALUES (:fecha_alta, :titulo, :descripcion, :tipo, :estado, :ubicacion, :habitaciones, :banios, :pisos, :garage, :dimensiones, :precio, :moneda, :url_foto_principal, :pais, :ciudad, :propietario, :telefono_propietario, :asesor_id, :foto_galeria_1, :foto_galeria_2, :foto_galeria_3, :foto_galeria_4, :foto_galeria_5, :foto_galeria_6, :foto_galeria_7, :foto_galeria_8, :foto_galeria_9, :foto_galeria_10)';
             $stmt = $conexion->prepare($sql);
             
             // Bind values
@@ -49,6 +49,16 @@
             $stmt->bindParam(':propietario', $datos['propietario']);
             $stmt->bindParam(':telefono_propietario', $datos['telefono_propietario']);
             $stmt->bindParam(':asesor_id', $datos['asesor_id']);
+            $stmt->bindParam(':foto_galeria_1', $datos['foto_galeria_1']);
+            $stmt->bindParam(':foto_galeria_2', $datos['foto_galeria_2']);
+            $stmt->bindParam(':foto_galeria_3', $datos['foto_galeria_3']);
+            $stmt->bindParam(':foto_galeria_4', $datos['foto_galeria_4']);
+            $stmt->bindParam(':foto_galeria_5', $datos['foto_galeria_5']);
+            $stmt->bindParam(':foto_galeria_6', $datos['foto_galeria_6']);
+            $stmt->bindParam(':foto_galeria_7', $datos['foto_galeria_7']);
+            $stmt->bindParam(':foto_galeria_8', $datos['foto_galeria_8']);
+            $stmt->bindParam(':foto_galeria_9', $datos['foto_galeria_9']);
+            $stmt->bindParam(':foto_galeria_10', $datos['foto_galeria_10']);
             
             // Execute
             if($stmt->execute()){
@@ -57,31 +67,8 @@
             } else {
                 return false;
             }
-        }    
-
-        
-        public function insertarFoto($datos) {
-            if (!isset($datos['id_propiedad'])) {
-                // Handle the case where 'id_propiedad' is not set
-                return false;
-            }
-
-            $conexion = $this->conectar();
-            $stmt = $conexion->prepare('INSERT INTO fotos (id_propiedad, nombre_foto) VALUES (:id_propiedad, :nombre_foto)');
-                
-            // Bind values
-            $stmt->bindParam(':id_propiedad', $datos['id_propiedad']);
-            $stmt->bindParam(':nombre_foto', $datos['nombre_foto']);
-
-            // Execute
-            if($stmt->execute()){
-                return true;
-            } else {
-                return false;
-            }
-        }
+        }  
     
-        
         public function obtenerAsesores() {
             $conexion = $this->conectar();
             $stmt = $conexion->prepare("SELECT * FROM asesores");
@@ -113,4 +100,4 @@
         
         
     }
-?>
+?>       

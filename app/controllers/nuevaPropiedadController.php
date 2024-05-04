@@ -11,27 +11,39 @@
         }
 
         public function insertarPropiedad($datos){
-            $idPropiedad = $this->model->insertarPropiedad($datos);
-            if ($idPropiedad) {
-                // La propiedad se insertó correctamente, ahora podemos insertar las fotos
-                foreach ($_FILES['fotos']['name'] as $key => $name) {
-                    $datosFoto = [
-                        'id_propiedad' => $idPropiedad,
-                        'nombre_foto' => $name,
-                        // ...
-                    ];
-                    if (!$this->model->insertarFoto($datosFoto)) {
-                        die('Error al insertar la foto');
-                    }
+            // Manejamos la subida de las fotos de la galería
+            if(isset($_FILES['fotos'])) {
+                $fotos = $_FILES['fotos'];
+
+                // Limitar el número de fotos de la galería a 10
+                if(count($fotos['name']) > 10) {
+                    die('No puedes subir más de 10 fotos para la galería');
                 }
+
+                for($i = 0; $i < count($fotos['name']); $i++) {
+                    $datosFoto = file_get_contents($fotos['tmp_name'][$i]);
+                    if ($datosFoto === false) {
+                        die('Error al leer la foto de la galería');
+                    }
+
+                    // Asignamos los datos de cada foto de la galería a 'foto_galeria_X'
+                    $datos['foto_galeria_' . ($i + 1)] = $datosFoto;
+                }
+            }
+
+            // Llamar al método insertarPropiedad del modelo y capturar el resultado
+            $resultado = $this->model->insertarPropiedad($datos);
+
+            // Comprobar el resultado
+            if($resultado !== false) {
+                // La propiedad se insertó correctamente
+                return $resultado;
             } else {
                 die('Error al insertar la propiedad');
             }
         }
 
-        public function insertarFoto($datos){
-            return $this->model->insertarFoto($datos);
-        }
+        
 
         public function mostrarFormularioPropiedad() {
             $asesores = $this->model->obtenerAsesores();
