@@ -58,5 +58,24 @@
             // Devolver los resultados.
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+        //funcion para buscar propiedades por ciudad o titulo
+        /*esta consulta encontraría propiedades cuyo título contenga    
+        la palabra "casa" o cuya ciudad contenga la palabra "casa".*/
+        public function searchPropiedades($query) {
+            $query = "%$query%";
+            $sql = "
+                SELECT 
+                    propiedades.*, 
+                    ciudades.nombre_ciudad, 
+                    paises.nombre_pais
+                FROM propiedades
+                INNER JOIN ciudades ON propiedades.ciudad = ciudades.id
+                INNER JOIN paises ON propiedades.pais = paises.id
+                WHERE propiedades.titulo LIKE ? OR ciudades.nombre_ciudad LIKE ?
+            ";
+            $stmt = $this->conectar()->prepare($sql);
+            $stmt->execute([$query, $query]);
+            return $stmt->fetchAll();
+        }
     }
 ?>        

@@ -6,7 +6,10 @@ error_reporting(E_ALL);
 require_once '../../../config/app.php';
 require_once './/..//../../autoload.php';
 require_once 'inc/session_start.php';
+
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +51,7 @@ require_once 'inc/session_start.php';
                                             <div class="accordion-body">
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="tareaCheckbox1" value="option1">
-                                                    <label class="form-check-label" for="tareaCheckbox1">Alquiler</label>
+                                                    <label class="form-check-label" for="tareaCheckbox1">Alquileres</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="tareaCheckbox2" value="option2">
@@ -56,7 +59,7 @@ require_once 'inc/session_start.php';
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="tareaCheckbox3" value="option3">
-                                                    <label class="form-check-label" for="tareaCheckbox3">Comprar</label>
+                                                    <label class="form-check-label" for="tareaCheckbox3">Ventas</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -176,11 +179,20 @@ require_once 'inc/session_start.php';
                         <!------------------------> 
                     </div>
                 </div>
+                <?php
+                $controlador = new \app\controllers\propiedadesController();
 
+                if (isset($_GET['query'])) {
+                    $propiedades = $controlador->searchPropiedades($_GET['query']);
+                } else {
+                    $propiedades = $controlador->getPropiedades();
+                }
+                
+                ?>
                 <div class="col-12 col-xl-9">
-                    <form class="form-inline mb-5">
-                        <input class="form-control w-custom mr-sm-1" type="search"
-                            placeholder="Buscar por departamento o ciudad" aria-label="Search">
+                    <form class="form-inline mb-5" method="GET" action="propiedades.php">
+                        <input class="form-control w-custom mr-sm-1" type="search" name="query"
+                            placeholder="Buscar por departamento o Ciudad" aria-label="Search">
                         <button class="btn btn-outline-success my-2" type="submit"><i
                                 class="fas fa-search"></i></button>
                     </form>
@@ -339,11 +351,13 @@ require_once 'inc/session_start.php';
                         // Importamos el espacio de nombres del controlador
                         use app\controllers\propiedadesController;
 
-                        // Instanciamos la clase propiedadesController
-                        $controlador = new propiedadesController();
+                        $controlador = new \app\controllers\propiedadesController();
 
-                        // Llamamos a la función getPropiedades
-                        $propiedades = $controlador->getPropiedades();
+                        if (isset($_GET['query'])) {
+                            $propiedades = $controlador->searchPropiedades($_GET['query']);
+                        } else {
+                            $propiedades = $controlador->getPropiedades();
+                        }
 
                         echo '<div class="container">';
                         $carouselId = 0; // Inicializa $carouselId antes del bucle

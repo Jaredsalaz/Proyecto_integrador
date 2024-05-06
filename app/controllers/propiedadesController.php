@@ -17,5 +17,19 @@
             // Devolvemos las propiedades
             return $propiedades;
         }
+        
+        // searchPropiedades
+        public function searchPropiedades($query) {
+            // Llamar al método searchPropiedades del modelo y capturar el resultado
+            $resultado = $this->model->searchPropiedades($query);
+
+            // Comprobar el resultado
+            if($resultado !== false) {
+                // La búsqueda fue exitosa
+                return $resultado;
+            } else {
+                die('Error al realizar la búsqueda');
+            }
+        }
     }
 ?>   
