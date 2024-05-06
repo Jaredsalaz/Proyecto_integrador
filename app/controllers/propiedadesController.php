@@ -10,14 +10,17 @@
             $this->model = new propiedadesModel();
         }
 
-        public function getPropiedades() {
-            // Llamamos a la función getPropiedadesConCiudadPais del modelo
-            $propiedades = $this->model->getPropiedadesConCiudadPais();
-
-            // Devolvemos las propiedades
+        
+        public function getPropiedades($filters = []) {
+            $propiedades = $this->model->filterPropiedades($filters);
+            if ($propiedades === false) {
+                echo "Error: " . $this->model->getError();
+                die();
+            }
             return $propiedades;
         }
         
+
         // searchPropiedades
         public function searchPropiedades($query) {
             // Llamar al método searchPropiedades del modelo y capturar el resultado
@@ -31,5 +34,29 @@
                 die('Error al realizar la búsqueda');
             }
         }
+        // filterPropiedades 
+        public function filterPropiedades($filters) {
+            // Llamar al método filterPropiedades del modelo y capturar el resultado
+            $resultado = $this->model->filterPropiedades($filters);
+
+            // Comprobar el resultado
+            if($resultado !== false) {
+                // El filtrado fue exitoso
+                return $resultado;
+            } else {
+                die('Error al realizar el filtrado');
+            }
+        }
+        // obtenemos los tipos de propiedades
+        public function getTipos() {
+            $tipos = $this->model->getTipos();
+            if ($tipos === false) {
+                echo "Error: " . $this->model->getError();
+                die();
+            }
+            return $tipos;
+        }
+        
+    
     }
 ?>   

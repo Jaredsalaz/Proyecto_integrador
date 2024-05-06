@@ -77,5 +77,65 @@
             $stmt->execute([$query, $query]);
             return $stmt->fetchAll();
         }
+        //funcion para filtrar propiedades
+        public function filterPropiedades($filters) {
+            // Iniciar la consulta SQL
+            $sql = "
+                SELECT 
+                    propiedades.*, 
+                    ciudades.nombre_ciudad, 
+                    paises.nombre_pais
+                FROM propiedades
+                INNER JOIN ciudades ON propiedades.ciudad = ciudades.id
+                INNER JOIN paises ON propiedades.pais = paises.id
+                WHERE 1=1
+            ";
+
+            // Agregar condiciones a la consulta SQL para cada filtro
+            $params = [];
+            if (!empty($filters['tipo'])) {
+                $sql .= " AND propiedades.tipo = ?";
+                $params[] = $filters['tipo'];
+            }
+            if (!empty($filters['estado'])) {
+                $sql .= " AND propiedades.estado = ?";
+                $params[] = $filters['estado'];
+            }
+            if (!empty($filters['habitaciones'])) {
+                $sql .= " AND propiedades.habitaciones >= ?";
+                $params[] = $filters['habitaciones'];
+            }
+            if (!empty($filters['banios'])) {
+                $sql .= " AND propiedades.banios >= ?";
+                $params[] = $filters['banios'];
+            }
+            if (!empty($filters['garage'])) {
+                $sql .= " AND propiedades.garage >= ?";
+                $params[] = $filters['garage'];
+            }
+            if (!empty($filters['precio'])) {
+                $sql .= " AND propiedades.precio <= ?";
+                $params[] = $filters['precio'];
+            }
+
+            // Preparar y ejecutar la consulta SQL
+            $stmt = $this->conectar()->prepare($sql);
+            $stmt->execute($params);
+
+            // Devolver los resultados
+            return $stmt->fetchAll();
+        }
+        //funcion para obtener los tipos de propiedades
+        public function getTipos() {
+            $sql = "SELECT * FROM tipos";
+            $stmt = $this->conectar()->prepare($sql);
+            $stmt->execute();
+            if ($stmt === false) {
+                $this->error = $this->conectar()->errorInfo();
+                return false;
+            }
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
     }
 ?>        

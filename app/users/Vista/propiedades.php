@@ -8,6 +8,10 @@ require_once './/..//../../autoload.php';
 require_once 'inc/session_start.php';
 
 
+                                                
+    $controller = new \app\controllers\propiedadesController();
+    $tipos = $controller->getTipos();
+
 ?>
 
 
@@ -37,7 +41,7 @@ require_once 'inc/session_start.php';
                         <!-- Tarjeta de Filtros -->
                         <div class="card mb-5" style="width: 18rem;">
                             <div class="card-body">
-                                <h5 class="card-title">B&uacute;squeda</h5>
+                                <h5 class="card-title">Búsqueda</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Agregue filtros para una b&uacute;squeda m&aacute;s exacta:</h6>
                                 <hr>
                                 <div class="accordion" id="filterAccordion">
@@ -74,32 +78,16 @@ require_once 'inc/session_start.php';
                                             </button>
                                         </h2>
                                         <div id="collapseTipoInmueble" class="accordion-collapse collapse" aria-labelledby="headingTipoInmueble" data-bs-parent="#filterAccordion-2">
-                                            <div class="accordion-body">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                    <label class="form-check-label" for="defaultCheck1">
-                                                        Departamentos
-                                                    </label>
+                                                <div class="accordion-body">
+                                                    <?php foreach ($tipos as $tipo): ?>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="<?= $tipo['id'] ?>" id="tipo<?= $tipo['id'] ?>">
+                                                            <label class="form-check-label" for="tipo<?= $tipo['id'] ?>">
+                                                                <?= $tipo['nombre_tipo'] ?>
+                                                            </label>
+                                                        </div>
+                                                    <?php endforeach; ?>
                                                 </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                                                    <label class="form-check-label" for="defaultCheck2">
-                                                        Casas
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-                                                    <label class="form-check-label" for="defaultCheck3">
-                                                        Oficinas
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
-                                                    <label class="form-check-label" for="defaultCheck4">
-                                                        Comercios
-                                                    </label>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -136,22 +124,22 @@ require_once 'inc/session_start.php';
                                     </div>
                                 </div>
                                 <hr>
-                                <form class="mt-3 custom">
+                                <form class="mt-3 custom" method="GET" action="propiedades.php">
                                     <h5 class="card-title">Caracteristicas</h5>
                                     <br>
                                     <div class="row">
                                         <div class="col">                                      
                                             <div class="input-group">
-                                                <input id="ambientes" type="text" required>
-                                                <label for="ambientes">   Ambientes</label>
+                                                <input id="habitaciones" type="text" name="habitaciones" required>
+                                                <label for="habitaciones">   habitaciones</label>
                                             </div>
                                         </div>
                                         -
                                         <div class="col">
                                             
                                             <div class="input-group">
-                                                <input id="dormitorios" type="text" required>
-                                                <label for="dormitorios">Dormitorios</label>
+                                                <input id="pisos" type="text" name="pisos" required>
+                                                <label for="pisos">Pisos</label>
                                             </div>
                                         </div>
                                     </div>
@@ -159,36 +147,27 @@ require_once 'inc/session_start.php';
                                     <div class="row">
                                         <div class="col">                                          
                                             <div class="input-group">
-                                                <input id="baños" type="text" required>
+                                                <input id="baños" type="text" name="banios" required>
                                                 <label for="baños">Baños</label>
                                             </div>
                                         </div>
                                             -
                                         <div class="col">
                                             <div class="input-group">
-                                                <input id="cochera" type="text" required>
+                                                <input id="cochera" type="text" name="garage" required>
                                                 <label for="cochera">Cochera</label>
                                             </div>
                                         </div>
                                     </div>
                                     <br>
-                                    <button class="filtros-button-pc">Aplicar filtros</button>
+                                    <button class="filtros-button-pc" type="submit">Aplicar filtros</button>
                                 </form>
                             </div>
                         </div>
                         <!------------------------> 
                     </div>
                 </div>
-                <?php
-                $controlador = new \app\controllers\propiedadesController();
 
-                if (isset($_GET['query'])) {
-                    $propiedades = $controlador->searchPropiedades($_GET['query']);
-                } else {
-                    $propiedades = $controlador->getPropiedades();
-                }
-                
-                ?>
                 <div class="col-12 col-xl-9">
                     <form class="form-inline mb-5" method="GET" action="propiedades.php">
                         <input class="form-control w-custom mr-sm-1" type="search" name="query"
@@ -241,32 +220,17 @@ require_once 'inc/session_start.php';
                                                     <h5>Tipo de Inmueble</h5>
                                                 </button>
                                             </h2>
+                                            
                                             <div id="collapseTipoInmueble" class="accordion-collapse collapse" aria-labelledby="headingTipoInmueble" data-bs-parent="#filterAccordion-2">
                                                 <div class="accordion-body">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                        <label class="form-check-label" for="defaultCheck1">
-                                                            Departamentos
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                                                        <label class="form-check-label" for="defaultCheck2">
-                                                            Casas
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
-                                                        <label class="form-check-label" for="defaultCheck3">
-                                                            Oficinas
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
-                                                        <label class="form-check-label" for="defaultCheck4">
-                                                            Comercios
-                                                        </label>
-                                                    </div>
+                                                    <?php foreach ($tipos as $tipo): ?>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="<?= $tipo['id'] ?>" id="tipo<?= $tipo['id'] ?>">
+                                                            <label class="form-check-label" for="tipo<?= $tipo['id'] ?>">
+                                                                <?= $tipo['nombre_tipo'] ?>
+                                                            </label>
+                                                        </div>
+                                                    <?php endforeach; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -304,22 +268,22 @@ require_once 'inc/session_start.php';
                                         </div>
                                     </div>
                                     <hr>
-                                    <form class="mt-3 custom">
+                                    <form class="mt-3 custom" method="GET" action="propiedades.php">
                                         <h5 class="card-title">Caracteristicas</h5>
                                         <br>
                                         <div class="row">
                                             <div class="col">                                      
                                                 <div class="input-group">
-                                                    <input id="ambientes" type="text" required>
-                                                    <label for="ambientes">   Ambientes</label>
+                                                    <input id="habitaciones" type="text" name="habitaciones" required>
+                                                    <label for="habitaciones">   habitaciones</label>
                                                 </div>
                                             </div>
                                             -
                                             <div class="col">
                                                 
                                                 <div class="input-group">
-                                                    <input id="dormitorios" type="text" required>
-                                                    <label for="dormitorios">Dormitorios</label>
+                                                    <input id="pisos" type="text" name="pisos" required>
+                                                    <label for="pisos">Pisos</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -327,25 +291,26 @@ require_once 'inc/session_start.php';
                                         <div class="row">
                                             <div class="col">                                          
                                                 <div class="input-group">
-                                                    <input id="baños" type="text" required>
+                                                    <input id="baños" type="text" name="banios" required>
                                                     <label for="baños">Baños</label>
                                                 </div>
                                             </div>
                                                 -
                                             <div class="col">
                                                 <div class="input-group">
-                                                    <input id="cochera" type="text" required>
+                                                    <input id="cochera" type="text" name="garage" required>
                                                     <label for="cochera">Cochera</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <br>
-                                        <button class="filtros-button-pc">Aplicar filtros</button>
+                                        <button class="filtros-button-pc" type="submit">Aplicar filtros</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     <?php
                         // Importamos el espacio de nombres del controlador
@@ -353,12 +318,29 @@ require_once 'inc/session_start.php';
 
                         $controlador = new \app\controllers\propiedadesController();
 
+                        // Obtener propiedades
+                        $filters = [];
+                        if (isset($_GET['habitaciones'])) {
+                            $filters['habitaciones'] = $_GET['habitaciones'];
+                        }
+                        if (isset($_GET['pisos'])) {
+                            $filters['pisos'] = $_GET['pisos'];
+                        }
+                        if (isset($_GET['banios'])) {
+                            $filters['banios'] = $_GET['banios'];
+                        }
+                        if (isset($_GET['garage'])) {
+                            $filters['garage'] = $_GET['garage'];
+                        }
+    
+                        // Filtrar propiedades
                         if (isset($_GET['query'])) {
                             $propiedades = $controlador->searchPropiedades($_GET['query']);
                         } else {
-                            $propiedades = $controlador->getPropiedades();
+                            $propiedades = $controlador->getPropiedades($filters);
                         }
-
+                        
+                        // Mostrar propiedades
                         echo '<div class="container">';
                         $carouselId = 0; // Inicializa $carouselId antes del bucle
                         foreach ($propiedades as $propiedad) {
