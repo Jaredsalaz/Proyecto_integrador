@@ -10,7 +10,9 @@ require_once 'inc/session_start.php';
 
                                                 
     $controller = new \app\controllers\propiedadesController();
+    // Obtenemos los tipos y estados de las propiedades
     $tipos = $controller->getTipos();
+    $estados = $controller->getEstados();
 
 ?>
 
@@ -39,152 +41,10 @@ require_once 'inc/session_start.php';
                 <div class="col-12 col-xl-3">
                     <div class="contenedor-filtros d-none d-xl-block">
                         <!-- Tarjeta de Filtros -->
-                        <div class="card mb-5" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Búsqueda</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Agregue filtros para una b&uacute;squeda m&aacute;s exacta:</h6>
-                                <hr>
-                                <div class="accordion" id="filterAccordion">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingTarea">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTarea" aria-expanded="false" aria-controls="collapseTarea">
-                                                <h5>Tarea</h5>
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTarea" class="accordion-collapse collapse" aria-labelledby="headingTarea" data-bs-parent="#filterAccordion">
-                                            <div class="accordion-body">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="tareaCheckbox1" value="option1">
-                                                    <label class="form-check-label" for="tareaCheckbox1">Alquileres</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="tareaCheckbox2" value="option2">
-                                                    <label class="form-check-label" for="tareaCheckbox2">Vender</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="tareaCheckbox3" value="option3">
-                                                    <label class="form-check-label" for="tareaCheckbox3">Ventas</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="accordion" id="filterAccordion-2">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingTipoInmueble">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTipoInmueble" aria-expanded="false" aria-controls="collapseTipoInmueble">
-                                                <h5>Tipo de Inmueble</h5>
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTipoInmueble" class="accordion-collapse collapse" aria-labelledby="headingTipoInmueble" data-bs-parent="#filterAccordion-2">
-                                                <div class="accordion-body">
-                                                    <?php foreach ($tipos as $tipo): ?>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="<?= $tipo['id'] ?>" id="tipo<?= $tipo['id'] ?>">
-                                                            <label class="form-check-label" for="tipo<?= $tipo['id'] ?>">
-                                                                <?= $tipo['nombre_tipo'] ?>
-                                                            </label>
-                                                        </div>
-                                                    <?php endforeach; ?>
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="accordion" id="filterAccordion-3"> 
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingPresupuesto">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePresupuesto" aria-expanded="false" aria-controls="collapsePresupuesto">
-                                                <h5>Presupuesto</h5>
-                                            </button>
-                                        </h2>
-                                        <div id="collapsePresupuesto" class="accordion-collapse collapse" aria-labelledby="headingPresupuesto" data-bs-parent="#filterAccordion-3">
-                                            <div class="accordion-body">
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">Pesos</label>
-                                                </div>  
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">Dólares</label>
-                                                </div>
-                                                <form class="mt-3">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <input type="text" class="form-control" placeholder="Minimo">
-                                                        </div>
-                                                        <div class="col">
-                                                            <input type="text" class="form-control" placeholder="Maximo">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <form class="mt-3 custom" method="GET" action="propiedades.php">
-                                    <h5 class="card-title">Caracteristicas</h5>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col">                                      
-                                            <div class="input-group">
-                                                <input id="habitaciones" type="text" name="habitaciones" required>
-                                                <label for="habitaciones">   habitaciones</label>
-                                            </div>
-                                        </div>
-                                        -
-                                        <div class="col">
-                                            
-                                            <div class="input-group">
-                                                <input id="pisos" type="text" name="pisos" required>
-                                                <label for="pisos">Pisos</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col">                                          
-                                            <div class="input-group">
-                                                <input id="baños" type="text" name="banios" required>
-                                                <label for="baños">Baños</label>
-                                            </div>
-                                        </div>
-                                            -
-                                        <div class="col">
-                                            <div class="input-group">
-                                                <input id="cochera" type="text" name="garage" required>
-                                                <label for="cochera">Cochera</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <button class="filtros-button-pc" type="submit">Aplicar filtros</button>
-                                </form>
-                            </div>
-                        </div>
-                        <!------------------------> 
-                    </div>
-                </div>
-
-                <div class="col-12 col-xl-9">
-                    <form class="form-inline mb-5" method="GET" action="propiedades.php">
-                        <input class="form-control w-custom mr-sm-1" type="search" name="query"
-                            placeholder="Buscar por departamento o Ciudad" aria-label="Search">
-                        <button class="btn btn-outline-success my-2" type="submit"><i
-                                class="fas fa-search"></i></button>
-                    </form>
-
-                    <div class="container-fluid mb-5 d-block d-xl-none">
-                        <button class="w-100 text-center btn btn-success" data-bs-toggle="collapse" data-bs-target="#filtrosCollapse">
-                            <i class="fas fa-chevron-down"></i> &nbsp; Filtros &nbsp; <i class="fas fa-chevron-down"></i>
-                        </button>
-            
-                        <div class="collapse" id="filtrosCollapse">
-                            <div class="card mb-5" style="width: 100%;">
+                        <form class="mt-3 custom" method="GET" action="propiedades.php">
+                            <div class="card mb-5" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">B&uacute;squeda</h5>
+                                    <h5 class="card-title">Búsqueda</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">Agregue filtros para una b&uacute;squeda m&aacute;s exacta:</h6>
                                     <hr>
                                     <div class="accordion" id="filterAccordion">
@@ -196,18 +56,12 @@ require_once 'inc/session_start.php';
                                             </h2>
                                             <div id="collapseTarea" class="accordion-collapse collapse" aria-labelledby="headingTarea" data-bs-parent="#filterAccordion">
                                                 <div class="accordion-body">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="tareaCheckbox1" value="option1">
-                                                        <label class="form-check-label" for="tareaCheckbox1">Alquiler</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="tareaCheckbox2" value="option2">
-                                                        <label class="form-check-label" for="tareaCheckbox2">Vender</label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="tareaCheckbox3" value="option3">
-                                                        <label class="form-check-label" for="tareaCheckbox3">Comprar</label>
-                                                    </div>
+                                                    <?php foreach ($estados as $index => $estado): ?>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" id="tareaCheckbox<?= $index + 1 ?>" value="<?= $estado ?>">
+                                                            <label class="form-check-label" for="tareaCheckbox<?= $index + 1 ?>"><?= $estado ?></label>
+                                                        </div>
+                                                    <?php endforeach; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -220,18 +74,17 @@ require_once 'inc/session_start.php';
                                                     <h5>Tipo de Inmueble</h5>
                                                 </button>
                                             </h2>
-                                            
                                             <div id="collapseTipoInmueble" class="accordion-collapse collapse" aria-labelledby="headingTipoInmueble" data-bs-parent="#filterAccordion-2">
-                                                <div class="accordion-body">
-                                                    <?php foreach ($tipos as $tipo): ?>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="<?= $tipo['id'] ?>" id="tipo<?= $tipo['id'] ?>">
-                                                            <label class="form-check-label" for="tipo<?= $tipo['id'] ?>">
-                                                                <?= $tipo['nombre_tipo'] ?>
-                                                            </label>
-                                                        </div>
-                                                    <?php endforeach; ?>
-                                                </div>
+                                                    <div class="accordion-body">
+                                                        <?php foreach ($tipos as $tipo): ?>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="<?= $tipo['id'] ?>" id="tipo<?= $tipo['id'] ?>">
+                                                                <label class="form-check-label" for="tipo<?= $tipo['id'] ?>">
+                                                                    <?= $tipo['nombre_tipo'] ?>
+                                                                </label>
+                                                            </div>
+                                                        <?php endforeach; ?>
+                                                    </div>
                                             </div>
                                         </div>
                                     </div>
@@ -268,7 +121,7 @@ require_once 'inc/session_start.php';
                                         </div>
                                     </div>
                                     <hr>
-                                    <form class="mt-3 custom" method="GET" action="propiedades.php">
+                                    
                                         <h5 class="card-title">Caracteristicas</h5>
                                         <br>
                                         <div class="row">
@@ -305,6 +158,140 @@ require_once 'inc/session_start.php';
                                         </div>
                                         <br>
                                         <button class="filtros-button-pc" type="submit">Aplicar filtros</button>
+                                </div>
+                            </div>
+                        </form>    
+                        <!------------------------> 
+                    </div>
+                </div>
+
+                <div class="col-12 col-xl-9">
+                    <form class="form-inline mb-5" method="GET" action="propiedades.php">
+                        <input class="form-control w-custom mr-sm-1" type="search" name="query"
+                            placeholder="Buscar por departamento o Ciudad" aria-label="Search">
+                        <button class="btn btn-outline-success my-2" type="submit"><i
+                                class="fas fa-search"></i></button>
+                    </form>
+
+                    <div class="container-fluid mb-5 d-block d-xl-none">
+                        <button class="w-100 text-center btn btn-success" data-bs-toggle="collapse" data-bs-target="#filtrosCollapse">
+                            <i class="fas fa-chevron-down"></i> &nbsp; Filtros &nbsp; <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <form class="mt-3 custom" method="GET" action="propiedades.php">
+                            <div class="collapse" id="filtrosCollapse">
+                                <div class="card mb-5" style="width: 100%;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">B&uacute;squeda</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Agregue filtros para una b&uacute;squeda m&aacute;s exacta:</h6>
+                                        <hr>
+                                        <div class="accordion" id="filterAccordion">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingTarea">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTarea" aria-expanded="false" aria-controls="collapseTarea">
+                                                        <h5>Tarea</h5>
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseTarea" class="accordion-collapse collapse" aria-labelledby="headingTarea" data-bs-parent="#filterAccordion">
+                                                    <div class="accordion-body">
+                                                        <?php foreach ($estados as $index => $estado): ?>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" name="estado[]" id="tareaCheckbox<?= $index + 1 ?>" value="<?= $estado ?>">
+                                                                <label class="form-check-label" for="tareaCheckbox<?= $index + 1 ?>"><?= $estado ?></label>
+                                                            </div>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="accordion" id="filterAccordion-2">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingTipoInmueble">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTipoInmueble" aria-expanded="false" aria-controls="collapseTipoInmueble">
+                                                        <h5>Tipo de Inmueble</h5>
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseTipoInmueble" class="accordion-collapse collapse" aria-labelledby="headingTipoInmueble" data-bs-parent="#filterAccordion-2">
+                                                    <div class="accordion-body">
+                                                        <?php foreach ($tipos as $tipo): ?>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" name="tipo[]" value="<?= $tipo['id'] ?>" id="tipo<?= $tipo['id'] ?>">
+                                                                <label class="form-check-label" for="tipo<?= $tipo['id'] ?>">
+                                                                    <?= $tipo['nombre_tipo'] ?>
+                                                                </label>
+                                                            </div>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="accordion" id="filterAccordion-3"> 
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="headingPresupuesto">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePresupuesto" aria-expanded="false" aria-controls="collapsePresupuesto">
+                                                        <h5>Presupuesto</h5>
+                                                    </button>
+                                                </h2>
+                                                <div id="collapsePresupuesto" class="accordion-collapse collapse" aria-labelledby="headingPresupuesto" data-bs-parent="#filterAccordion-3">
+                                                    <div class="accordion-body">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="moneda" id="inlineRadio1" value="Pesos">
+                                                            <label class="form-check-label" for="inlineRadio1">Pesos</label>
+                                                        </div>  
+                                                        <div class="form-check form-check-inline">                                                            <input class="form-check-input" type="radio" name="moneda" id="inlineRadio2" value="Dólares">
+                                                            <label class="form-check-label" for="inlineRadio2">Dólares</label>
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <input type="text" class="form-control" name="precio_min" placeholder="Minimo">
+                                                                </div>
+                                                                <div class="col">
+                                                                    <input type="text" class="form-control" name="precio_max" placeholder="Maximo">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <h5 class="card-title">Caracteristicas</h5>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col">                                      
+                                                <div class="input-group">
+                                                    <input id="habitaciones" type="text" name="habitaciones" required>
+                                                    <label for="habitaciones">Habitaciones</label>
+                                                </div>
+                                            </div>
+                                            -
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <input id="pisos" type="text" name="pisos" required>
+                                                    <label for="pisos">Pisos</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col">                                          
+                                                <div class="input-group">
+                                                    <input id="baños" type="text" name="banios" required>
+                                                    <label for="baños">Baños</label>
+                                                </div>
+                                            </div>
+                                            -
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <input id="cochera" type="text" name="garage" required>
+                                                    <label for="cochera">Cochera</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <button class="filtros-button-pc" type="submit">Aplicar filtros</button>
                                     </form>
                                 </div>
                             </div>
@@ -332,7 +319,19 @@ require_once 'inc/session_start.php';
                         if (isset($_GET['garage'])) {
                             $filters['garage'] = $_GET['garage'];
                         }
-    
+                        if (isset($_GET['precio_min'])) {
+                            $filters['precio_min'] = $_GET['precio_min'];
+                        }
+                        if (isset($_GET['precio_max'])) {
+                            $filters['precio_max'] = $_GET['precio_max'];
+                        }
+                        if (isset($_GET['tipo'])) {
+                            $filters['tipo'] = $_GET['tipo'];
+                        }
+                        if (isset($_GET['estado'])) {
+                            $filters['estado'] = $_GET['estado'];
+                        }
+
                         // Filtrar propiedades
                         if (isset($_GET['query'])) {
                             $propiedades = $controlador->searchPropiedades($_GET['query']);

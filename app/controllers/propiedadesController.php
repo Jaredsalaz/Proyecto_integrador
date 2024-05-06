@@ -10,7 +10,7 @@
             $this->model = new propiedadesModel();
         }
 
-        
+        //mostrar las cards de las propiedades con la varibale $filters
         public function getPropiedades($filters = []) {
             $propiedades = $this->model->filterPropiedades($filters);
             if ($propiedades === false) {
@@ -26,7 +26,7 @@
             // Llamar al método searchPropiedades del modelo y capturar el resultado
             $resultado = $this->model->searchPropiedades($query);
 
-            // Comprobar el resultado
+            // Comprobamos el resultado
             if($resultado !== false) {
                 // La búsqueda fue exitosa
                 return $resultado;
@@ -36,10 +36,10 @@
         }
         // filterPropiedades 
         public function filterPropiedades($filters) {
-            // Llamar al método filterPropiedades del modelo y capturar el resultado
+            // Llamamos al método filterPropiedades del modelo y capturar el resultado
             $resultado = $this->model->filterPropiedades($filters);
 
-            // Comprobar el resultado
+            // Comprobamos el resultado
             if($resultado !== false) {
                 // El filtrado fue exitoso
                 return $resultado;
@@ -56,7 +56,15 @@
             }
             return $tipos;
         }
-        
+        // obtenemos getEstados
+        public function getEstados() {
+            $estados = $this->model->getEstados();
+            if ($estados === false) {
+                echo "Error: " . $this->model->getError();
+                die();
+            }
+            return $estados;
+        }
     
     }
 ?>   

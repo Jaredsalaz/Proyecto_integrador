@@ -25,6 +25,7 @@
                 echo "Error en la conexion a la base de datos: ".$e->getMessage();
             }
         }
+        // funcion para mostrar las cards de las propiedades
         public function getPropiedadesConCiudadPais() {
             //  Dentro de esta función, creamos una consulta SQL que una las tres tablas.
             $query = "
@@ -51,7 +52,7 @@
                 INNER JOIN paises ON propiedades.pais = paises.id
             ";
 
-            // Ejecutar la consulta y obtener los resultados.
+            // Ejecutamos la consulta y obtener los resultados.
             $stmt = $this->conectar()->prepare($query);
             $stmt->execute();
 
@@ -84,22 +85,24 @@
                 SELECT 
                     propiedades.*, 
                     ciudades.nombre_ciudad, 
-                    paises.nombre_pais
+                    paises.nombre_pais,
+                    tipos.nombre_tipo
                 FROM propiedades
                 INNER JOIN ciudades ON propiedades.ciudad = ciudades.id
                 INNER JOIN paises ON propiedades.pais = paises.id
+                INNER JOIN tipos ON propiedades.tipo = tipos.id
                 WHERE 1=1
             ";
 
-            // Agregar condiciones a la consulta SQL para cada filtro
+            // Agregamos condiciones a la consulta SQL para cada filtro
             $params = [];
             if (!empty($filters['tipo'])) {
-                $sql .= " AND propiedades.tipo = ?";
-                $params[] = $filters['tipo'];
+                $sql .= " AND propiedades.tipo IN (" . implode(',', array_map(function() { return '?'; }, $filters['tipo'])) . ")";
+                $params = array_merge($params, $filters['tipo']);
             }
             if (!empty($filters['estado'])) {
-                $sql .= " AND propiedades.estado = ?";
-                $params[] = $filters['estado'];
+                $sql .= " AND propiedades.estado IN (" . implode(',', array_map(function() { return '?'; }, $filters['estado'])) . ")";
+                $params = array_merge($params, $filters['estado']);
             }
             if (!empty($filters['habitaciones'])) {
                 $sql .= " AND propiedades.habitaciones >= ?";
@@ -113,12 +116,16 @@
                 $sql .= " AND propiedades.garage >= ?";
                 $params[] = $filters['garage'];
             }
-            if (!empty($filters['precio'])) {
+            if (!empty($filters['precio_min'])) {
+                $sql .= " AND propiedades.precio >= ?";
+                $params[] = $filters['precio_min'];
+            }
+            if (!empty($filters['precio_max'])) {
                 $sql .= " AND propiedades.precio <= ?";
-                $params[] = $filters['precio'];
+                $params[] = $filters['precio_max'];
             }
 
-            // Preparar y ejecutar la consulta SQL
+            // Prepararamos y ejecutar la consulta SQL
             $stmt = $this->conectar()->prepare($sql);
             $stmt->execute($params);
 
@@ -136,6 +143,19 @@
             }
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        //funcion para obtener los estados de las propiedades
+        public function getEstados() {
+            $sql = "SELECT DISTINCT estado FROM propiedades";
+            $stmt = $this->conectar()->prepare($sql);
+            $stmt->execute();
+            if ($stmt === false) {
+                $this->error = $this->conectar()->errorInfo();
+                return false;
+            }
+            return $stmt->fetchAll(PDO::FETCH_COLUMN);
+        }
+        
         
     }
 ?>        
