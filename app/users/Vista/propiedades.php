@@ -56,12 +56,12 @@ require_once 'inc/session_start.php';
                                             </h2>
                                             <div id="collapseTarea" class="accordion-collapse collapse" aria-labelledby="headingTarea" data-bs-parent="#filterAccordion">
                                                 <div class="accordion-body">
-                                                    <?php foreach ($estados as $index => $estado): ?>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="checkbox" id="tareaCheckbox<?= $index + 1 ?>" value="<?= $estado ?>">
-                                                            <label class="form-check-label" for="tareaCheckbox<?= $index + 1 ?>"><?= $estado ?></label>
-                                                        </div>
-                                                    <?php endforeach; ?>
+                                                        <?php foreach ($estados as $index => $estado): ?>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" name="estado[]" id="tareaCheckbox<?= $index + 1 ?>" value="<?= $estado ?>">
+                                                                <label class="form-check-label" for="tareaCheckbox<?= $index + 1 ?>"><?= $estado ?></label>
+                                                            </div>
+                                                        <?php endforeach; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -78,7 +78,7 @@ require_once 'inc/session_start.php';
                                                     <div class="accordion-body">
                                                         <?php foreach ($tipos as $tipo): ?>
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="<?= $tipo['id'] ?>" id="tipo<?= $tipo['id'] ?>">
+                                                                <input class="form-check-input" type="checkbox" name="tipo[]" value="<?= $tipo['id'] ?>" id="tipo<?= $tipo['id'] ?>">
                                                                 <label class="form-check-label" for="tipo<?= $tipo['id'] ?>">
                                                                     <?= $tipo['nombre_tipo'] ?>
                                                                 </label>
@@ -99,20 +99,20 @@ require_once 'inc/session_start.php';
                                             <div id="collapsePresupuesto" class="accordion-collapse collapse" aria-labelledby="headingPresupuesto" data-bs-parent="#filterAccordion-3">
                                                 <div class="accordion-body">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                                        <input class="form-check-input" type="radio" name="moneda" id="inlineRadio1" value="Pesos">
                                                         <label class="form-check-label" for="inlineRadio1">Pesos</label>
                                                     </div>  
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                    <div class="form-check form-check-inline">                                                            
+                                                        <input class="form-check-input" type="radio" name="moneda" id="inlineRadio2" value="Dólares">
                                                         <label class="form-check-label" for="inlineRadio2">Dólares</label>
                                                     </div>
                                                     <form class="mt-3">
                                                         <div class="row">
                                                             <div class="col">
-                                                                <input type="text" class="form-control" placeholder="Minimo">
+                                                                <input type="text" class="form-control" name="precio_min" placeholder="Minimo">
                                                             </div>
                                                             <div class="col">
-                                                                <input type="text" class="form-control" placeholder="Maximo">
+                                                                <input type="text" class="form-control" name="precio_max" placeholder="Maximo">
                                                             </div>
                                                         </div>
                                                     </form>
@@ -127,7 +127,7 @@ require_once 'inc/session_start.php';
                                         <div class="row">
                                             <div class="col">                                      
                                                 <div class="input-group">
-                                                    <input id="habitaciones" type="text" name="habitaciones" required>
+                                                    <input id="habitaciones" type="text" name="habitaciones" >
                                                     <label for="habitaciones">   habitaciones</label>
                                                 </div>
                                             </div>
@@ -135,7 +135,7 @@ require_once 'inc/session_start.php';
                                             <div class="col">
                                                 
                                                 <div class="input-group">
-                                                    <input id="pisos" type="text" name="pisos" required>
+                                                    <input id="pisos" type="text" name="pisos" >
                                                     <label for="pisos">Pisos</label>
                                                 </div>
                                             </div>
@@ -144,14 +144,14 @@ require_once 'inc/session_start.php';
                                         <div class="row">
                                             <div class="col">                                          
                                                 <div class="input-group">
-                                                    <input id="baños" type="text" name="banios" required>
+                                                    <input id="baños" type="text" name="banios" >
                                                     <label for="baños">Baños</label>
                                                 </div>
                                             </div>
                                                 -
                                             <div class="col">
                                                 <div class="input-group">
-                                                    <input id="cochera" type="text" name="garage" required>
+                                                    <input id="cochera" type="text" name="garage" >
                                                     <label for="cochera">Cochera</label>
                                                 </div>
                                             </div>
@@ -239,7 +239,8 @@ require_once 'inc/session_start.php';
                                                             <input class="form-check-input" type="radio" name="moneda" id="inlineRadio1" value="Pesos">
                                                             <label class="form-check-label" for="inlineRadio1">Pesos</label>
                                                         </div>  
-                                                        <div class="form-check form-check-inline">                                                            <input class="form-check-input" type="radio" name="moneda" id="inlineRadio2" value="Dólares">
+                                                        <div class="form-check form-check-inline">                                                            
+                                                            <input class="form-check-input" type="radio" name="moneda" id="inlineRadio2" value="Dólares">
                                                             <label class="form-check-label" for="inlineRadio2">Dólares</label>
                                                         </div>
                                                         <div class="mt-3">

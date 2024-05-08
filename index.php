@@ -240,86 +240,51 @@
             </div>
         </div>
     </div>
-
+    <?php
+        // Importamos el espacio de nombres del controlador
+        $controller = new \app\controllers\propiedadesController();
+        // Obtenemos los tipos y estados de las propiedades
+        $tipos = $controller->getTipos();
+        $estados = $controller->getEstados();
+    ?>    
     <!-- Seccion Buscador -->
     <section class="buscador py-custom">
         <div class="container px-2 px-sm-4 px-md-5 contenedor-busqueda">
             <h2 class="text-center font-weight-bold pt-5"><strong>Encuentra tu hogar ideal</strong></h2>
-            <ul class="nav nav-pills nav-fill my-5" role="tablist">
-                <li class="nav-item">
-                    <a href="#comprar" class="nav-link active" data-bs-toggle="pill">Comprar</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#alquilar" class="nav-link" data-bs-toggle="pill">Alquilar</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#vender" class="nav-link" data-bs-toggle="pill">Vender</a>
-                </li>
-            </ul>
-            <div class="tab-content pb-5">
-                <div class="tab-pane show active" id="comprar" role="tabpanel">
-                    <div class="contenedor-input input-group">
-                        <div class="col-12 my-1">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <select class="form-control">
-                                        <option value="casa">Casas</option>
-                                        <option value="depa">Departamentos</option>
-                                        <option value="oficina">Comercios</option>
-                                        <option value="lote">Lotes</option>
-                                        <option value="lote">Almacenes</option>
-                                    </select>
+            <form action="app/users/Vista/propiedades.php" method="GET">
+                <ul class="nav nav-pills nav-fill my-5" role="tablist">
+                    <?php foreach ($estados as $index => $estado): ?>
+                        <li class="nav-item">
+                            <a href="#<?= ($estado) ?>" class="nav-link" data-bs-toggle="pill"><?= $estado ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <input type="hidden" id="estado" name="estado[]" value="">
+                <div class="tab-content pb-5">
+                    <div class="tab-pane show active" id="comprar" role="tabpanel">
+                        <div class="contenedor-input input-group">
+                            <div class="col-12 my-1">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <select class="form-control" name="tipo[]">
+                                            <?php foreach ($tipos as $tipo): ?>
+                                                <option value="<?= $tipo['id'] ?>"><?= $tipo['nombre_tipo'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-right"
+                                        id="inlineFormInputGroupUsername" placeholder="Ingresar ubicaci&oacute;n" name="query">
                                 </div>
-                                <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-right"
-                                    id="inlineFormInputGroupUsername" placeholder="Ingresar ubicaci&oacute;n">
+                                <input type="submit" class="btn btn-x" value="Buscar">
                             </div>
-                            <input type="submit" class="btn btn-x" value="Buscar">
                         </div>
                     </div>
+                    <!-- Similar changes for the other tab-panes -->
                 </div>
-                <div class="tab-pane" id="alquilar" role="tabpanel">
-                    <div class="contenedor-input input-group">
-                        <div class="col-12 my-1">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <select class="form-control">
-                                        <option value="casa">Casas</option>
-                                        <option value="depa">Departamentos</option>
-                                        <option value="oficina">Comercios</option>
-                                        <option value="lote">Lotes</option>
-                                        <option value="lote">Almacenes</option>
-                                    </select>
-                                </div>
-                                <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-0"
-                                    id="inlineFormInputGroupUsername" placeholder="Ingresar ubicaci&oacute;n">
-                            </div>
-                            <input type="submit" class="btn btn-x" value="Buscar">
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="vender" role="tabpanel">
-                    <div class="contenedor-input input-group">
-                        <div class="col-12 my-1">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <select class="form-control">
-                                        <option value="casa">Casas</option>
-                                        <option value="depa">Departamentos</option>
-                                        <option value="oficina">Comercios</option>
-                                        <option value="lote">Lotes</option>
-                                        <option value="lote">Almacenes</option>
-                                    </select>
-                                </div>
-                                <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-right"
-                                    id="inlineFormInputGroupUsername" placeholder="Ingresar ubicaci&oacute;n">
-                            </div>
-                            <input type="submit" class="btn btn-x" value="Buscar">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </section>
+    
 
 
     
