@@ -251,7 +251,7 @@
     <section class="buscador py-custom">
         <div class="container px-2 px-sm-4 px-md-5 contenedor-busqueda">
             <h2 class="text-center font-weight-bold pt-5"><strong>Encuentra tu hogar ideal</strong></h2>
-            <form action="app/users/Vista/propiedades.php" method="GET">
+            <form action="app/users/Vista/propiedades.php" method="GET" id="searchForm">
                 <ul class="nav nav-pills nav-fill my-5" role="tablist">
                     <?php foreach ($estados as $index => $estado): ?>
                         <li class="nav-item">
@@ -259,7 +259,7 @@
                         </li>
                     <?php endforeach; ?>
                 </ul>
-                <input type="hidden" id="estado" name="estado[]" value="">
+                <input type="hidden" id="estado" name="estado" value="">
                 <div class="tab-content pb-5">
                     <div class="tab-pane show active" id="comprar" role="tabpanel">
                         <div class="contenedor-input input-group">
@@ -273,7 +273,7 @@
                                         </select>
                                     </div>
                                     <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-right"
-                                        id="inlineFormInputGroupUsername" placeholder="Ingresar ubicaci&oacute;n" name="query">
+                                        id="query" placeholder="Ingresar ubicaci&oacute;n" name="query">
                                 </div>
                                 <input type="submit" class="btn btn-x" value="Buscar">
                             </div>
@@ -284,6 +284,25 @@
             </form>
         </div>
     </section>
+    <script>
+        // Cuando se hace clic en un enlace de la píldora...
+        document.querySelectorAll('.nav-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                // Actualiza el valor del campo oculto con el estado correspondiente.
+                document.getElementById('estado').value = e.target.textContent;
+            });
+        });
+
+        // Antes de enviar el formulario...
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            // Si el campo de búsqueda está vacío...
+            if (!document.getElementById('query').value.trim()) {
+                // Elimina el nombre del campo de búsqueda para que no se incluya en la solicitud GET.
+                document.getElementById('query').name = '';
+            }
+        });
+    </script>
+    
     
 
 

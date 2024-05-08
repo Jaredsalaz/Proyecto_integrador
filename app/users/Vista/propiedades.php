@@ -299,7 +299,7 @@ require_once 'inc/session_start.php';
                         </div>
                     </div>
 
-
+                                                               
                     <?php
                         // Importamos el espacio de nombres del controlador
                         use app\controllers\propiedadesController;
@@ -333,88 +333,103 @@ require_once 'inc/session_start.php';
                             $filters['estado'] = $_GET['estado'];
                         }
 
+                        
                         // Filtrar propiedades
                         if (isset($_GET['query'])) {
-                            $propiedades = $controlador->searchPropiedades($_GET['query']);
+                            // Si se proporciona una consulta de búsqueda, busca propiedades que coincidan con la consulta y los filtros
+                            $propiedades = $controlador->searchPropiedades($_GET['query'], $filters);
                         } else {
+                            // Si no se proporciona una consulta de búsqueda, obtén las propiedades con los filtros
                             $propiedades = $controlador->getPropiedades($filters);
                         }
+                        
                         
                         // Mostrar propiedades
                         echo '<div class="container">';
                         $carouselId = 0; // Inicializa $carouselId antes del bucle
-                        foreach ($propiedades as $propiedad) {
-                            if ($carouselId % 3 == 0) {
-                                echo '<div class="row">';
-                            }
-                            echo '<div class="col-md-4">';
-                            echo '<div class="card">';
-                            echo '<div id="carouselExampleIndicators' . $carouselId . '" class="carousel slide image_container" data-bs-ride="carousel">';
-                            echo '<div class="carousel-inner">';
-                            echo '<div class="carousel-item active">';
-                            echo '<img src="data:image/jpeg;base64,' . base64_encode($propiedad['url_foto_principal']) . '" class="d-block w-100" alt="Imagen principal">';
-                            echo '</div>';
 
-                            // Aquí puedes agregar las imágenes de la galería
-                            for ($i = 1; $i <= 10; $i++) {
-                                if (!empty($propiedad['foto_galeria_' . $i])) {
-                                    echo '<div class="carousel-item">';
-                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($propiedad['foto_galeria_' . $i]) . '" class="d-block w-100" alt="Imagen de galería ' . $i . '">';
-                                    echo '</div>';
+                        if(empty($propiedades)){
+                            // Si no hay propiedades que coincidan con los filtros, muestra un mensaje
+                            echo '<h2>No se encontraron propiedades que coincidan con los filtros seleccionados.</h2>';
+                            echo '<br>';
+                            echo '<p>Da click en la lupa para ver todas las propiedades</p>';
+                        } else {
+                            // Si hay propiedades que coinciden con los filtros, muestra las propiedades
+                            foreach ($propiedades as $propiedad) {
+                                if ($carouselId % 3 == 0) {
+                                    echo '<div class="row">';
                                 }
+                                echo '<div class="col-md-4">';
+                                echo '<div class="card">';
+                                echo '<div id="carouselExampleIndicators' . $carouselId . '" class="carousel slide image_container" data-bs-ride="carousel">';
+                                echo '<div class="carousel-inner">';
+                                echo '<div class="carousel-item active">';
+                                echo '<img src="data:image/jpeg;base64,' . base64_encode($propiedad['url_foto_principal']) . '" class="d-block w-100" alt="Imagen principal">';
+                                echo '</div>';
+    
+                                // Aquí agregamos las imágenes de la galería
+                                for ($i = 1; $i <= 10; $i++) {
+                                    if (!empty($propiedad['foto_galeria_' . $i])) {
+                                        echo '<div class="carousel-item">';
+                                        echo '<img src="data:image/jpeg;base64,' . base64_encode($propiedad['foto_galeria_' . $i]) . '" class="d-block w-100" alt="Imagen de galería ' . $i . '">';
+                                        echo '</div>';
+                                    }
+                                }
+    
+                                echo '</div>';
+                                echo '<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators' . $carouselId . '" data-bs-slide="prev">';
+                                echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
+                                echo '<span class="visually-hidden">Previous</span>';
+                                echo '</button>';
+                                echo '<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators' . $carouselId . '" data-bs-slide="next">';
+                                echo '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
+                                echo '<span class="visually-hidden">Next</span>';
+                                echo '</button>';
+                                echo '</div>';
+    
+                                echo '<div class="title">';
+                                echo '<span>' . $propiedad['titulo'] . '</span>';
+                                echo '</div>';
+                                echo '<div class="location">';
+                                echo '<span>' . $propiedad['ubicacion'] . '</span><br>';
+                                echo '<span>' . $propiedad['nombre_ciudad'] . ', ' . $propiedad['nombre_pais'] . '</span>';
+                                echo '</div>';
+                                echo '<div class="status">';
+                                echo '<span>Estado: ' . $propiedad['estado'] . '</span>';
+                                echo '</div>';
+                                echo '<div class="price">';
+                                echo '<span>Precio: $' . $propiedad['precio'] . '</span>';
+                                echo '</div>';
+                                echo '<div class="action">';
+                                echo '<button class="details-button">';
+                                echo '<span>Ver detalles</span>';
+                                echo '</button>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+    
+                                if ($carouselId % 3 == 2) {
+                                    echo '</div>'; // Cierra el div de la fila
+                                    echo '<br>'; // Agrega un salto de línea
+                                }
+    
+                                echo '<script>';
+                                echo '$(document).ready(function() {';
+                                echo '$("#carouselExampleIndicators' . $carouselId . '").carousel();';
+                                echo '});';
+                                echo '</script>';
+    
+                                $carouselId++; // Incrementa $carouselId en cada iteración del bucle
                             }
-
-                            echo '</div>';
-                            echo '<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators' . $carouselId . '" data-bs-slide="prev">';
-                            echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
-                            echo '<span class="visually-hidden">Previous</span>';
-                            echo '</button>';
-                            echo '<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators' . $carouselId . '" data-bs-slide="next">';
-                            echo '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
-                            echo '<span class="visually-hidden">Next</span>';
-                            echo '</button>';
-                            echo '</div>';
-
-                            echo '<div class="title">';
-                            echo '<span>' . $propiedad['titulo'] . '</span>';
-                            echo '</div>';
-                            echo '<div class="location">';
-                            echo '<span>' . $propiedad['ubicacion'] . '</span><br>';
-                            echo '<span>' . $propiedad['nombre_ciudad'] . ', ' . $propiedad['nombre_pais'] . '</span>';
-                            echo '</div>';
-                            echo '<div class="status">';
-                            echo '<span>Estado: ' . $propiedad['estado'] . '</span>';
-                            echo '</div>';
-                            echo '<div class="price">';
-                            echo '<span>Precio: $' . $propiedad['precio'] . '</span>';
-                            echo '</div>';
-                            echo '<div class="action">';
-                            echo '<button class="details-button">';
-                            echo '<span>Ver detalles</span>';
-                            echo '</button>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-
-                            if ($carouselId % 3 == 2) {
-                                echo '</div>'; // Cierra el div de la fila
-                                echo '<br>'; // Agrega un salto de línea
+                            if ($carouselId % 3 != 0) {
+                                echo '</div>'; // Cierra el último div de la fila si no se cerró en el bucle
                             }
-
-                            echo '<script>';
-                            echo '$(document).ready(function() {';
-                            echo '$("#carouselExampleIndicators' . $carouselId . '").carousel();';
-                            echo '});';
-                            echo '</script>';
-
-                            $carouselId++; // Incrementa $carouselId en cada iteración del bucle
-                        }
-                        if ($carouselId % 3 != 0) {
-                            echo '</div>'; // Cierra el último div de la fila si no se cerró en el bucle
+                            
                         }
                         echo '</div>';
+                        
                     ?>
-
+                    
                 </div>    
 
                     

@@ -8,7 +8,6 @@
 
     }
 
-
     class propiedadesModel{
         private $server=DB_SERVER;
         private $db=DB_NAME;
@@ -25,6 +24,7 @@
                 echo "Error en la conexion a la base de datos: ".$e->getMessage();
             }
         }
+
         // funcion para mostrar las cards de las propiedades
         public function getPropiedadesConCiudadPais() {
             //  Dentro de esta función, creamos una consulta SQL que una las tres tablas.
@@ -59,11 +59,12 @@
             // Devolver los resultados.
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
         //funcion para buscar propiedades por ciudad o titulo
-        /*esta consulta encontraría propiedades cuyo título contenga    
-        la palabra "casa" o cuya ciudad contenga la palabra "casa".*/
-        public function searchPropiedades($query) {
+        public function searchPropiedades($query, $filters = []) {
             $query = "%$query%";
+            $params = [$query, $query];
+
             $sql = "
                 SELECT 
                     propiedades.*, 
@@ -72,12 +73,26 @@
                 FROM propiedades
                 INNER JOIN ciudades ON propiedades.ciudad = ciudades.id
                 INNER JOIN paises ON propiedades.pais = paises.id
-                WHERE propiedades.titulo LIKE ? OR ciudades.nombre_ciudad LIKE ?
+                WHERE (propiedades.titulo LIKE ? OR ciudades.nombre_ciudad LIKE ?)
             ";
+
+            if (!empty($filters['tipo'])) {
+                $filters['tipo'] = is_array($filters['tipo']) ? $filters['tipo'] : [$filters['tipo']];
+                $sql .= " AND propiedades.tipo IN (" . implode(',', array_map(function() { return '?'; }, $filters['tipo'])) . ")";
+                $params = array_merge($params, $filters['tipo']);
+            }
+            if (!empty($filters['estado'])) {
+                $filters['estado'] = is_array($filters['estado']) ? $filters['estado'] : [$filters['estado']];
+                $sql .= " AND propiedades.estado IN (" . implode(',', array_map(function() { return '?'; }, $filters['estado'])) . ")";
+                $params = array_merge($params, $filters['estado']);
+            }
+
             $stmt = $this->conectar()->prepare($sql);
-            $stmt->execute([$query, $query]);
+            $stmt->execute($params);
             return $stmt->fetchAll();
         }
+
+        
         //funcion para filtrar propiedades
         public function filterPropiedades($filters) {
             // Iniciar la consulta SQL
@@ -97,10 +112,12 @@
             // Agregamos condiciones a la consulta SQL para cada filtro
             $params = [];
             if (!empty($filters['tipo'])) {
+                $filters['tipo'] = is_array($filters['tipo']) ? $filters['tipo'] : [$filters['tipo']];
                 $sql .= " AND propiedades.tipo IN (" . implode(',', array_map(function() { return '?'; }, $filters['tipo'])) . ")";
                 $params = array_merge($params, $filters['tipo']);
             }
             if (!empty($filters['estado'])) {
+                $filters['estado'] = is_array($filters['estado']) ? $filters['estado'] : [$filters['estado']];
                 $sql .= " AND propiedades.estado IN (" . implode(',', array_map(function() { return '?'; }, $filters['estado'])) . ")";
                 $params = array_merge($params, $filters['estado']);
             }
@@ -124,6 +141,11 @@
                 $sql .= " AND propiedades.precio <= ?";
                 $params[] = $filters['precio_max'];
             }
+            if (!empty($filters['query'])) {
+                $sql .= " AND (propiedades.titulo LIKE ? OR ciudades.nombre_ciudad LIKE ?)";
+                $params[] = '%' . $filters['query'] . '%';
+                $params[] = '%' . $filters['query'] . '%';
+            }
 
             // Prepararamos y ejecutar la consulta SQL
             $stmt = $this->conectar()->prepare($sql);
@@ -132,6 +154,8 @@
             // Devolver los resultados
             return $stmt->fetchAll();
         }
+        
+
         //funcion para obtener los tipos de propiedades
         public function getTipos() {
             $sql = "SELECT * FROM tipos";
@@ -158,4 +182,4 @@
         
         
     }
-?>        
+?>

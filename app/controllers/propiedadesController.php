@@ -15,23 +15,24 @@
             $propiedades = $this->model->filterPropiedades($filters);
             if ($propiedades === false) {
                 echo "Error: " . $this->model->getError();
-                die();
+                return [];
             }
             return $propiedades;
         }
         
 
         // searchPropiedades
-        public function searchPropiedades($query) {
+        public function searchPropiedades($query, $filters = []) {
             // Llamar al método searchPropiedades del modelo y capturar el resultado
-            $resultado = $this->model->searchPropiedades($query);
+            $resultado = $this->model->searchPropiedades($query, $filters);
 
             // Comprobamos el resultado
-            if($resultado !== false) {
+            if($resultado === false) {
+                echo 'Error al realizar la búsqueda';
+                return [];
+            } else {
                 // La búsqueda fue exitosa
                 return $resultado;
-            } else {
-                die('Error al realizar la búsqueda');
             }
         }
         // filterPropiedades 
@@ -40,11 +41,12 @@
             $resultado = $this->model->filterPropiedades($filters);
 
             // Comprobamos el resultado
-            if($resultado !== false) {
+            if($resultado === false) {
+                echo 'Error al realizar el filtrado';
+                return [];
+            } else {
                 // El filtrado fue exitoso
                 return $resultado;
-            } else {
-                die('Error al realizar el filtrado');
             }
         }
         // obtenemos los tipos de propiedades
@@ -67,4 +69,4 @@
         }
     
     }
-?>   
+?>
