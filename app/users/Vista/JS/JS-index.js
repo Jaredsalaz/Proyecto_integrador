@@ -1,3 +1,27 @@
+
+
+// A nimacion para el texto principal
+window.addEventListener('scroll', function() {
+    var text = document.querySelector('.my-text');
+    var textTop = text.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight;
+
+    if (textTop < windowHeight) {
+        text.classList.add('animate-right');
+    }
+});
+// Animación de la imagen principal
+window.addEventListener('scroll', function() {
+    var image = document.querySelector('.my-image');
+    var imageTop = image.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight;
+
+    if (imageTop < windowHeight) {
+        image.classList.add('animate-left');
+    }
+});
+
+
 $(document).ready(function(){
 	$('#dropdownMenuButton').parent().hover(function() {
 		$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);

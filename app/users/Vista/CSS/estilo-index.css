@@ -213,7 +213,25 @@
       display: none; /* Oculta el pseudo-elemento ::before */
     }
   }
-
+  /* ANIAMCION DE SCROLL CON MOVIENTO*/
+  .animate-right {
+    position: relative;
+    animation: animateright 2s;
+  }
+  
+  @keyframes animateright {
+    from { right: -300px; opacity: 0 }
+    to { right: 0; opacity: 1 }
+  }
+  .animate-left {
+    position: relative;
+    animation: animateleft 2s;
+  }
+  
+  @keyframes animateleft {
+    from { left: -300px; opacity: 0 }
+    to { left: 0; opacity: 1 }
+  }
   .my-image {
     width: 100%;  
     height: auto;

@@ -150,7 +150,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Ingresa tu cuenta</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: auto;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -211,7 +211,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Regístrate</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: auto;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -314,7 +314,7 @@
                 <div class="col-md-6 p-0 d-none d-md-block">
                     <img src="app/users/Vista/imagenes/frame 3.png" alt="Busquedas Rapidas" class="img-fluid w-100 my-image">
                 </div>
-                <div class="col-md-6 px-5 py-4">
+                <div class="col-md-6 px-5 py-4 my-text">
                     <h1 class="text-center text-md-left subtitle-1 work-sans-h1">Generando Soluciones <br> hace mas de 10 años</h1>
                     <p class="text-justify pt-4">
                     Wayloa surge en la década de 2010 con el propósito de proporcionar una alternativa en el sector de servicios para permitir a los profesionales  
