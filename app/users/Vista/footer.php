@@ -52,5 +52,6 @@
             </div>
         </div>
     </footer>
+    <script src="JS/JS-footer.js"></script>
 </body>
 </html>

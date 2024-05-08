@@ -150,7 +150,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Ingresa tu cuenta</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: auto;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -211,7 +211,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Regístrate</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: auto;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -240,86 +240,70 @@
             </div>
         </div>
     </div>
-
+    <?php
+        // Importamos el espacio de nombres del controlador
+        $controller = new \app\controllers\propiedadesController();
+        // Obtenemos los tipos y estados de las propiedades
+        $tipos = $controller->getTipos();
+        $estados = $controller->getEstados();
+    ?>    
     <!-- Seccion Buscador -->
     <section class="buscador py-custom">
         <div class="container px-2 px-sm-4 px-md-5 contenedor-busqueda">
             <h2 class="text-center font-weight-bold pt-5"><strong>Encuentra tu hogar ideal</strong></h2>
-            <ul class="nav nav-pills nav-fill my-5" role="tablist">
-                <li class="nav-item">
-                    <a href="#comprar" class="nav-link active" data-bs-toggle="pill">Comprar</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#alquilar" class="nav-link" data-bs-toggle="pill">Alquilar</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#vender" class="nav-link" data-bs-toggle="pill">Vender</a>
-                </li>
-            </ul>
-            <div class="tab-content pb-5">
-                <div class="tab-pane show active" id="comprar" role="tabpanel">
-                    <div class="contenedor-input input-group">
-                        <div class="col-12 my-1">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <select class="form-control">
-                                        <option value="casa">Casas</option>
-                                        <option value="depa">Departamentos</option>
-                                        <option value="oficina">Comercios</option>
-                                        <option value="lote">Lotes</option>
-                                        <option value="lote">Almacenes</option>
-                                    </select>
+            <form action="app/users/Vista/propiedades.php" method="GET" id="searchForm">
+                <ul class="nav nav-pills nav-fill my-5" role="tablist">
+                    <?php foreach ($estados as $index => $estado): ?>
+                        <li class="nav-item">
+                            <a href="#<?= ($estado) ?>" class="nav-link" data-bs-toggle="pill"><?= $estado ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <input type="hidden" id="estado" name="estado" value="">
+                <div class="tab-content pb-5">
+                    <div class="tab-pane show active" id="comprar" role="tabpanel">
+                        <div class="contenedor-input input-group">
+                            <div class="col-12 my-1">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <select class="form-control" name="tipo[]">
+                                            <?php foreach ($tipos as $tipo): ?>
+                                                <option value="<?= $tipo['id'] ?>"><?= $tipo['nombre_tipo'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-right"
+                                        id="query" placeholder="Ingresar ubicaci&oacute;n" name="query">
                                 </div>
-                                <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-right"
-                                    id="inlineFormInputGroupUsername" placeholder="Ingresar ubicaci&oacute;n">
+                                <input type="submit" class="btn btn-x" value="Buscar">
                             </div>
-                            <input type="submit" class="btn btn-x" value="Buscar">
                         </div>
                     </div>
+                    <!-- Similar changes for the other tab-panes -->
                 </div>
-                <div class="tab-pane" id="alquilar" role="tabpanel">
-                    <div class="contenedor-input input-group">
-                        <div class="col-12 my-1">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <select class="form-control">
-                                        <option value="casa">Casas</option>
-                                        <option value="depa">Departamentos</option>
-                                        <option value="oficina">Comercios</option>
-                                        <option value="lote">Lotes</option>
-                                        <option value="lote">Almacenes</option>
-                                    </select>
-                                </div>
-                                <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-0"
-                                    id="inlineFormInputGroupUsername" placeholder="Ingresar ubicaci&oacute;n">
-                            </div>
-                            <input type="submit" class="btn btn-x" value="Buscar">
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="vender" role="tabpanel">
-                    <div class="contenedor-input input-group">
-                        <div class="col-12 my-1">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <select class="form-control">
-                                        <option value="casa">Casas</option>
-                                        <option value="depa">Departamentos</option>
-                                        <option value="oficina">Comercios</option>
-                                        <option value="lote">Lotes</option>
-                                        <option value="lote">Almacenes</option>
-                                    </select>
-                                </div>
-                                <input type="text" class="form-control pl-1 pl-md-2 border-0 rounded-right"
-                                    id="inlineFormInputGroupUsername" placeholder="Ingresar ubicaci&oacute;n">
-                            </div>
-                            <input type="submit" class="btn btn-x" value="Buscar">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </section>
+    <script>
+        // Cuando se hace clic en un enlace de la píldora...
+        document.querySelectorAll('.nav-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                // Actualiza el valor del campo oculto con el estado correspondiente.
+                document.getElementById('estado').value = e.target.textContent;
+            });
+        });
+
+        // Antes de enviar el formulario...
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            // Si el campo de búsqueda está vacío...
+            if (!document.getElementById('query').value.trim()) {
+                // Elimina el nombre del campo de búsqueda para que no se incluya en la solicitud GET.
+                document.getElementById('query').name = '';
+            }
+        });
+    </script>
+    
+    
 
 
     
@@ -330,20 +314,15 @@
                 <div class="col-md-6 p-0 d-none d-md-block">
                     <img src="app/users/Vista/imagenes/frame 3.png" alt="Busquedas Rapidas" class="img-fluid w-100 my-image">
                 </div>
-                <div class="col-md-6 px-5 py-4">
+                <div class="col-md-6 px-5 py-4 my-text">
                     <h1 class="text-center text-md-left subtitle-1 work-sans-h1">Generando Soluciones <br> hace mas de 10 años</h1>
                     <p class="text-justify pt-4">
-                    Los orígenes de Wayloa se remontan a principios de la década de 2010, cuando un grupo de emprendedores visionarios, frustrados por las limitaciones y la falta de oportunidades en el sector de servicios, decidieron crear una alternativa que les permitiera desarrollar plenamente su potencial.
-
-                    Liderados por Juan Gómez, un experimentado profesional del sector, estos emprendedores se propusieron diseñar un modelo de negocio que rompiera con los esquemas tradicionales y ofreciera a los mejores talentos la posibilidad de alcanzar el máximo éxito a través de su propio esfuerzo y dedicación.
-
-                    Así nació Wayloa, una compañía que desde sus inicios ha apostado por una filosofía de trabajo basada en la autonomía, la meritocracia y la búsqueda constante de la excelencia. El sistema creado por Juan Gómez y su equipo está diseñado para atraer y retener a los profesionales más destacados, ofreciéndoles un entorno estimulante y enriquecedor en el que pueden desarrollar todo su potencial.
-
-                    La clave de este sistema radica en que los ingresos de cada profesional están directamente vinculados a los resultados que obtienen con su trabajo. Esta filosofía, que se refleja en el propio nombre de la compañía (Wayloa, una contracción de "Way to the top"), ha sido el motor del crecimiento y el éxito de Wayloa a lo largo de más de una década.
-
-                    Desde sus humildes inicios, cuando abrieron las primeras oficinas en unas pocas ciudades, Wayloa ha experimentado un crecimiento exponencial, convirtiéndose en una de las empresas líderes en su sector a nivel nacional e internacional. Hoy en día, Wayloa cuenta con más de 5,000 profesionales altamente cualificados que trabajan en más de 500 oficinas distribuidas en 20 países.
-
-                    La historia de Wayloa es la historia de un sueño hecho realidad, de un modelo de negocio innovador que ha transformado la forma de trabajar en el sector de servicios. Y es una historia que continúa escribiéndose, con la mirada puesta en el futuro y la determinación de seguir ofreciendo a los mejores talentos la oportunidad de alcanzar el máximo éxito.</p>
+                    Wayloa surge en la década de 2010 con el propósito de proporcionar una alternativa en el sector de servicios para permitir a los profesionales  
+                    alcanzar su máximo potencial. Liderados por Juan Gómez, un experimentado en el sector, el equipo fundador crea un modelo de negocio innovador basado en la autonomía,   
+                    la meritocracia y la búsqueda de la excelencia. Este modelo vincula los ingresos de los profesionales a sus resultados, promoviendo así un ambiente estimulante para el desarrollo  
+                    personal y profesional. A lo largo de más de una década, Wayloa ha experimentado un crecimiento significativo, expandiéndose a nivel nacional e internacional, con más de 5,000 profesionales   
+                    en más de 500 oficinas en 20 países. La historia de Wayloa refleja un sueño hecho realidad, con un modelo de negocio revolucionario que sigue transformando el sector de servicios, con la promesa  
+                    de seguir ofreciendo oportunidades para el éxito a los mejores talentos en el futuro.</p>
                     <button class="btn btn-light d-block mx-auto mx-md-0 mi-clase-especial">Ver más</button>
                 </div>
             </div>
@@ -367,21 +346,21 @@
                     </div>
                 </div>
             <div class="row align-items-stretch">
-                <div class="col-md-6 d-flex flex-column">
+                <div class="col-md-6 d-flex flex-column my-element">
                     <img src="app/users/Vista/imagenes/categoria-departamento.png" alt="Imagen 1" class="img-fluid img-large flex-grow-1">
                     <p><strong>Departamentos</strong></p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 my-element left">
                     <div class="row">
                         <div class="col-12">
                             <video src="app/users/Vista/imagenes/categoria-casas.mp4" alt="Video 2" class="img-fluid" autoplay loop muted></video>
                             <p><strong>Casas</strong></p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-element">
                             <img src="app/users/Vista/imagenes/catagorias-comercio.png" alt="Imagen 3" class="img-fluid">
                             <p><strong>Comercio</strong></p>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 my-element left">
                             <img src="app/users/Vista/imagenes/categorias-countries.png" alt="Imagen 4" class="img-fluid">
                             <p><strong>Countries</strong></p>
                         </div>
@@ -405,16 +384,24 @@
                     <?php
                         // Instanciamos la clase indexController
                         $controlador = new \app\controllers\indexController();
-
+                    
                         // Obtenemos todas las propiedades
                         $propiedades = $controlador->obtenerTodasLasPropiedades();
-
+                    
+                        // Contador para limitar el número de propiedades mostradas
+                        $contador = 0;
+                    
                         // Mostramos las propiedades
                         foreach($propiedades as $propiedad) {
+                            // Si ya hemos mostrado 6 propiedades, salimos del bucle
+                            if ($contador >= 6) {
+                                break;
+                            }
+                    
                             echo '
                             <div class="swiper-slide">
                                 <div class="card">
-                                    <img src="'.$propiedad['url_foto_principal'].'" alt="">
+                                    <img src="data:image/jpeg;base64,'.base64_encode( $propiedad['url_foto_principal'] ).'" alt="">
                                     <div class="card-description">
                                         <div class="price">Precio: $'.$propiedad['precio'].'</div>
                                         <div class="status"> En '.$propiedad['estado'].'</div>
@@ -431,6 +418,9 @@
                                     </div>
                                 </div>
                             </div>';
+                    
+                            // Incrementamos el contador
+                            $contador++;
                         }
                     ?>
                 </div>

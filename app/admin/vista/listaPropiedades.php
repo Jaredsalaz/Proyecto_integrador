@@ -67,4 +67,4 @@ $propiedades = $controlador->obtenerTodasLasPropiedades();
     </main>
 </body>
 
-</html>0
+</html>

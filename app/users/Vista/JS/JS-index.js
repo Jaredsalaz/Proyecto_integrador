@@ -1,3 +1,64 @@
+window.addEventListener('scroll', function() {
+    var footer = document.querySelector('footer');
+    var footerTop = footer.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight;
+
+    if (footerTop < windowHeight) {
+        footer.classList.add('animate-footer');
+    }
+});
+//ANIMACIONES CARD
+window.addEventListener('scroll', function() {
+    var cards = document.querySelectorAll('.card');
+    var windowHeight = window.innerHeight;
+
+    cards.forEach(function(card) {
+        var cardTop = card.getBoundingClientRect().top;
+
+        if (cardTop < windowHeight) {
+            card.classList.add('animate-card');
+        }
+    });
+});
+// animacion de categorias
+window.addEventListener('scroll', function() {
+    var elements = document.querySelectorAll('.my-element');
+    var windowHeight = window.innerHeight;
+
+    elements.forEach(function(element) {
+        var elementTop = element.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight) {
+            if (element.classList.contains('left')) {
+                element.classList.add('animate-left');
+            } else {
+                element.classList.add('animate-right');
+            }
+        }
+    });
+});
+// A nimacion para el texto principal
+window.addEventListener('scroll', function() {
+    var text = document.querySelector('.my-text');
+    var textTop = text.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight;
+
+    if (textTop < windowHeight) {
+        text.classList.add('animate-right');
+    }
+});
+// Animación de la imagen principal
+window.addEventListener('scroll', function() {
+    var image = document.querySelector('.my-image');
+    var imageTop = image.getBoundingClientRect().top;
+    var windowHeight = window.innerHeight;
+
+    if (imageTop < windowHeight) {
+        image.classList.add('animate-left');
+    }
+});
+
+
 $(document).ready(function(){
 	$('#dropdownMenuButton').parent().hover(function() {
 		$(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);

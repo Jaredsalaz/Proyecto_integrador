@@ -123,7 +123,7 @@
                     // Verificar si el usuario es un administrador
                     if ($usuario['u_tipo'] == 'admin') {
                         // Redirigir al usuario a la página de administrador
-                        header('Location: app/admin/vista/principal.php');
+                        header('Location: app/admin/vista/principal.php');//se va a cambiar por js para que no se vea la ruta
                         exit;
                     }
 
