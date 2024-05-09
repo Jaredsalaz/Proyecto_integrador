@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/detalle-propiedad.css">
     <title>Detalle</title>
 </head>
@@ -27,7 +29,7 @@
                 <div class="col-md-6 p-1 propImage jsPropImage1" style="padding-bottom: 0px !important; padding-left:0px !important;"><img src="https://cdn.remax.com.mx/properties/606473/2b8a65fd2ee689cb04a11a904a3ac444.jpg" id="galeria0" class="galeriaImg" style="width: 100%; position: relative; height: 100%; object-fit: cover;"></div>
                 <div class="col-md-3 p-1 propImage jsPropImage2-3" style="padding-bottom: 0px !important;"><img src="https://cdn.remax.com.mx/properties/606473/3f84d767662619e54bf7a1ad60d6e9e7.jpg" id="galeria1" class="pb-2 galeriaImg" style="width: 100%; height: 50%; object-fit: cover;"><img src="https://cdn.remax.com.mx/properties/606473/3126467d850cb3820886e9b738f7be07.jpg" id="galeria2" class="galeriaImg" style="width: 100%; height: 50%; object-fit: cover;"></div>
                 <div class="col-md-3 p-1 propImage jsPropImage4" style="position: relative; padding-bottom: 0px !important; padding-right:0px !important;"><img src="https://cdn.remax.com.mx/properties/606473/673fc3f6aabbaf5c3685d2274a055df7.jpg" id="galeria3" class="galeriaImg" style="width: 100%; height: 100%; object-fit: cover;">
-                    <button id="masFotos" class="rounded-pill btn-primary text-white jsMasFotos d-none d-md-block" style="position:absolute; right:20px; bottom:20px; width:235px;">Ver más fotos</button>
+                    <button id="masFotos" class="rounded-pill btn-primary text-white jsMasFotos d-none d-md-block" style="position:absolute; right:20px; bottom:20px; width:235px;" data-toggle="modal" data-target="#jsGaleriaModal">Ver más fotos</button>
                 </div>
             </div>
 
@@ -390,61 +392,7 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12 col-lg-7">
-                        <h3 class="text-primary pt-3">ÁREAS</h3>
-                        <div class="row jsAreas">
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Bardeado</span>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Escuelas cercanas</span>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Estacionamientos</span>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Gimnasios cercanos</span>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Parques cercanos</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12 col-lg-7">
-                        <h3 class="text-primary pt-3">EQUIPO</h3>
-                        <div class="row jsEquipos">
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Agua potable</span>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Calle pavimentada</span>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Cisterna</span>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Internet</span>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center w-100 pb-2">
-                                <i class="fa fa-star pr-2 text-primary" style="font-size:8px" aria-hidden="true"></i>
-                                <span class="text-dark-gray">Vigilancia</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 
                 <div class="row jsDetallesInternos" style="display: none;">
                     <div class="col-12 col-lg-7">
@@ -957,6 +905,18 @@
             }
         </style>
 
+
+
+        
+
+        <!-- JS de jQuery (necesario para los plugins de JavaScript de Bootstrap) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+        <!-- JS de Popper.js (necesario para los tooltips y popovers de Bootstrap) -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+
+        <!-- JS de Bootstrap -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script type="text/javascript">
         window.__lc = window.__lc || {};
         window.__lc.license = 8625599;
