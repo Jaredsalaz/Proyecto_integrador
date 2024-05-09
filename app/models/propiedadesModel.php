@@ -146,6 +146,11 @@
                 $params[] = '%' . $filters['query'] . '%';
                 $params[] = '%' . $filters['query'] . '%';
             }
+            // Agregar el filtro de categoría
+            if (!empty($filters['categoria'])) {
+                $sql .= " AND tipos.nombre_tipo = ?";
+                $params[] = $filters['categoria'];
+            }
 
             // Prepararamos y ejecutar la consulta SQL
             $stmt = $this->conectar()->prepare($sql);

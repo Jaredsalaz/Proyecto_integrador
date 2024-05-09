@@ -1,4 +1,5 @@
 <?php
+    
         // Deshabilitar la caché
     header('Cache-Control: no-cache, must-revalidate, max-age=0');
     header('Pragma: no-cache');
@@ -347,22 +348,30 @@
                 </div>
             <div class="row align-items-stretch">
                 <div class="col-md-6 d-flex flex-column my-element">
-                    <img src="app/users/Vista/imagenes/categoria-departamento.png" alt="Imagen 1" class="img-fluid img-large flex-grow-1">
-                    <p><strong>Departamentos</strong></p>
+                    <a href="app/users/Vista/propiedades.php?categoria=Departamentos">
+                        <img src="app/users/Vista/imagenes/categoria-departamento.png" alt="Imagen 1" class="img-fluid img-large flex-grow-1">
+                        <p><strong>Departamentos</strong></p>
+                    </a>
                 </div>
                 <div class="col-md-6 my-element left">
                     <div class="row">
                         <div class="col-12">
-                            <video src="app/users/Vista/imagenes/categoria-casas.mp4" alt="Video 2" class="img-fluid" autoplay loop muted></video>
-                            <p><strong>Casas</strong></p>
+                            <a href="app/users/Vista/propiedades.php?categoria=Casas">
+                                <video src="app/users/Vista/imagenes/categoria-casas.mp4" alt="Video 2" class="img-fluid" autoplay loop muted></video>
+                                <p><strong>Casas</strong></p>
+                            </a>
                         </div>
                         <div class="col-md-6 my-element">
-                            <img src="app/users/Vista/imagenes/catagorias-comercio.png" alt="Imagen 3" class="img-fluid">
-                            <p><strong>Comercio</strong></p>
+                            <a href="app/users/Vista/propiedades.php?categoria=Comercios">
+                                <img src="app/users/Vista/imagenes/catagorias-comercio.png" alt="Imagen 3" class="img-fluid">
+                                <p><strong>Comercios</strong></p>
+                            </a>
                         </div>
                         <div class="col-md-6 my-element left">
-                            <img src="app/users/Vista/imagenes/categorias-countries.png" alt="Imagen 4" class="img-fluid">
-                            <p><strong>Countries</strong></p>
+                            <a href="app/users/Vista/propiedades.php?categoria=Countries">
+                                <img src="app/users/Vista/imagenes/categorias-countries.png" alt="Imagen 4" class="img-fluid">
+                                <p><strong>Countries</strong></p>
+                            </a>
                         </div>
                     </div>
                 </div>

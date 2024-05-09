@@ -332,6 +332,9 @@ require_once 'inc/session_start.php';
                         if (isset($_GET['estado'])) {
                             $filters['estado'] = $_GET['estado'];
                         }
+                        if (isset($_GET['categoria'])) {
+                            $filters['categoria'] = $_GET['categoria'];
+                        }
 
                         
                         // Filtrar propiedades
