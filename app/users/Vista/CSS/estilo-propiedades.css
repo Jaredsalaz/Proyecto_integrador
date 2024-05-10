@@ -249,7 +249,7 @@ footer .container .row .col-12 .redes a {
   color: var(--bg-card);
 }
 
-.details-button {
+.details-button  {
   cursor: pointer;
 
   display: flex;
@@ -258,7 +258,7 @@ footer .container .row .col-12 .redes a {
   gap: 0.25rem;
 
   padding: 0.5rem;
-  width: 100%;
+  width: 250px;
   background-image: var(--bg-linear);
 
   font-size: 0.75rem;

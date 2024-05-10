@@ -1,3 +1,16 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once '../../../config/app.php';
+require_once './/..//../../autoload.php';
+require_once 'inc/session_start.php';
+
+$controller = new \app\controllers\detalleController();
+    $datos = $controller->detallePropiedad();
+    $imagen_principal = $datos['imagen_principal'];
+    $galeria = $datos['galeria'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,11 +39,27 @@
             </nav>
             
             <div class="d-flex anuncios w-100">
-                <div class="col-md-6 p-1 propImage jsPropImage1" style="padding-bottom: 0px !important; padding-left:0px !important;"><img src="https://cdn.remax.com.mx/properties/606473/2b8a65fd2ee689cb04a11a904a3ac444.jpg" id="galeria0" class="galeriaImg" style="width: 100%; position: relative; height: 100%; object-fit: cover;"></div>
-                <div class="col-md-3 p-1 propImage jsPropImage2-3" style="padding-bottom: 0px !important;"><img src="https://cdn.remax.com.mx/properties/606473/3f84d767662619e54bf7a1ad60d6e9e7.jpg" id="galeria1" class="pb-2 galeriaImg" style="width: 100%; height: 50%; object-fit: cover;"><img src="https://cdn.remax.com.mx/properties/606473/3126467d850cb3820886e9b738f7be07.jpg" id="galeria2" class="galeriaImg" style="width: 100%; height: 50%; object-fit: cover;"></div>
-                <div class="col-md-3 p-1 propImage jsPropImage4" style="position: relative; padding-bottom: 0px !important; padding-right:0px !important;"><img src="https://cdn.remax.com.mx/properties/606473/673fc3f6aabbaf5c3685d2274a055df7.jpg" id="galeria3" class="galeriaImg" style="width: 100%; height: 100%; object-fit: cover;">
-                    <button id="masFotos" class="rounded-pill btn-primary text-white jsMasFotos d-none d-md-block" style="position:absolute; right:20px; bottom:20px; width:235px;" data-toggle="modal" data-target="#jsGaleriaModal">Ver más fotos</button>
+                <div class="col-md-6 p-1 propImage jsPropImage1" style="padding-bottom: 0px !important; padding-left:0px !important;">
+                    <img src="data:image/jpeg;base64,<?php echo base64_encode($imagen_principal); ?>" id="galeria0" class="galeriaImg" style="width: 100%; position: relative; height: 100%; object-fit: cover;">
                 </div>
+                <div class="col-md-3 p-1">
+                    <?php 
+                    for ($i = 0; $i < 2; $i++) { 
+                        if (!empty($galeria[$i])) {
+                            echo '<div class="propImage jsPropImage' . ($i + 2) . '-3" style="padding-bottom: 0px !important;">';
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($galeria[$i]) . '" id="galeria' . ($i + 1) . '" class="pb-2 galeriaImg" style="width: 100%; height: 50%; object-fit: cover;">';
+                            echo '</div>';
+                        }
+                    }
+                    ?>
+                </div>
+                <?php 
+                if (!empty($galeria[2])) {
+                    echo '<div class="col-md-3 p-1 propImage jsPropImage4" style="padding-bottom: 0px !important;">';
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode($galeria[2]) . '" id="galeria3" class="pb-2 galeriaImg" style="width: 100%; height: 100%; object-fit: cover;">';
+                    echo '</div>';
+                }
+                ?>
             </div>
 
 
@@ -87,7 +116,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-lg-7 order-2 order-lg-1 mt-5 pr-5" style="border-right: 0.7026335000991821px solid #949CA1;">
@@ -534,5 +562,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </div>
     <?php include 'footer.php'; ?>
+    <script src="JS/JS-detalle-propiedad.js"></script>
 </body>
 </html>
