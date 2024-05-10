@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </nav>
-
+            
             <div class="d-flex anuncios w-100">
                 <div class="col-md-6 p-1 propImage jsPropImage1" style="padding-bottom: 0px !important; padding-left:0px !important;"><img src="https://cdn.remax.com.mx/properties/606473/2b8a65fd2ee689cb04a11a904a3ac444.jpg" id="galeria0" class="galeriaImg" style="width: 100%; position: relative; height: 100%; object-fit: cover;"></div>
                 <div class="col-md-3 p-1 propImage jsPropImage2-3" style="padding-bottom: 0px !important;"><img src="https://cdn.remax.com.mx/properties/606473/3f84d767662619e54bf7a1ad60d6e9e7.jpg" id="galeria1" class="pb-2 galeriaImg" style="width: 100%; height: 50%; object-fit: cover;"><img src="https://cdn.remax.com.mx/properties/606473/3126467d850cb3820886e9b738f7be07.jpg" id="galeria2" class="galeriaImg" style="width: 100%; height: 50%; object-fit: cover;"></div>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-12 d-block d-md-none text-center">
                             <div class="pt-3">          
-                                <p class="rounded-pill btn btn-primary text-white text-center jsMasFotos" style="border: 0.5px solid white !important; padding:1px 20px; width:250px;">Ver más fotos</p>
+                                <p class="rounded-pill btn btn-primary text-white text-center jsMasFotos" style="border: 0.5px solid white !important; padding:1px 20px; width:250px;" data-toggle="modal" data-target="#jsGaleriaModal">Ver más fotos</p>
                             </div>
                         </div>
                         <div class="col-12 d-block d-md-none text-center">
@@ -123,24 +123,24 @@
                                         <!-- TELEFONO DESKTOP -->
                                         <div class="d-none d-md-flex flex-column align-content-center pb-2 selectable" data-toggle="modal" data-target="#jsAgenteTelfonoModal">
                                             <img src="https://remax.com.mx/images/publico/2020-redesign/icon-telefono.png" style="width:50px;">
-                                            <span class="text-info fs-12 pt-2">Teléfono</span>
+                                            <span class="text-info fs-12 pt-2"></span>
                                         </div>
                                         <!-- TELEFONO MOBILE -->
                                         <a class="d-flex d-md-none flex-column align-content-center pb-2" id="jsOficinaTelefonoMobile" href="tel:2222908877">
                                             <img src="https://remax.com.mx/images/publico/2020-redesign/icon-telefono.png" style="width:50px;">
-                                            <span class="text-info fs-12 pt-2">Teléfono</span>
+                                            <span class="text-info fs-12 pt-2"></span>
                                         </a>
                                         <div class="d-none flex-column align-content-center pb-2 selectable jsAgenteCelularModalBtn" data-toggle="modal" data-target="#jsAgenteCelularModal">
                                             <img src="https://remax.com.mx/images/publico/2020-redesign/icon-telefono.png" style="width:50px;">
-                                            <span class="text-info fs-12 pt-2">Celular</span>
+                                            <span class="text-info fs-12 pt-2"></span>
                                         </div>
                                         <div class="d-flex flex-column align-content-center pb-2 selectable" data-toggle="modal" data-target="#jsAgenteEmailModal">
                                             <img src="https://remax.com.mx/images/publico/2020-redesign/icon-email.png" style="width:50px;">
-                                            <span class="text-info fs-12 pt-2">Correo</span>
+                                            <span class="text-info fs-12 pt-2"></span>
                                         </div>
                                         <div class="d-flex flex-column align-content-center pb-2 selectable jsWhatsapp" data-toggle="modal" data-target="#jsAgenteWhatsappModal">
                                             <img src="https://remax.com.mx/images/publico/2020-redesign/icon-whatsapp.png" style="width:50px;">
-                                            <span class="text-info fs-12 pt-2">Whatsapp</span>
+                                            <span class="text-info fs-12 pt-2"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -273,264 +273,24 @@
                     </div>
                 </div>
 
-                <div class="row" id="jsDetallesComercialSection" style="display: none;">
-                    <div class="col-12 col-lg-6">
-                        <h3 class="text-primary pt-3">DETALLES</h3>
-                        <div class="row">
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-terreno.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Terreno</span> 
-                                    <span class="text-primary jsTerreno">68.90 m2</span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-estacionamiento.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Estacionamiento</span> 
-                                    <div class="d-flex fs-12">
-                                        <span class="text-primary jsEstacionamientos">1</span> 
-                                        <span class="text-primary ml-1 jsTipoEstacionamientos">Cubierto</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-conservacion.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Conservación</span> 
-                                    <span class="text-primary jsConservacion">Buena</span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-construccion.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Construcción</span> 
-                                    <span class="text-primary jsConstruccion">128 m2</span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-banos.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Baños</span> 
-                                    <span class="text-primary jsBanos">2.0</span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-edad.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Edad de Propiedad</span> 
-                                    <span class="text-primary jsEdad">20 años</span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-metraje-rentable.png" style="height:30px; width:30px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Metraje Rentable</span> 
-                                    <span class="text-primary jsMetrajeRentable"></span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-orientacion.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Orientación</span> 
-                                    <span class="text-primary jsOrientacion">Oriente</span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-uso-de-suelo.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Uso de Suelo</span> 
-                                    <span class="text-primary jsUsoSuelo">Habitacional</span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-calidad-de-entegra.png" style="height:30px; width:30px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Calidad de Entegra</span> 
-                                    <span class="text-primary jsCalidad"></span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-niveles.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Niveles/Piso</span> 
-                                    <span class="text-primary jsNiveles">2</span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
-                                <div class="mr-2">
-                                    <img src="https://remax.com.mx/images/publico/2020-redesign/icon-mantenimiento.svg" style="height:36px; width:36px;">
-                                </div>
-                                <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Mantenimiento</span> 
-                                    <span class="text-primary jsMantenimiento">$0 MXN</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
                 
                 
-                <div class="row jsDetallesInternos" style="display: none;">
-                    <div class="col-12 col-lg-7">
-                        <h3 class="text-primary pt-3">DETALLES INTERNOS</h3>
-                        <div class="row">
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Estado: </span>
-                                    <span class="text-dark-gray fs-12 jsEstado">Puebla</span> 
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Estatus Jurídico: </span>
-                                    <span class="text-dark-gray fs-12 jsEstatusJuridico">Libre de Gravamen</span> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Ciudad: </span>
-                                    <span class="text-dark-gray fs-12 jsCiudad">Puebla (Heroica Puebla)</span> 
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Comisión Pactada: </span>
-                                    <span class="text-dark-gray fs-12 jsComisionPactada"></span> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Colonia: </span>
-                                    <span class="text-dark-gray fs-12 jsColonia">INFONAVIT El Carmen (Gastronómicos)</span> 
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Comisión a Compartir: </span>
-                                    <span class="text-dark-gray fs-12 jsComisionCompartir">50.00</span> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Calle: </span>
-                                    <span class="text-dark-gray fs-12 jsCalle">Cerrada 9 B sur</span> 
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Clave Catastral: </span>
-                                    <span class="text-dark-gray fs-12 jsClaveCatastral"></span> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Número Exterior: </span>
-                                    <span class="text-dark-gray fs-12 jsNumeroExterior" style="display: none;">8712</span> 
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Llaves: </span>
-                                    <span class="text-dark-gray fs-12 jsLlaves">Solo con cita</span> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Número Interior: </span>
-                                    <span class="text-dark-gray fs-12 jsNumeroInterior">0</span> 
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Excluvidad: </span>
-                                    <span class="text-dark-gray fs-12 jsExclusividad">Si</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Código Postal: </span>
-                                    <span class="text-dark-gray fs-12 jsPostal">72470</span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Existe una propuesta sobre la propiedad: </span>
-                                    <span class="text-dark-gray fs-12 jsExistePropuesta">No</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Comentarios Internos: </span>
-                                    <span class="text-dark-gray fs-12 jsComentariosInternos"></span>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6 pt-2 pb-2">
-                                <div class="mr-2">
-                                    <span class="text-primary fs-12">Venta Pendiente: </span>
-                                    <span class="text-dark-gray fs-12 jsVentaPendiente">No</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                
+                <!-- Mapa -->
                 <div class="row">
                     <div class="col-12 col-lg-7 pb-4 pt-3 jsMap">
                         <iframe class="w-100" frameborder="0" style="border:0; min-height: 450px;" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCa_x-67vlvtt8Eh7XQgTUbHplrSezOT7Q&amp;q=19.001,-98.2346" allowfullscreen=""></iframe>
                     </div>
                 </div>
                 
-                <div class="row">
-                    <div class="col-12 col-lg-7 pb-4 pt-3">
-                        <span class="jsQrCode">
-                            <img style="margin: 0 auto;padding: 0px;width:175px;display:block;max-height:175px;min-height:175px;border: 1.5px solid #fff;" src="https://api.remax.com.mx/files/qrlive/RCR606473-344_QR.png">
-                        </span>
-                        <p class="text-primary pt-2" style="width:200px; margin: 0 auto;">ESCANÉA EL CÓDIGO QR Para descargar la ficha técnica de esta propiedad.</p>
-                    </div>
-                </div>
+                
             </div>
     
         </section>
 
-
+        <!-- Galeria Modal -->
         <div class="modal fade bd-example-modal-lg" id="jsGaleriaModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg w-100" style="margin: 0px; max-width: unset!important;">
                 <div class="modal-content" style="background: #000;height: 100vh;">
@@ -599,10 +359,10 @@
                                     <div class="profile__info">
                                         <div class="ase" align="center">
                                             <section id="property-contact-form">
-                                                <img src="https://remax.com.mx/images/publico/2020-redesign/remax-ballon-md.png">
-                                                <h4 class="jsOficinaNombre mb-3">RE/MAX Advance</h4>
+                                                <img src="imagenes/logo_wayloa.jpg">
+                                                <h4 class="jsOficinaNombre mb-3">Wayloa</h4>
                                                 <h5 class="jsAgenteNombre">Asdrubal Urizar Silva </h5>
-                                                <p><i class="fas fa-map-marker-alt"></i> <span class="jsOficinaAddress">Paseo  Sinfonía 2, San Andrés Cholula<br> CP. 72830</span></p>
+                                                <p><i class="fas fa-map-marker-alt"></i> <span class="jsOficinaAddress">Av. Central Ote. 956, San Roque<br> CP. 29066</span></p>
                                                 <a class="jsOficinaTelefonoLink" href="tel:2222908877" style="color:white;">
                                                     <div class="btn btn-primary" style="width: 250px;"> 
                                                         <i class="fas fa-phone-alt" style="font-size: 20px;"></i> <span style="font-size: 19px;" class="jsOficinaTelefono">2222908877</span>
@@ -619,38 +379,6 @@
             </div>
         </div>
 
-        <!-- Agente Celular Modal -->
-        <div id="jsAgenteCelularModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button style="z-index: 9999; position: absolute; right: 1rem;" type="button" class="close" data-dismiss="modal">×</button>
-                        <div align="center" class="pull-right" style="text-align: -moz-center; position: relative; width: 100%;">
-                            <div class="section-bar" style="text-align: -webkit-center;">
-                                <div class="profile">
-                                    <div class="profile__info">
-                                        <div class="ase" align="center">
-                                            <section id="property-contact-form">
-                                                <img src="https://remax.com.mx/images/publico/2020-redesign/remax-ballon-md.png">
-                                                <h4 class="jsOficinaNombre mb-3">RE/MAX Advance</h4>
-                                                <h5 class="jsAgenteNombre">Asdrubal Urizar Silva </h5>
-                                                <p><i class="fas fa-map-marker-alt"></i> <span class="jsOficinaAddress">Paseo  Sinfonía 2, San Andrés Cholula<br> CP. 72830</span></p>
-                                                <a class="jsAgenteCelularLink" href="tel:2221098942" style="color:white;">
-                                                    <div class="btn btn-primary" style="width: 250px;"> 
-                                                        <i class="fas fa-phone-alt" style="font-size: 20px;"></i> <span style="font-size: 19px;" class="jsAgenteCelular">2221098942</span>
-                                                    </div>
-                                                </a>
-                                            </section>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
         <!-- Agente Email Modal -->
@@ -795,119 +523,6 @@
             </div>
         </div>
 
-        <!-- Compartir Modal -->
-        <div id="jsCompartirModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-xl">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <div id="compartir" align="center" class="pull-right" style=" overflow-y: auto!important;text-align: -moz-center;   position: relative;width: 100%;   padding-top: 5%;  text-align: -webkit-center;">
-                            <div style="max-width: 90%;height: auto;">
-                                <div class="row">
-                                    <div class="col-4 jsPrint">
-                                        <a title="Imprimir flyer" href="#">
-                                            <i class="fas fa-print"></i><br><span style="font-size: 12px;">Enviar a <br>Impresora</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4 selectable">
-                                        <a data-toggle="modal" data-target="#ModalCorreo" href="#">
-                                            <i class="fas fa-envelope"></i><br><span style="font-size: 12px;">Enviar <br>por correo</span>
-                                        </a>
-                                    </div>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="ModalCorreo" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header" style=" background-color: #004e9b!important; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);    color: white;">
-                                                    <h5 class="modal-title" id="ModalLabel">Enviar Flyer</h5>
-                                                    <div class="jsCloseEmailModal selectable" aria-label="Close" style="color:#fff;opacity: 1!important;">
-                                                        <span aria-hidden="true" style="font-size: 16px!important;">×</span>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-body" style="height: auto;">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div id="contactAgenteForm">
-                                                                <form id="commentsForm">
-                                                                    <br>
-                                                                    <div class="form-group ">
-                                                                        <div class="input-group">
-                                                                            <div class="input-group-addon" style="background-color: #eeeeee54;"><i class="fas fa-envelope" style="font-size: 20px;"></i></div>
-                                                                            <input class="form-control" type="email" maxlength="70" id="mandarFlyerEmail" name="cliente_email" placeholder="Ingresa el correo electrónico">
-                                                                        </div>
-                                                                        <br>
-                                                                        <textarea class="form-control" name="comments" id="jsMandarFlyerComment" maxlength="500" placeholder="Comentarios"></textarea>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer jsCompartirEmailModal">
-                                                    <button class="jsCloseEmailModal" style="background: #5b5b5b;   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);    user-select: none;    -webkit-appearance: none;    display: inline-block;    padding: 0px 20px;    line-height: 30px;    font-size: 16px;    width: 110px;   border: 0px; font-weight: 400;    cursor: pointer;    border-radius: 8px;    text-align: center;    color: #fff;">Cancelar</button>
-                                                    <div class="jsEnviarEmailModal" style="background: #0052c4;    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);    user-select: none;    -webkit-appearance: none;    display: inline-block;    padding: 0px 20px;    line-height: 30px;    font-size: 16px;    width: 110px;    font-weight: 400;    cursor: pointer;    border-radius: 8px;    text-align: center;    color: #fff;">Enviar</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="whatsphone jsWhatsappPhone d-block d-sm-none">
-                                            <a class="UpdateVistasCount" compartir="whatsapp" href="https://api.whatsapp.com/send?text=Hola, quiero compartirte esta propiedad que encontré en www.remax.com.mx para verla da clic en el siguiente link... https://remax.com.mx/propiedad/606473" title="Compartir en Whatsapp">
-                                                <i class="fab fa-whatsapp"></i><br><span style="font-size: 12px;">Compartir en <br>Whatsapp</span>
-                                            </a>
-                                        </div>
-                                        <div class="whatsweb jsWhatsappWeb d-none d-md-block">
-                                            <a class="UpdateVistasCount" compartir="whatsapp" target="_blank" href="https://web.whatsapp.com/send?text=Hola, quiero compartirte esta propiedad que encontré en www.remax.com.mx para verla da clic en el siguiente link... https://remax.com.mx/propiedad/606473" title="Compartir en Whatsapp">
-                                                <i class="fab fa-whatsapp"></i><br><span style="font-size: 12px;">Compartir en <br>Whatsapp</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 jsLinkedIn">
-                                        <a class="UpdateVistasCount" compartir="linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://remax.com.mx/propiedad/606473&amp;title=Casa en Renta Infonavit el Carmen Castillotla &amp;summary=Ubicada en Infonavit el Carmen.  La casa cuenta con cochera techada, sala comedor, cocina y un baño en planta baja, en el primer nivel cuenta con 3 habitaciones y 1 baño completo. El terreno cuenta con 69 m2 y de construcción 164m2.  Ubicado en un privada cerrada con vigilancia por las noches, muy cerca de Av, Municipio Libre y Av, Nacional. Se requiere póliza jurídica. Precios sujetos a cambio sin previo aviso. AU=LinkedIn" title="Compartir en Linkedin">
-                                            <i class="fab fa-linkedin"></i><br><span style="font-size: 12px;">Compartir en <br> Linkedin</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-4 jsFacebook">
-                                        <a class="UpdateVistasCount" compartir="facebook" target="_blank" href="http://www.facebook.com/sharer.php?u=https://remax.com.mx/propiedad/606473" title="Compartir en Facebook">
-                                            <i class="fab fa-facebook-f"></i><br><span style="font-size: 12px;">Compartir en <br>Facebook</span>      
-                                        </a>
-                                    </div>
-                                    <div class="col-4 jsTwitter">
-                                        <a class="UpdateVistasCount" compartir="twitter" target="_blank" href="http://twitter.com/intent/tweet?text=Hola, quiero compartirte esta propiedad que encontré en www.remax.com.mx para verla da clic en el siguiente link... https://remax.com.mx/propiedad/606473" title="Compartir en Twitter">
-                                            <i class="fab fa-twitter"></i><br><span style="font-size: 12px;">Compartir en <br> Twitter</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-12 jsPropiedadLink">
-                                        <a class="jsCopyBlock UpdateVistasCount" compartir="copiado" data-clipboard-text="https://remax.com.mx/propiedad/606473" href="#">
-                                            <i class="fas fa-share"></i>
-                                            <br><span style="font-size: 12px;">Link de la <br> Propiedad</span> <br><br>
-                                            <input style=" width: 350px; font-size: 14px; border: 1px solid #ffffff; background: #323232; letter-spacing: 1px; color: #ffffff; padding: 5px; border-radius: 3px;" class="jsLinkText" type="text" value="https://remax.com.mx/propiedad/606473">
-                                            <br><span style="text-shadow: 0 1px 2px rgb(65, 65, 65);    background: #00d00a;    color: white;    letter-spacing: 1px;" class="jsCopyAnswer"></span><br>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Start of LiveChat (www.livechatinc.com) code -->
-        <style>
-            @media screen and (max-width: 991px) {
-                #chat-widget-container{
-                    display: none!important;
-                }
-            }
-        </style>
-
-
-
-        
 
         <!-- JS de jQuery (necesario para los plugins de JavaScript de Bootstrap) -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -917,15 +532,7 @@
 
         <!-- JS de Bootstrap -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-        window.__lc = window.__lc || {};
-        window.__lc.license = 8625599;
-        (function() {
-        var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
-        lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-        })();
-        </script>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 </html>
