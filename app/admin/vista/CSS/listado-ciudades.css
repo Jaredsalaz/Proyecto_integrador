@@ -1,0 +1,181 @@
+main.table {
+    position: relative;
+    width: 81.5vw;
+    height: 85vh;
+    background-color: #fff5;
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: .8rem;
+    overflow: hidden;
+    padding-left: 30px;
+}
+.table {
+    position: relative;
+    left: 20px;
+}
+.list-ciudades {
+    position: relative;
+    padding-left: 90px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table th, td {
+    border-collapse: collapse;
+    padding: 1rem;
+    text-align: left;
+}
+thead th {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #d5d1defe;    
+    text-transform: capitalize;
+    padding-left: 50px;
+}
+tbody tr:nth-child(even) {
+    background-color: #0000000b;
+}
+tbody tr:hover {
+    background-color: #fff6;
+}
+.table-container {
+    position: relative;
+    width: 80vw;
+    height: 81vh;
+    background-color: #fff5;
+    box-shadow: 0 .4rem .8rem #0005;
+    border-radius: 1rem;
+    overflow: hidden;
+    padding-right: 10px;
+    right: 13px;
+    top:  20px;
+}
+.table__body {
+    position: relative;
+    width: 100%;
+    max-height: calc(89% - 1.6rem);
+    background: #fff6;
+    margin: .8rem auto;
+    border-radius: .6rem;
+    overflow: auto;
+    overflow: overlay;
+    left: 5px;
+    top: 15px;
+}
+.listado-ciudades {
+    width: 100%;
+    height: 10%;
+    background-color: rgba(88, 86, 86, 0.267);
+    padding: .8rem 1rem;
+    padding-left: 50px;
+}
+.table__body::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+
+.table__body:hover::-webkit-scrollbar-thumb { 
+    visibility: visible;
+}
+.btn-action {
+    background-color: black;
+    border: none;
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.btn-action:hover {
+    background-color: #c2abab;
+}
+
+/*Responsive*/
+@media all and (max-width: 1200px) {
+    main.table {
+        width: 100vh !important;
+    }
+    .table-container {
+        position: relative;
+        width: 97vh !important;
+        right: 1.3rem;
+    }
+    .table__body {
+        position: relative;
+        width: 95%;
+    }
+}
+@media all and (max-width: 1000px) {
+    main.table {
+        width: 77vh !important;
+    }
+    .table-container {
+        position: relative;
+        width: 74vh !important;
+    }
+    .table__body {
+        position: relative;
+        width: 100%;
+    }
+}
+@media all and (max-width: 850px) {
+    main.table {
+        width: 59vh !important;
+    }
+    .table-container {
+        position: relative;
+        width: 56vh !important;
+        overflow-x: auto;
+    }
+    .table__body {
+        position: relative;
+        width: 98%;
+    }
+}
+@media all and (max-width: 650px) {
+    main.table {
+        width: 36vh !important;
+    }
+    .table-container {
+        position: relative;
+        width: 33vh !important;
+        overflow-x: auto;
+    }
+    .table__body {
+        position: relative;
+        width: 95%;
+    }
+    .listado-ciudades {
+        height: 90px;
+    }
+}
+
+
+
+/*=================== Tema Oscuro =====================*/
+.dark-theme-variables {
+    --color-h2: #578de0; 
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+.dark-theme-variables h2 {
+    color: #578de0;
+}
+.dark-theme-variables .main h1,
+.dark-theme-variables .main h2 {
+    color: var(--color-h2);
+}
+:root {
+    --blue: #2a2185;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}

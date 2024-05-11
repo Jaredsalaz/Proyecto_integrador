@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="nuevo-tipo-propiedad.php">
                         <span class="icon">
                             <ion-icon name="add-circle-outline"></ion-icon>
                         </span>
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="listado-tipo-propiedades.php">
                         <span class="icon">
                             <ion-icon name="list-outline"></ion-icon>
                         </span>
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="nuevo-pais.php">
                         <span class="icon">
                             <ion-icon name="add-circle-outline"></ion-icon>
                         </span>
@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="listado-paises.php">
                         <span class="icon">
                             <ion-icon name="list-outline"></ion-icon>
                         </span>
@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="nueva-ciudad.php">
                         <span class="icon">
                             <ion-icon name="add-circle-outline"></ion-icon>
                         </span>
@@ -87,7 +87,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="listado-ciudades.php">
                         <span class="icon">
                             <ion-icon name="list-outline"></ion-icon>
                         </span>
