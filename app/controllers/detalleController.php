@@ -30,7 +30,17 @@
             }
 
             // Devuelve los detalles de la propiedad
-            return ['imagen_principal' => $imagen_principal, 'galeria' => $galeria];
+            return [
+                'imagen_principal' => $imagen_principal, 
+                'galeria' => $galeria,
+                'dimensiones' => $propiedad['dimensiones'],
+                'habitaciones' => $propiedad['habitaciones'],
+                'banios' => $propiedad['banios'],
+                'garage' => $propiedad['garage'],
+                'precio' => $propiedad['precio'],
+                'moneda' => $propiedad['moneda'],
+                'estado' => $propiedad['estado']
+            ];
         }
         
     }

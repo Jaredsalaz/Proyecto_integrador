@@ -7,9 +7,20 @@ require_once './/..//../../autoload.php';
 require_once 'inc/session_start.php';
 
 $controller = new \app\controllers\detalleController();
-    $datos = $controller->detallePropiedad();
-    $imagen_principal = $datos['imagen_principal'];
-    $galeria = $datos['galeria'];
+$propiedad = $controller->detallePropiedad();
+
+$controller = new \app\controllers\detalleController();
+$datos = $controller->detallePropiedad();
+
+$imagen_principal = $datos['imagen_principal'];
+$galeria = $datos['galeria'];
+$dimensiones = $datos['dimensiones'];
+$habitaciones = $datos['habitaciones'];
+$banios = $datos['banios'];
+$garage = $datos['garage'];
+$precio = $datos['precio'];
+$moneda = $datos['moneda'];
+$estado = $datos['estado'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,26 +80,26 @@ $controller = new \app\controllers\detalleController();
                         <div class="col-12 col-lg-7">
                             <div class="d-flex justify-content-center justify-content-md-start pt-1 pb-2" style="font-size:20px">
                                 <div class="pt-3 ml-2 pr-3" style="border-right: 1px solid white !important;">
-                                    <p class="text-white m-0 jsConstruccion jsConstruccionTop">128 m2</p>
-                                    <p class="text-white m-0 jsTerreno jsTerrenoTop d-none">68.90 m2</p>
+                                    <p class="text-white m-0 jsConstruccion jsConstruccionTop"><?php echo $propiedad['dimensiones']; ?> m2</p>
+                                    <p class="text-white m-0 jsTerreno jsTerrenoTop d-none"><?php echo $propiedad['terreno']; ?> m2</p>
                                 </div>
                                 <div class="pt-3 ml-2 pr-3 jsBodegaShow d-none" style="border-right: 1px solid white !important;">
-                                    <p class="text-white m-0 jsBodega"></p>
+                                    <p class="text-white m-0 jsBodega"><?php echo $propiedad['bodega']; ?></p>
                                 </div>
                                 <div class="pt-1 ml-2 d-flex align-items-center jsBodegaHide">
-                                    <span class="text-white m-0 jsCuartos">3</span>
+                                    <span class="text-white m-0 jsCuartos"><?php echo $propiedad['habitaciones']; ?></span>
                                     <div class="ml-2 pb-1">
                                         <img src="https://remax.com.mx/images/publico/2020-redesign/cuartos-icon-white.svg" height="21px" width="35px">
                                     </div>
                                 </div>
                                 <div class="pt-1 ml-2 d-flex align-items-center jsBodegaHide">
-                                    <span class="text-white m-0 jsBanos">2.0</span>
+                                    <span class="text-white m-0 jsBanos"><?php echo $propiedad['banios']; ?></span>
                                     <div class="ml-2 pb-1">
                                         <img src="https://remax.com.mx/images/publico/2020-redesign/banos-icon-white.svg" height="33px" width="31px">
                                     </div>
                                 </div>
                                 <div class="pt-1 ml-2 d-flex align-items-center jsBodegaHide">
-                                    <span class="text-white m-0 jsEstacionamientos">1</span>
+                                    <span class="text-white m-0 jsEstacionamientos"><?php echo $propiedad['garage']; ?></span>
                                     <div class="ml-2 pb-1">
                                         <img src="https://remax.com.mx/images/publico/2020-redesign/estascionamiento-icon-white.svg" height="21px" width="38px">
                                     </div>
@@ -110,7 +121,7 @@ $controller = new \app\controllers\detalleController();
                         </div>
                         <div class="col-12 col-lg-5 text-center">
                             <div class="pt-3 pr-4">
-                                <p class="text-white" style="font-size:21px"><span class="jsOperacion">RENTA</span> <span class="jsPrecio gotham-medium">$10,000</span> <span class="jsMoneda">MXN</span></p>
+                                <p class="text-white" style="font-size:21px"><span class="jsOperacion"><?php echo strtoupper($propiedad['estado']); ?></span> <span class="jsPrecio gotham-medium">$<?php echo $propiedad['precio']; ?></span> <span class="jsMoneda"><?php echo $propiedad['moneda']; ?></span></p>
                             </div>
                         </div>
                     </div>
@@ -128,14 +139,12 @@ $controller = new \app\controllers\detalleController();
                                 <span class="jsNumeroExterior" style="display: none;">8712</span>
                             </p>
                             <p>
-                                <span class="jsColonia">INFONAVIT El Carmen (Gastronómicos)</span>, 
+                                <span class="jsUbicacion">INFONAVIT El Carmen (Gastronómicos)</span>, 
                                 <span class="jsCiudad">Puebla (Heroica Puebla)</span> 
-                                <span class="jsEstado">Puebla</span> 
-                                <span class="jsPostal">72470</span>
+                                <span class="jsPais">Puebla</span> 
                             </p>
                         </div>
-                        <h3 class="text-primary pt-3">CLAVE</h3>
-                        <p class="pt-2 text-dark-gray jsClave">RCR606473-344</p>
+                        
                         <h3 class="text-primary pt-3">DESCRIPCIÓN</h3>
                         <p class="pt-2 text-dark-gray jsDescripcion">Ubicada en Infonavit el Carmen.  La casa cuenta con cochera techada, sala comedor, cocina y un baño en planta baja, en el primer nivel cuenta con 3 habitaciones y 1 baño completo. El terreno cuenta con 69 m2 y de construcción 164m2.  Ubicado en un privada cerrada con vigilancia por las noches, muy cerca de Av, Municipio Libre y Av, Nacional. Se requiere póliza jurídica. Precios sujetos a cambio sin previo aviso. AU</p>
                     </div>
