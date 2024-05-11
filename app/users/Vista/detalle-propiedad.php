@@ -12,7 +12,8 @@ $propiedad = $controller->detallePropiedad();
 $controller = new \app\controllers\detalleController();
 $datos = $controller->detallePropiedad();
 
-$imagen_principal = $datos['imagen_principal'];
+
+$imagen_principal = isset($datos['imagen_principal']) ? $datos['imagen_principal'] : null;
 $galeria = $datos['galeria'];
 $dimensiones = $datos['dimensiones'];
 $habitaciones = $datos['habitaciones'];
@@ -71,6 +72,7 @@ $estado = $datos['estado'];
                     echo '</div>';
                 }
                 ?>
+                <button id="masFotos" class="rounded-pill btn-primary text-white jsMasFotos d-none d-md-block" style="position:absolute; right:20px; bottom:20px; width:235px;" data-toggle="modal" data-target="#jsGaleriaModal">Ver más fotos</button>
             </div>
 
 
@@ -131,30 +133,28 @@ $estado = $datos['estado'];
                 <div class="row">
                     <div class="col-12 col-lg-7 order-2 order-lg-1 mt-5 pr-5" style="border-right: 0.7026335000991821px solid #949CA1;">
                         <h3 class="text-primary">
-                            <span class="text-primary jsTipo">CASA</span> EN <span class="text-primary jsOperacion">RENTA</span>
+                            <span class="text-primary jsTipo">Inmueble</span> en <span class="text-primary jsOperacion"><?php echo $datos['estado']; ?></span>
                         </h3>
                         <div class="col pt-3 pl-0 text-dark-gray">
                             <p class="m-0">
-                                <span class="jsCalle">Cerrada 9 B sur</span> 
-                                <span class="jsNumeroExterior" style="display: none;">8712</span>
+                                <span class="jsUbicacion"><?php echo $datos['ubicacion']; ?></span> 
                             </p>
                             <p>
-                                <span class="jsUbicacion">INFONAVIT El Carmen (Gastronómicos)</span>, 
-                                <span class="jsCiudad">Puebla (Heroica Puebla)</span> 
-                                <span class="jsPais">Puebla</span> 
+                                <span class="jsCiudad"><?php echo $datos['nombre_ciudad']; ?></span> 
+                                <span class="jsPais"><?php echo $datos['nombre_pais']; ?></span> 
                             </p>
                         </div>
                         
                         <h3 class="text-primary pt-3">DESCRIPCIÓN</h3>
-                        <p class="pt-2 text-dark-gray jsDescripcion">Ubicada en Infonavit el Carmen.  La casa cuenta con cochera techada, sala comedor, cocina y un baño en planta baja, en el primer nivel cuenta con 3 habitaciones y 1 baño completo. El terreno cuenta con 69 m2 y de construcción 164m2.  Ubicado en un privada cerrada con vigilancia por las noches, muy cerca de Av, Municipio Libre y Av, Nacional. Se requiere póliza jurídica. Precios sujetos a cambio sin previo aviso. AU</p>
+                        <p class="pt-2 text-dark-gray jsDescripcion"><?php echo $datos['descripcion']; ?></p>
                     </div>
                     <div class="col-12 col-lg-5 order-1 order-lg-2 mt-5 pl-3 pl-md-5">
                         <div id="jsAgenteInfoSection" class="">
-                            <h3 class="text-primary text-center pb-3">CONTACTA AL AGENTE</h3>
+                            <h3 class="text-primary text-center pb-3">CONTACTA AL ASESOR</h3>
                             <div class="d-flex justify-content-flex-start ">
                                 <img class="jsAgenteImagen" src="https://cdn.remax.com.mx/agentes/1656531741.jpg" style="height:100px; width:100px ; border: 6px solid rgba(150, 157, 162,0.3); border-radius: 50%; object-fit: cover;">
                                 <div class="col-8 text-center pl-0">
-                                    <p class="text-primary fs-16 jsAgenteNombre">Asdrubal Urizar Silva </p>
+                                    <p class="text-primary fs-16 jsAgenteNombre"><?php echo $datos['nombre'] . ' ' . $datos['apellido']; ?></p>
                                     <p class="text-info" style="font-size:14px">Solicita información por</p>
                                     <div class="d-flex justify-content-around">
                                         <!-- TELEFONO DESKTOP -->
@@ -202,7 +202,7 @@ $estado = $datos['estado'];
                                 </div>
                                 <div class="d-flex flex-column">
                                     <span class="text-dark-gray fs-12">Terreno</span> 
-                                    <span class="text-primary jsTerreno">68.90 m2</span>
+                                    <span class="text-primary jsTerreno"><?php echo $datos['dimensiones']; ?></span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
@@ -210,9 +210,9 @@ $estado = $datos['estado'];
                                     <img src="https://remax.com.mx/images/publico/2020-redesign/icon-estacionamiento.svg" style="height:36px; width:36px;">
                                 </div>
                                 <div class="d-flex flex-column">
-                                    <span class="text-dark-gray fs-12">Estacionamiento</span> 
+                                    <span class="text-dark-gray fs-12">Garage</span> 
                                     <div class="d-flex fs-12">
-                                        <span class="text-primary jsEstacionamientos">1</span> <span class="text-primary ml-1 jsTipoEstacionamientos">Cubierto</span>
+                                        <span class="text-primary jsEstacionamientos"><?php echo $datos['garage']; ?></span> <span class="text-primary ml-1 jsTipoEstacionamientos">Cubierto</span>
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +258,7 @@ $estado = $datos['estado'];
                                 </div>
                                 <div class="d-flex flex-column">
                                     <span class="text-dark-gray fs-12">Habitaciones</span> 
-                                    <span class="text-primary jsCuartos">3</span>
+                                    <span class="text-primary jsCuartos"><?php echo $datos['habitaciones']; ?></span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
@@ -285,7 +285,7 @@ $estado = $datos['estado'];
                                 </div>
                                 <div class="d-flex flex-column">
                                     <span class="text-dark-gray fs-12">Baños</span> 
-                                    <span class="text-primary jsBanos">2.0</span>
+                                    <span class="text-primary jsBanos"><?php echo $datos['banios']; ?></span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
@@ -294,7 +294,7 @@ $estado = $datos['estado'];
                                 </div>
                                 <div class="d-flex flex-column">
                                     <span class="text-dark-gray fs-12">Niveles/Piso</span> 
-                                    <span class="text-primary jsNiveles">2</span>
+                                    <span class="text-primary jsNiveles"><?php echo $datos['pisos']; ?></span>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 d-flex align-items-center pt-2 pb-2">
@@ -335,30 +335,34 @@ $estado = $datos['estado'];
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;opacity: 1; font-size: 30px;"><span aria-hidden="true">×</span></button>
                         <h4 class="modal-title" id="exampleModalLabel"> <i class="fas fa-camera"></i> Galería</h4>
                     </div>
-                    <section id="property-slider">
-                        <table style="width: 100%; margin: 8px;">
-                            <tbody>
-                                <tr>
-                                    <td class="ocultafotos d-none d-md-block" style="margin-right:10px; background: red; background: #000; overflow-x: hidden;">
-                                        <div class="sliderThumbsContainer">
-                                            <!-- Images here -->
-                                        </div>
-                                    </td>
-                                    <td class="fotos w-100">
-                                        <div class="sliderContainer">
-                                            <div class="sliderImageContainer">
-                                                <div id="sliderImagen" style="background-image: url(&quot;https://cdn.remax.com.mx/properties/606473/2b8a65fd2ee689cb04a11a904a3ac444.jpg&quot;);"></div>
-                                            </div>
-                                            <span id="jsJumpToPrev" class="arrowLeft" style="background: rgba(255, 255, 255, 0);"><i class="fas fa-chevron-left sliderArrowIcon"></i></span>
-                                            <span id="jsJumpToNext" class="arrowRight" style="background: rgba(255, 255, 255, 0);" jq-id="nextImage"><i class="fas fa-chevron-right sliderArrowIcon"></i></span>
-                                        </div>
-                                        <div class="contadorima">
-                                            <i class="ion ion-camera"> <span jq-id="imageNum">1</span> de <span class="jsImageCount">11</span></i>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <section id="property-slider" style="display: flex;">
+                        <div class="ocultafotos d-none d-md-block" style="margin-right:10px; background: red; background: #000; overflow-x: hidden;">
+                        <div class="sliderThumbsContainer">
+                            <?php 
+
+                                $fotos = array_merge([$datos['imagen_principal']], $datos['galeria']);
+                                foreach($fotos as $index => $foto) {
+                                    if($foto != null && filter_var($foto, FILTER_VALIDATE_URL)) {
+                                        echo '<div index="'.$index.'" class="jsJumpToImage sliderThumbContainer '.($index == 0 ? 'firstThumb' : '').' sliderThmb'.$index.'" id="#sliderThmb'.$index.'">';
+                                        echo '<img clave="RDV606729-382" image="'.$foto.'" src="'.$foto.'">';
+                                        echo '</div>';
+                                    }
+                                }
+                            ?>
+                        </div>
+                        </div>
+                        <div class="fotos w-100">
+                            <div class="sliderContainer">
+                                <div class="sliderImageContainer">
+                                    <div id="sliderImagen" style="background-image: url(&quot;https://cdn.remax.com.mx/properties/606473/2b8a65fd2ee689cb04a11a904a3ac444.jpg&quot;);"></div>
+                                </div>
+                                <span id="jsJumpToPrev" class="arrowLeft" style="background: rgba(255, 255, 255, 0);"><i class="fas fa-chevron-left sliderArrowIcon"></i></span>
+                                <span id="jsJumpToNext" class="arrowRight" style="background: rgba(255, 255, 255, 0);" jq-id="nextImage"><i class="fas fa-chevron-right sliderArrowIcon"></i></span>
+                            </div>
+                            <div class="contadorima">
+                                <i class="ion ion-camera"> <span jq-id="imageNum">1</span> de <span class="jsImageCount"><?php echo count($fotos); ?></span></i>
+                            </div>
+                        </div>
                     </section>
                     <div align="center">
                         <button type="button" data-dismiss="modal" class="btn btn-danger" style="border: 1px solid #ce0000!important; background-color: rgba(216, 0, 0, 0.91)!important; padding: 8px 12px; line-height: 1; border-radius: 6px; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);">Cerrar</button>
@@ -366,6 +370,33 @@ $estado = $datos['estado'];
                 </div>
             </div>
         </div>
+        <script>
+            let currentImageIndex = 0;
+            const images = <?php echo json_encode($fotos); ?>;
+            
+            function updateImage() {
+                if (images[currentImageIndex] != null && images[currentImageIndex] != '') {
+                    document.getElementById('sliderImagen').style.backgroundImage = 'url(' + images[currentImageIndex] + ')';
+                    document.querySelector('[jq-id="imageNum"]').textContent = currentImageIndex + 1;
+                }
+            }
+            
+            document.getElementById('jsJumpToPrev').addEventListener('click', function() {
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                    updateImage();
+                }
+            });
+            
+            document.getElementById('jsJumpToNext').addEventListener('click', function() {
+                if (currentImageIndex < images.length - 1) {
+                    currentImageIndex++;
+                    updateImage();
+                }
+            });
+            
+            updateImage();
+        </script>
 
 
         <!-- Recorrido Virtual Modal -->
@@ -398,11 +429,11 @@ $estado = $datos['estado'];
                                             <section id="property-contact-form">
                                                 <img src="imagenes/logo_wayloa.jpg">
                                                 <h4 class="jsOficinaNombre mb-3">Wayloa</h4>
-                                                <h5 class="jsAgenteNombre">Asdrubal Urizar Silva </h5>
+                                                <h5 class="jsAgenteNombre"><?php echo $datos['nombre'] . ' ' . $datos['apellido']; ?></h5>
                                                 <p><i class="fas fa-map-marker-alt"></i> <span class="jsOficinaAddress">Av. Central Ote. 956, San Roque<br> CP. 29066</span></p>
                                                 <a class="jsOficinaTelefonoLink" href="tel:2222908877" style="color:white;">
                                                     <div class="btn btn-primary" style="width: 250px;"> 
-                                                        <i class="fas fa-phone-alt" style="font-size: 20px;"></i> <span style="font-size: 19px;" class="jsOficinaTelefono">2222908877</span>
+                                                        <i class="fas fa-phone-alt" style="font-size: 20px;"></i> <span style="font-size: 19px;" class="jsAgenteTelefono"><?php echo $datos['telefono']; ?></span>
                                                     </div>
                                                 </a>
                                             </section>

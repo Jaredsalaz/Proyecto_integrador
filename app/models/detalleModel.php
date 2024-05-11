@@ -58,11 +58,17 @@
                     a.nombre, 
                     a.apellido, 
                     a.email, 
-                    a.telefono 
+                    a.telefono,
+                    c.nombre_ciudad,
+                    pa.nombre_pais
                 FROM 
                     propiedades p 
                 JOIN 
                     asesores a ON p.asesor_id = a.id 
+                JOIN
+                    ciudades c ON p.ciudad = c.id
+                JOIN
+                    paises pa ON p.pais = pa.id
                 WHERE 
                     p.id = :id
             ');

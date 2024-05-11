@@ -24,9 +24,7 @@
             // Extrae las imágenes de la galería
             $galeria = [];
             for ($i = 1; $i <= 10; $i++) { 
-                if (!empty($propiedad['foto_galeria_' . $i])) {
-                    $galeria[] = $propiedad['foto_galeria_' . $i];
-                }
+                $galeria[] = $propiedad['foto_galeria_' . $i];
             }
 
             // Devuelve los detalles de la propiedad
@@ -39,7 +37,15 @@
                 'garage' => $propiedad['garage'],
                 'precio' => $propiedad['precio'],
                 'moneda' => $propiedad['moneda'],
-                'estado' => $propiedad['estado']
+                'estado' => $propiedad['estado'],
+                'ubicacion' => $propiedad['ubicacion'],
+                'nombre_ciudad' => $propiedad['nombre_ciudad'],
+                'nombre_pais' => $propiedad['nombre_pais'],
+                'descripcion' => $propiedad['descripcion'],
+                'nombre' => $propiedad['nombre'],
+                'apellido' => $propiedad['apellido'],
+                'pisos' => $propiedad['pisos'],
+                'telefono' => $propiedad['telefono']
             ];
         }
         

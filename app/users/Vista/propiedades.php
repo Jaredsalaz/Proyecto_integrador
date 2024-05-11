@@ -263,14 +263,14 @@ require_once 'inc/session_start.php';
                                         <div class="row">
                                             <div class="col">                                      
                                                 <div class="input-group">
-                                                    <input id="habitaciones" type="text" name="habitaciones" required>
+                                                    <input id="habitaciones" type="text" name="habitaciones">
                                                     <label for="habitaciones">Habitaciones</label>
                                                 </div>
                                             </div>
                                             -
                                             <div class="col">
                                                 <div class="input-group">
-                                                    <input id="pisos" type="text" name="pisos" required>
+                                                    <input id="pisos" type="text" name="pisos">
                                                     <label for="pisos">Pisos</label>
                                                 </div>
                                             </div>
@@ -279,14 +279,14 @@ require_once 'inc/session_start.php';
                                         <div class="row">
                                             <div class="col">                                          
                                                 <div class="input-group">
-                                                    <input id="baños" type="text" name="banios" required>
+                                                    <input id="baños" type="text" name="banios">
                                                     <label for="baños">Baños</label>
                                                 </div>
                                             </div>
                                             -
                                             <div class="col">
                                                 <div class="input-group">
-                                                    <input id="cochera" type="text" name="garage" required>
+                                                    <input id="cochera" type="text" name="garage">
                                                     <label for="cochera">Cochera</label>
                                                 </div>
                                             </div>
