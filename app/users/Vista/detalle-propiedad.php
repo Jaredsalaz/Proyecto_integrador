@@ -326,7 +326,7 @@ $estado = $datos['estado'];
                             <?php
                             if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true) {
                                 // El usuario está logueado, mostrar el botón de cotización
-                                echo '<a href="cotizacion.php" style="color: white;" class="w-100 btn btn-primary rounded-pill jsCalcular d-none d-md-block gotham-bold">COTIZAR INMUEBLE</a>';
+                                echo '<a href="cotizaciones.php?id_propiedad=' . $id_propiedad . '" style="color: white;" class="w-100 btn btn-primary rounded-pill jsCalcular d-none d-md-block gotham-bold">COTIZAR INMUEBLE</a>';
                             } else {
                                 // El usuario no está logueado, mostrar el modal de inicio de sesión
                                 echo '<a href="#" style="color: white;" class="w-100 btn btn-primary rounded-pill jsCalcular d-none d-md-block gotham-bold" data-toggle="modal" data-target="#modal">INICIA SESIÓN PARA COTIZAR</a>';

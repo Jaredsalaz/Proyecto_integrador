@@ -92,7 +92,7 @@
                     <a class="nav-link" href="app/users/Vista/asesores.php">Nuestros Asesores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Contacto</a>
+                    <a class="nav-link" href="app/users/Vista/contacto.php">Contacto</a>
                 </li>
             </ul>
         </div>
@@ -105,7 +105,7 @@
             <a href="app/users/Vista/propiedades.php">Propiedades</a>
             <a href="app/users/Vista/cotizaciones.php">Cotizaciones</a>
             <a href="app/users/Vista/asesores.php">Nuestros Asesores</a>
-            <a href="">Contacto</a>                
+            <a href="app/users/Vista/contacto.php">Contacto</a>                
         </nav>
         <div class="d-flex ">
             <button type="button" class="btn btn-secondary dropdown-toggle d-flex align-items-center mi-boton-personalizado" type="button" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">

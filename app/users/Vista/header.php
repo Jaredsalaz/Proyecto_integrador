@@ -53,7 +53,7 @@
                     <a class="nav-link" href="asesores.php">Nuestros Asesores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Contacto</a>
+                    <a class="nav-link" href="contacto.php">Contacto</a>
                 </li>
             </ul>
         </div>
@@ -68,7 +68,7 @@
             <a href="propiedades.php">Propiedades</a>
             <a href="cotizaciones.php">Cotizaciones</a>
             <a href="asesores.php">Nuestros Asesores</a>
-            <a href="">Contacto</a>                
+            <a href="contacto.php">Contacto</a>                
         </nav>
     </div>
 
