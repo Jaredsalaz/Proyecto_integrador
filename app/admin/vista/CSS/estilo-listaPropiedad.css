@@ -34,7 +34,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-    background-color: #fff6;
+    background-color: #d5d1defe;
 }
 
 .table-container {
@@ -50,7 +50,7 @@ tbody tr:hover {
 .table__body {
     width: 98%;
     max-height: calc(89% - 1.6rem);
-    background: #e6d0bc;
+    background: #ffffff;
     margin: .8rem auto;
     border-radius: .6rem;
     overflow: auto;
@@ -107,7 +107,7 @@ button {
 }
 
 button:hover {
-    background-color: #eb8f17 !important; /* Priorizando el color de fondo al hacer hover */
+    background-color: #2a2185 !important; /* Priorizando el color de fondo al hacer hover */
     box-shadow: 0px 15px 20px rgba(114, 77, 8, 0.4) !important; /* Priorizando la sombra al hacer hover */
     color: #fff !important; /* Priorizando el color de texto al hacer hover */
     transform: translateY(-7px);

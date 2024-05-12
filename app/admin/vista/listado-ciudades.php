@@ -1,8 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 require_once '..//..//..//config/app.php';
 require_once './/..//.//..//..//autoload.php';
 require_once '..//..//users/Vista/inc/session_start.php';
@@ -16,8 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($action === 'update') {
         $nombre_ciudad = $_POST['nombre_ciudad'];
-        $id_pais = $_POST['id_pais'];
-        $result = $controlador->updateCiudades($id, $nombre_ciudad, $id_pais);
+        $result = $controlador->updateCiudades($id, $nombre_ciudad);
         $status_message = $result ? 'Actualización exitosa' : 'Error en la actualización';
     } elseif ($action === 'delete') {
         $result = $controlador->deleteCiudades($id);
