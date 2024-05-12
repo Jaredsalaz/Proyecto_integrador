@@ -39,7 +39,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- Bootstrap CSS -->
@@ -422,7 +422,7 @@
                                             <span class="material-symbols-outlined">bed</span> '.$propiedad['habitaciones'].' Dormitorios
                                         </div>
                                         <div class="card-link">
-                                            <a href="#">Ver más</a>
+                                            <a href="app/users/Vista/detalle-propiedad.php?id='.$propiedad['id'].'">Ver más</a>
                                         </div>
                                     </div>
                                 </div>
