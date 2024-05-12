@@ -84,6 +84,74 @@
 
             return $propiedad;
         }
+        public function registrarUsuario($nombre, $apellido, $email, $clave, $idPropiedad) {
+            try {
+                // Conectarse a la base de datos
+                $conexion = $this->conectar();
+
+                // Preparar la declaración SQL
+                $stmt = $conexion->prepare("INSERT INTO usuarios (u_tipo, u_nombre, u_apellido, u_email, u_clave, u_foto, u_creado) VALUES (:tipo, :nombre, :apellido, :email, :clave, :foto, NOW())");
+
+                // Vincular los parámetros
+                $stmt->bindValue(':tipo', 'usuario normal y corriente'); // Todos los nuevos usuarios serán de este tipo
+                $stmt->bindValue(':foto', '../users/Vista/fotos/image.png'); //  la ruta a la foto predeterminada
+                $stmt->bindValue(':nombre', $nombre);
+                $stmt->bindValue(':apellido', $apellido);
+                $stmt->bindValue(':email', $email);
+                $stmt->bindValue(':clave', password_hash($clave, PASSWORD_DEFAULT)); // Encriptamos la contraseña
+
+                // Ejecutar la declaración SQL
+                $stmt->execute();
+                return true;
+
+            } catch(PDOException $e) {
+                return false;
+            }
+        }
+        public function iniciarSesion($email, $clave) {
+            // Conectarse a la base de datos
+            $conexion = $this->conectar();
+
+            // Preparar la declaración SQL
+            $stmt = $conexion->prepare("SELECT * FROM usuarios WHERE u_email = :email");
+            $stmt->execute(['email' => $email]);
+
+            // Obtener el usuario
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Verificar la contraseña
+            if ($usuario && password_verify($clave, $usuario['u_clave'])) {
+                // Iniciar la sesión
+                $_SESSION['usuario'] = $usuario;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        public function existeUsuario($email) {
+            try {
+                // Conectarse a la base de datos
+                $conexion = $this->conectar();
+
+                // Preparar la declaración SQL
+                $stmt = $conexion->prepare("SELECT COUNT(*) FROM usuarios WHERE u_email = :email");
+
+                // Vincular los parámetros
+                $stmt->bindValue(':email', $email);
+
+                // Ejecutar la declaración SQL
+                $stmt->execute();
+
+                // Obtenemos el número de usuarios con el correo electrónico proporcionado
+                $numUsuarios = $stmt->fetchColumn();
+
+                // Devolver true si el correo electrónico ya existe, false en caso contrario
+                return $numUsuarios > 0;
+            } catch(PDOException $e) {
+                echo "Error al verificar la existencia del usuario: " . $e->getMessage();
+                return false;
+            }
+        }
 
     }    
 

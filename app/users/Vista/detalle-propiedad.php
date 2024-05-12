@@ -6,6 +6,19 @@ require_once '../../../config/app.php';
 require_once './/..//../../autoload.php';
 require_once 'inc/session_start.php';
 
+// Instanciamos la clase detalleController
+$controller = new \app\controllers\detalleController();
+
+// Verificamos si se ha enviado el formulario de inicio de sesión
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email1'], $_POST['clave1'])) {
+    // Iniciamos sesión y capturamos el resultado
+    $resultado_login = $controller->iniciarSesion($_POST['email1'], $_POST['clave1']);
+    // Almacenamos el resultado en la sesión
+    $_SESSION['resultado_login'] = $resultado_login;
+}
+
+// Instanciamos la clase detalleController
+//-----------------------------------------------------
 $controller = new \app\controllers\detalleController();
 $propiedad = $controller->detallePropiedad();
 
@@ -22,7 +35,29 @@ $garage = $datos['garage'];
 $precio = $datos['precio'];
 $moneda = $datos['moneda'];
 $estado = $datos['estado'];
+
+
 ?>
+
+ <!-- Modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Obtén el resultado de la función iniciarSesion
+            var resultado = "<?php echo $_SESSION['resultado_login']; ?>";
+
+            // Si hay un resultado, muestra la alerta
+            if (resultado) {
+                Swal.fire({
+                    title: resultado,
+                    icon: resultado.includes("exitoso") ? "success" : "error",
+                    confirmButtonText: "OK"
+                });
+
+                // Limpia el resultado de la sesión para que la alerta no se muestre de nuevo
+                <?php unset($_SESSION['resultado_login']); ?>
+            }
+        });
+    </script> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +66,116 @@ $estado = $datos['estado'];
     <!-- CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/detalle-propiedad.css">
+    <!-- Sweetalert2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Detalle</title>
 </head>
 <body>
     <?php include 'header.php'; ?>
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Ingresa tu cuenta</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: auto;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted">Bienvenido a wayloa</p>
+                    <form action="detalle-propiedad.php?id=<?php echo $_GET['id']; ?>" method="POST">
+                        <div class="form-group">
+                            <label for="email">Correo</label>
+                            <input type="email" name="email1" class="form-control" id="email1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Contrase&ntilde;a</label>
+                            <input type="password" name="clave1" class="form-control" id="pass1" required>
+                        </div>
+                        <input type="submit" value="Entrar" class="btn btn-secondary d-block mx-auto py-2 px-4 rounded-0">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" id="enlaceRegistro" class="d-block mx-auto" data-toggle="modal" data-target="#modalRegistro" data-dismiss="modal">¿A&uacute;n no est&aacute; registrado?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+    // Instanciamos la clase detalleController
+    $controller = new \app\controllers\detalleController();
+
+    // Verificamos si se ha enviado el formulario de registro
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nombre2'], $_POST['apellido2'], $_POST['email2'], $_POST['clave2'])) {
+        // Obtenemos el id de la propiedad de la URL
+        $idPropiedad = $_GET['id'];
+        // Registramos el usuario y capturamos el resultado
+        $resultado_registro = $controller->registrarUsuario($_POST['nombre2'], $_POST['apellido2'], $_POST['email2'], $_POST['clave2'], $idPropiedad);
+        // Almacenamos el resultado en la sesión
+        $_SESSION['resultado_registro'] = $resultado_registro;
+
+        // Si el registro fue exitoso, iniciamos sesión automáticamente
+        if ($resultado_registro === 'Registro exitoso') {
+            $resultado_login = $controller->iniciarSesion($_POST['email2'], $_POST['clave2']);
+            $_SESSION['resultado_login'] = $resultado_login;
+        }
+    }
+    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Obtén el resultado de la función registrarUsuario
+            var resultado_registro = "<?php echo $_SESSION['resultado_registro']; ?>";
+
+            // Si hay un resultado, muestra la alerta
+            if (resultado_registro) {
+                console.log(resultado_registro); // Agrega esta línea
+                Swal.fire({
+                    title: resultado_registro,
+                    icon: resultado_registro.includes("éxito") ? "success" : "error",
+                    confirmButtonText: "OK"
+                });
+
+                // Limpia el resultado de la sesión para que la alerta no se muestre de nuevo
+                <?php unset($_SESSION['resultado_registro']); ?>
+            }
+        });
+    </script>  
+
+    <div class="modal fade" id="modalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-uppercase font-weight-bold" id="exampleModalLabel">Regístrate</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="margin-left: auto;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted">Bienvenido a wayloa</p>
+                    <form action="detalle-propiedad.php?id=<?php echo $_GET['id']; ?>" method="post" class="py-4">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="nombre2" name="nombre2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" class="form-control" id="apellido2" name="apellido2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo</label>
+                            <input type="email" class="form-control" id="email2" name="email2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="clave">Contraseña</label>
+                            <input type="password" class="form-control" id="clave2" name="clave2" required>
+                        </div>
+                        <input type="submit" value="Registrarse" class="btn btn-secondary d-block mx-auto py-2 px-4 rounded-0">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div class="content">
         <section>
@@ -182,7 +323,15 @@ $estado = $datos['estado'];
                                     </div>
                                 </div>
                             </div>
-                            <button class="w-100 btn btn-primary rounded-pill jsCalcular d-none d-md-block gotham-bold">Calcular Hipoteca</button>
+                            <?php
+                            if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true) {
+                                // El usuario está logueado, mostrar el botón de cotización
+                                echo '<a href="cotizacion.php" style="color: white;" class="w-100 btn btn-primary rounded-pill jsCalcular d-none d-md-block gotham-bold">COTIZAR INMUEBLE</a>';
+                            } else {
+                                // El usuario no está logueado, mostrar el modal de inicio de sesión
+                                echo '<a href="#" style="color: white;" class="w-100 btn btn-primary rounded-pill jsCalcular d-none d-md-block gotham-bold" data-toggle="modal" data-target="#modal">INICIA SESIÓN PARA COTIZAR</a>';
+                            }
+                            ?>
                             <button class="w-100 btn btn-light-gray text-white rounded-pill mt-3 jsReunionVirtual d-none gotham-bold">Programar Reunión Virtual</button>
                             <div class="d-flex justify-content-center d-md-none gotham-bold">
                                 <button class="w-50 btn btn-primary rounded-pill mr-1 jsCalcular">Calcular Hipoteca</button>
