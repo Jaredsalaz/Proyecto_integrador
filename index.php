@@ -324,7 +324,7 @@
                     personal y profesional. A lo largo de más de una década, Wayloa ha experimentado un crecimiento significativo, expandiéndose a nivel nacional e internacional, con más de 5,000 profesionales   
                     en más de 500 oficinas en 20 países. La historia de Wayloa refleja un sueño hecho realidad, con un modelo de negocio revolucionario que sigue transformando el sector de servicios, con la promesa  
                     de seguir ofreciendo oportunidades para el éxito a los mejores talentos en el futuro.</p>
-                    <button class="btn btn-light d-block mx-auto mx-md-0 mi-clase-especial">Ver más</button>
+                    <button class="btn btn-light d-block mx-auto mx-md-0 mi-clase-especial boton-ver-mas">Ver más</button>
                 </div>
             </div>
         </div>

@@ -19,7 +19,9 @@
                 <div class="content">
                     <h2 class="asesores-h2">Contador Wayloa</h2>
                     <h3 class="asesores-h3">Josue Hernadez Santiago</h3>
-                    <button class="contact-button">Contactar</button>
+                    <a href="tel:9611109216" class="contact-button">
+                        Contactar
+                    </a>
                 </div>
             </div>
         </div>
@@ -31,7 +33,9 @@
                 <div class="content">
                     <h2 class="asesores-h2">Contador Wayloa</h2>
                     <h3 class="asesores-h3">Eric Mendez Suarez</h3>
-                    <button class="contact-button">Contactar</button>
+                    <a href="tel:9613783561" class="contact-button">
+                        Contactar
+                    </a>
                 </div>
             </div>
         </div>
@@ -43,7 +47,9 @@
                 <div class="content">
                     <h2 class="asesores-h2">Contador Wayloa</h2>
                     <h3 class="asesores-h3">Jared Salazar Sanchez</h3>
-                    <button class="contact-button">Contactar</button>
+                    <a href="tel:9661086505" class="contact-button">
+                        Contactar
+                    </a>
                 </div>
             </div>
         </div>
