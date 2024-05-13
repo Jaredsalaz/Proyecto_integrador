@@ -181,7 +181,7 @@
             </section>
         </main>
         <?php require_once 'footer.php'; ?>
-    <script src="JS/script.js"></script>
+    <script src="JS/JS-cotizaciones.js"></script>
     
 </body>
 

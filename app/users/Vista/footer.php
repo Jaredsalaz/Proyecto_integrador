@@ -30,8 +30,8 @@
                 <div class="col-md-3">
                     <h5>Recursos</h5>
                     <ul>
-                        <li><a href="preguntas-frecuentes.html" style="color: #fff;">Preguntas Frecuentes</a></li>
-                        <li><a href="sobre-nosotros.html" style="color: #fff;">Sobre Nosotros</a></li>
+                        <li><a href="preguntas-frecuentes.php" style="color: #fff;">Preguntas Frecuentes</a></li>
+                        <li><a href="sobre-nosotros.php" style="color: #fff;">Sobre Nosotros</a></li>
                         <li><a href="politicas-privacidad.html" style="color: #fff;">Políticas de Privacidad</a></li>
                     </ul>
                 </div>

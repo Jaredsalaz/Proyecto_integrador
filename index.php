@@ -324,7 +324,9 @@
                     personal y profesional. A lo largo de más de una década, Wayloa ha experimentado un crecimiento significativo, expandiéndose a nivel nacional e internacional, con más de 5,000 profesionales   
                     en más de 500 oficinas en 20 países. La historia de Wayloa refleja un sueño hecho realidad, con un modelo de negocio revolucionario que sigue transformando el sector de servicios, con la promesa  
                     de seguir ofreciendo oportunidades para el éxito a los mejores talentos en el futuro.</p>
-                    <button class="btn btn-light d-block mx-auto mx-md-0 mi-clase-especial boton-ver-mas">Ver más</button>
+                    <a href="app/users/Vista/sobre-nosotros.php">
+                        <button class="btn btn-light d-block mx-auto mx-md-0 mi-clase-especial boton-ver-mas">Ver más</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -346,31 +348,32 @@
                         </a>
                     </div>
                 </div>
+            </div>
             <div class="row align-items-stretch">
                 <div class="col-md-6 d-flex flex-column my-element">
-                    <a href="app/users/Vista/propiedades.php?categoria=Departamentos">
+                    <a href="app/users/Vista/propiedades.php?categoria=Departamentos" class="img-link">
                         <img src="app/users/Vista/imagenes/categoria-departamento.png" alt="Imagen 1" class="img-fluid img-large flex-grow-1">
-                        <p><strong>Departamentos</strong></p>
+                        <p class="img-text"><strong>Departamentos</strong></p>
                     </a>
                 </div>
                 <div class="col-md-6 my-element left">
                     <div class="row">
-                        <div class="col-12">
-                            <a href="app/users/Vista/propiedades.php?categoria=Casas">
+                        <div class="col-12 img-container">
+                            <a href="app/users/Vista/propiedades.php?categoria=Casas" class="img-link">
                                 <video src="app/users/Vista/imagenes/categoria-casas.mp4" alt="Video 2" class="img-fluid" autoplay loop muted></video>
-                                <p><strong>Casas</strong></p>
+                                <p class="img-text"><strong>Casas</strong></p>
                             </a>
                         </div>
-                        <div class="col-md-6 my-element">
-                            <a href="app/users/Vista/propiedades.php?categoria=Comercios">
+                        <div class="col-md-6 img-container">
+                            <a href="app/users/Vista/propiedades.php?categoria=Comercios" class="img-link">
                                 <img src="app/users/Vista/imagenes/catagorias-comercio.png" alt="Imagen 3" class="img-fluid">
-                                <p><strong>Comercios</strong></p>
+                                <p class="img-text"><strong>Comercios</strong></p>
                             </a>
                         </div>
-                        <div class="col-md-6 my-element left">
-                            <a href="app/users/Vista/propiedades.php?categoria=Countries">
+                        <div class="col-md-6 img-container">
+                            <a href="app/users/Vista/propiedades.php?categoria=Countries" class="img-link">
                                 <img src="app/users/Vista/imagenes/categorias-countries.png" alt="Imagen 4" class="img-fluid">
-                                <p><strong>Countries</strong></p>
+                                <p class="img-text"><strong>Countries</strong></p>
                             </a>
                         </div>
                     </div>
@@ -519,8 +522,8 @@
                 <div class="col-md-3">
                     <h5>Recursos</h5>
                     <ul>
-                        <li><a href="preguntas-frecuentes.html" style="color: #fff;">Preguntas Frecuentes</a></li>
-                        <li><a href="sobre-nosotros.html" style="color: #fff;">Sobre Nosotros</a></li>
+                        <li><a href="app/users/Vista/preguntas-frecuentes.php" style="color: #fff;">Preguntas Frecuentes</a></li>
+                        <li><a href="app/users/Vista/sobre-nosotros.php" style="color: #fff;">Sobre Nosotros</a></li>
                         <li><a href="politicas-privacidad.html" style="color: #fff;">Políticas de Privacidad</a></li>
                     </ul>
                 </div>

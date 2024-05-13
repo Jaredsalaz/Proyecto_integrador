@@ -27,24 +27,35 @@
         }
         
  
-    
         public function enviarCorreo($nombre, $apellido, $telefono, $correo, $mensaje) {
-            $to = $correo;
-            $subject = 'Cotizacion Wayloa';
-            $message = 'Estamos procesando su solicitud de cotización. Nos pondremos en contacto con usted lo antes posible, le asignaremos un Asesor, Gracias por elegir Wayloa.';
-            $headers = 'From: jaredsalazajdss@gmail.com' . "\r\n" .
-                       'Reply-To: jaredsalazajdss@gmail.com' . "\r\n" .
-                       'X-Mailer: PHP/' . phpversion();
+            $mail = new PHPMailer(true);
 
-            if(mail($to, $subject, $message, $headers)) {
+            try {
+                // Configuración del servidor
+                $mail->isSMTP();
+                $mail->Host = 'smtp.hostinger.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'administrador@wayloa.com'; // Tu dirección de correo
+                $mail->Password = 'Messi18*'; // Tu contraseña de correo
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+
+                // Configuración del correo
+                $mail->setFrom('administrador@wayloa.com', 'Wayloa');
+                $mail->addAddress($correo, $nombre); // El correo del destinatario
+                $mail->isHTML(true);
+                $mail->Subject = 'Cotizacion Wayloa';
+                $mail->Body = 'Estamos procesando su solicitud de cotización. Nos pondremos en contacto con usted lo antes posible, le asignaremos un Asesor, Gracias por elegir Wayloa.';
+
+                // Enviar el correo
+                $mail->send();
                 return ['status' => 'success', 'message' => 'El correo se envió correctamente.'];
-            } else {
-                return ['status' => 'error', 'message' => 'El mensaje no pudo ser enviado.'];
+            } catch (Exception $e) {
+                return ['status' => 'error', 'message' => 'El mensaje no pudo ser enviado. Mailer Error: ' . $mail->ErrorInfo];
             }
         }
     
     
-        
         
     } 
 ?>
