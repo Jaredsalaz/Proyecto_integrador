@@ -1,13 +1,15 @@
 <?php
+    
     namespace app\models;
     use \PDO;
+    
+    
 
     if(file_exists(__DIR__ . "/../../config/server.php")){
 
         require_once(__DIR__ . "/../../config/server.php");
 
     }
-
 
     class cotizacionesModel{
         private $server=DB_SERVER;
@@ -28,30 +30,17 @@
         
  
         public function enviarCorreo($nombre, $apellido, $telefono, $correo, $mensaje) {
-            $mail = new PHPMailer(true);
+            $to = $correo;
+            $subject = 'Cotizacion Wayloa';
+            $message = 'Estamos procesando su solicitud de cotización. Nos pondremos en contacto con usted lo antes posible, le asignaremos un Asesor, Gracias por elegir Wayloa.';
+            $headers = 'From: administrador@wayloa.com' . "\r\n" .
+                'Reply-To: administrador@wayloa.com' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
 
-            try {
-                // Configuración del servidor
-                $mail->isSMTP();
-                $mail->Host = 'smtp.hostinger.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'administrador@wayloa.com'; // Tu dirección de correo
-                $mail->Password = 'Messi18*'; // Tu contraseña de correo
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 587;
-
-                // Configuración del correo
-                $mail->setFrom('administrador@wayloa.com', 'Wayloa');
-                $mail->addAddress($correo, $nombre); // El correo del destinatario
-                $mail->isHTML(true);
-                $mail->Subject = 'Cotizacion Wayloa';
-                $mail->Body = 'Estamos procesando su solicitud de cotización. Nos pondremos en contacto con usted lo antes posible, le asignaremos un Asesor, Gracias por elegir Wayloa.';
-
-                // Enviar el correo
-                $mail->send();
+            if(mail($to, $subject, $message, $headers)) {
                 return ['status' => 'success', 'message' => 'El correo se envió correctamente.'];
-            } catch (Exception $e) {
-                return ['status' => 'error', 'message' => 'El mensaje no pudo ser enviado. Mailer Error: ' . $mail->ErrorInfo];
+            } else {
+                return ['status' => 'error', 'message' => 'El mensaje no pudo ser enviado.'];
             }
         }
     

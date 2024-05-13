@@ -9,6 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $controlador = new \app\controllers\cotizacionesController();
     $resultado = $controlador->procesarFormulario();
 
+    // Comenta o elimina esta línea
+    // var_dump($resultado);
+
     if ($resultado['status'] == 'success') {
         $response = ['status' => 'success', 'message' => 'El correo se envió correctamente.'];
     } else {
@@ -81,6 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 method: 'POST',
                 body: formData
             });
+            
             const data = await response.json();
             if (data.status === 'success') {
                 Swal.fire(
